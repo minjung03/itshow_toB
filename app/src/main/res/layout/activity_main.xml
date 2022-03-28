@@ -7,38 +7,11 @@
     tools:context=".MainActivity"
     android:background="#2457BD">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#2457BD"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:text="toB"
-        android:layout_marginLeft="30dp"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#2457BD"
-        android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_gravity="center"
-        android:text="dahuinTest"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/img_Logo"
+        android:layout_gravity="center"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="눌러보세요"
-        android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFFFFF"
-        android:id="@+id/btnTest"
-        />
 </LinearLayout>

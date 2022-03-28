@@ -13,13 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = (Button)findViewById(R.id.btnTest);
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "버튼이 눌렸습니다~!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Toast.makeText(getApplicationContext(), "안녕하세요~~", Toast.LENGTH_SHORT).show();
+
     }
 }
