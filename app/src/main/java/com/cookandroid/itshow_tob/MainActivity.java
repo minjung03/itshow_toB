@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent login_intent = new Intent(MainActivity.this, Login.class);
                 startActivity(login_intent);
             }
-        }, 3000); // 3초 뒤 자동 화면 전환
+        }, 2000); // 3초 뒤 자동 화면 전환
 
     }
 }

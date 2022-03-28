@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,9 @@ public class Login extends AppCompatActivity {
     CheckBox AutoLogin_Check;
     Button btn_Login;
     TextView Text_Move_Join;
+    ImageView login_back_arrow;
+
+    private long backButtonTime = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,5 +43,18 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() > backButtonTime + 2000) { // 2초 안에 back 버튼을 다시누르면 종료
+            backButtonTime = System.currentTimeMillis(); // 현재 시각이 저장 된 시각에 2초를 더한 것 보다 크면 backButtonTime을 현재 시각으로 초기화
+            Toast.makeText(this,"버튼을 한번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show();
+        }
+        else if(System.currentTimeMillis() <= backButtonTime + 2000) { // 현재 시각이 저장 된 시각에 2초를 더한 것 보다 작으면 어플 종료
+            moveTaskToBack(true);
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 }
