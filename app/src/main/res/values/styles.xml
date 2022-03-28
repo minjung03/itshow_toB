@@ -16,7 +16,8 @@
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
     </style>
     <style name="roundBtnBasic1">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:fontFamily">@font/suncheonr</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:paddingLeft">15dp</item>

@@ -26,6 +26,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/suncheonr"
             android:text="검색어를
             입력하세요"
             android:textColor="#FFFFFF"
@@ -125,7 +126,7 @@
                 android:background="@drawable/button_round1_disabled"
                 android:gravity="center"
                 android:text="물티슈"
-                android:textSize="13dp"
+                android:textSize="12dp"
                 style="@style/roundBtnBasic1"
                 />
             <Button
@@ -134,7 +135,7 @@
                 android:background="@drawable/button_round1_disabled"
                 android:gravity="center"
                 android:text="배달의 민족"
-                android:textSize="13dp"
+                android:textSize="12dp"
                 style="@style/roundBtnBasic1"/>
             <Button
                 android:layout_width="wrap_content"
@@ -142,7 +143,7 @@
                 android:background="@drawable/button_round1_disabled"
                 android:gravity="center"
                 android:text="쿠팡 로켓배송"
-                android:textSize="13dp"
+                android:textSize="12dp"
                 style="@style/roundBtnBasic1"/>
             <Button
                 android:layout_width="wrap_content"
@@ -150,7 +151,7 @@
                 android:background="@drawable/button_round1_disabled"
                 android:gravity="center"
                 android:text="쿠팡"
-                android:textSize="13dp"
+                android:textSize="12dp"
                 style="@style/roundBtnBasic1"/>
             <Button
                 android:layout_width="wrap_content"
@@ -158,7 +159,7 @@
                 android:background="@drawable/button_round1_disabled"
                 android:gravity="center"
                 android:text="요기요"
-                android:textSize="13dp"
+                android:textSize="12dp"
                 style="@style/roundBtnBasic1"/>
 
         </com.google.android.flexbox.FlexboxLayout>
