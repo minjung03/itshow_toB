@@ -64,7 +64,6 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:backgroundTint="#2457BD"
-                    style="@style/iconBlue1"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_checkbox"
                     />

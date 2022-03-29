@@ -5,56 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    >
     <!--검색어창-->
     <!--검색어창 END-->
 
     <!--키워드 그룹-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:layout_marginBottom="30dp"
-        android:gravity="bottom"
         android:background="@drawable/search_lower_round"
+        android:gravity="bottom"
         android:orientation="vertical">
 
         <TextView
-            style="@style/marginBottom"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/suncheonr"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="10sp"
+            android:shadowColor="#4D000000"
+            android:shadowDx="-7.0"
+            android:shadowDy="7.0"
+            android:shadowRadius="20.0"
             android:text="검색어를
             입력하세요"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:orientation="horizontal">
+
             <EditText
-                android:layout_width="320dp"
+                android:layout_width="310dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="40dp"
-                android:background="@drawable/button_round1_disabled"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="25dp"
+                android:padding="10dp"
+                android:fontFamily="@font/suncheonb"
+                android:background="@drawable/button_round1_white"
                 android:text=""
-                android:textSize="20dp" />
+                android:textSize="17dp" />
+
             <Button
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="#FFFFFF"
-                android:text="btn"
-                />
+                android:background="@drawable/search_white" />
         </LinearLayout>
     </LinearLayout>
 
@@ -64,11 +70,9 @@
         android:gravity="top"
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        style="@style/marginBottom">
+        android:layout_marginRight="20dp">
         <!-- button_인기검색어_카테고리별_내주변 인기글 -->
 
-        <!--검색어 버튼 잘림-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -79,9 +83,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_gray"
                 android:gravity="center"
                 android:text="인기검색어"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp"
                 android:textStyle="bold"
                 style="@style/roundBtnBasic1"/>
 
@@ -89,9 +95,10 @@
                 android:id="@+id/searchCategoryBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="카테고리별"
+                android:elevation="6dp"
                 android:textStyle="bold"
                 style="@style/roundBtnBasic1"/>
 
@@ -100,9 +107,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="내주변 인기글"
+                android:elevation="6dp"
                 android:textStyle="bold"
                 style="@style/roundBtnBasic1"/>
         </LinearLayout>
@@ -117,13 +125,12 @@
             app:flexWrap="wrap"
             app:justifyContent="center"
             android:gravity="top"
-            android:orientation="horizontal"
-            style="@style/marginBottom">
+            android:orientation="horizontal">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="물티슈"
                 android:textSize="12dp"
@@ -132,7 +139,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="배달의 민족"
                 android:textSize="12dp"
@@ -140,7 +147,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="쿠팡 로켓배송"
                 android:textSize="12dp"
@@ -148,7 +155,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="쿠팡"
                 android:textSize="12dp"
@@ -156,7 +163,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/button_round1_disabled"
+                android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="요기요"
                 android:textSize="12dp"
