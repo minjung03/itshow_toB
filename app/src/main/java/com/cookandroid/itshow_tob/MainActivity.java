@@ -14,15 +14,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.setting);
 
-        new Handler().postDelayed(new Runnable() {
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent login_intent = new Intent(MainActivity.this, Login.class);
                 startActivity(login_intent);
             }
-        }, 2000); // 3초 뒤 자동 화면 전환
+        }, 2000); // 3초 뒤 자동 화면 전환*/
 
     }
 }

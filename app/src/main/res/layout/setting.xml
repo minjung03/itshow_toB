@@ -1,8 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_title"
+        android:layout_margin="30dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/arrow_blue"
+            android:id="@+id/img_SettingBack"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_SettingBack"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:text="설정"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B6B6B6"
+        android:layout_below="@+id/layout_title"
+        android:id="@+id/line1"/>
 
 
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_below="@+id/line1"
+        android:id="@+id/layout_push_swtich">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="게시글 / 공지사항 앱 알림"
+            android:layout_centerVertical="true"
+            android:id="@+id/text1"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/text1"
+            android:gravity="right"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/switch_appPush"
+            android:track="@drawable/push_switch_style"
+            android:thumb="@drawable/switch_thumb"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_push_swtich"
+        android:id="@+id/line2"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_below="@+id/line2"
+        android:id="@+id/layout_name_edit">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임 변경"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_name_edit"
+        android:id="@+id/line3"/>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_below="@+id/line3"
+        android:id="@+id/layout_ID_PASS_edit">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디 / 비밀번호 변경"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_ID_PASS_edit"
+        android:id="@+id/line4"/>
+
+
+<!--    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_below="@+id/line4"
+        android:id="@+id/layout_CustomerSevice">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1:1 문의 게시판"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_CustomerSevice"
+        android:id="@+id/line5"/>-->
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_below="@+id/line4"
+        android:id="@+id/layout_Help">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도움말"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_Help"
+        android:id="@+id/line6"/>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_below="@+id/line6"
+        android:id="@+id/layout_UserDelete">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원 탈퇴"
+            android:textStyle="bold"
+            android:textColor="#FF2828"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_UserDelete"
+        android:id="@+id/line7"/>
+
+
+</RelativeLayout>
