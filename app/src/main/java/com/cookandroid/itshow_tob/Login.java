@@ -19,7 +19,6 @@ public class Login extends AppCompatActivity {
     CheckBox AutoLogin_Check;
     Button btn_Login;
     TextView Text_Move_Join;
-    ImageView login_back_arrow;
 
     private long backButtonTime = 0;
 
