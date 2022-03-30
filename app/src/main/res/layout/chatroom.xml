@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chatroom_background">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="bottom"
+        android:background="@drawable/chatroom_topfigure"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/chatroom_back"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/arrow_blue"/>
+
+        <TextView
+            android:id="@+id/chatroom_users_name"
+            android:text="김민, 엉뚱더지흰, 찬찬"
+            android:layout_marginTop="23dp"
+            android:layout_marginLeft="60dp"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:textColor="#000000"
+            />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/chatroom_bottomfigure"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_marginBottom="26dp"
+            android:layout_width="1dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="#E0E0E0" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+
+            android:background="#E0E0E0" />
+        <EditText
+            android:id="@+id/chatroom_edit"
+            android:layout_gravity="left"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:padding="5dp"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#000000"
+            android:background="@drawable/chatroom_chat"
+            />
+
+        <ImageView
+            android:id="@+id/chatroom_photo_btn"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="370dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/chatroom_draw"/>
+
+        <TextView
+            android:id="@+id/chatroom_location"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:textSize="13sp"
+            android:text="위치 추천" />
+        <TextView
+            android:id="@+id/chatroom_transaction"
+            android:layout_marginLeft="275dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:textSize="13sp"
+            android:text="거래 완료" />
+    </FrameLayout>
+</LinearLayout>
