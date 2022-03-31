@@ -15,7 +15,8 @@
         android:layout_height="50dp"
         android:background="#FFFFFF"
         android:orientation="horizontal">
-        <Button
+        <ImageView
+            android:id="@+id/img_SettingBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
