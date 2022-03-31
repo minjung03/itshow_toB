@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent login_intent = new Intent(MainActivity.this, Setting.class);
+                Intent login_intent = new Intent(MainActivity.this, WriteRecruitment.class);
                 startActivity(login_intent);
             }
         }, 2000); // 2초 뒤 자동 화면 전환

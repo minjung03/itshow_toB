@@ -17,9 +17,8 @@
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:backgroundTint="#000000"
             android:layout_gravity="center"
-            android:background="@drawable/arrow_black"
+            android:background="@drawable/arrow_blue"
             android:layout_marginRight="10dp"
             />
         <TextView
@@ -27,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textColor="#B5000000"
             android:layout_gravity="center"
+            android:fontFamily="@font/suncheonb"
             android:textSize="18sp"
             android:text="글 작성"
             />
@@ -71,7 +71,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/suncheonb"
                     android:hint="제목"
                     android:layout_gravity="center"
                     android:textColorHint="#86000000"
@@ -89,9 +90,9 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
 
@@ -117,7 +118,9 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:inputType="number"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/suncheonb"
                     android:hint="최소 모집 가격"
                     android:layout_gravity="center"
                     android:textColorHint="#86000000"
@@ -127,9 +130,9 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
             <!--최소 모집 가격 END-->
@@ -153,25 +156,56 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/suncheonb"
                     android:text="카테고리"
                     android:textColor="#86000000"
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:background="#FFFFFF"
                     />
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="선택"
-                    android:background="@drawable/button_round1_gray"/>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:background="@drawable/button_round1_white_gray">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/suncheonb"
+                        android:textColor="#86000000"
+                        android:textSize="10sp"
+                        android:text="선택"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#2457BD"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/suncheonb"
+                        android:textSize="10sp"
+                        android:text=">"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:fontFamily="@font/suncheonb"
+                        android:textColor="#86000000"
+                        android:textSize="10sp"
+                        android:text="음식"
+                        />
+                </LinearLayout>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
             <!--카테고리 END-->
@@ -192,15 +226,16 @@
                     android:layout_gravity="center"
                     android:background="@drawable/ic_calendar"
                     />
-                <Button
+                <EditText
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="모집기간"
-                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/suncheonb"
+                    android:inputType="date"
+                    android:hint="모집기간"
                     android:layout_gravity="center"
-                    android:textColor="#86000000"
+                    android:textColorHint="#86000000"
                     android:padding="10dp"
                     android:background="#FFFFFF"
                     />
@@ -208,9 +243,9 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
 
@@ -236,7 +271,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/suncheonb"
                     android:hint="주문처(이름 or 사이트 주소)"
                     android:layout_gravity="center"
                     android:textColorHint="#86000000"
@@ -246,9 +282,9 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
             <!--주문처 END-->
@@ -259,6 +295,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -269,24 +306,34 @@
                     android:background="@drawable/ic_marker"
                     />
                 <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/suncheonb"
                     android:text="위치"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:textColor="#86000000"
                     android:padding="10dp"
+                    android:textColor="#86000000"
                     android:background="#FFFFFF"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:fontFamily="@font/suncheonb"
+                    android:textColor="#86000000"
+                    android:textSize="12sp"
+                    android:text="관악구..."
                     />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"
-                android:elevation="3dp"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:elevation="2dp"
                 android:layout_marginBottom="10dp"
                 />
 
@@ -294,7 +341,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="12sp"
+                android:fontFamily="@font/suncheonb"
                 android:text="상세내용"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
@@ -306,10 +354,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:hint="거래 시 필요한 상세 정보를 적어주세요 :)"
-                android:textSize="14sp"
+                android:textSize="12sp"
+                android:fontFamily="@font/suncheonb"
                 android:gravity="top"
                 android:padding="20dp"
-                android:background="@drawable/button_round1_white"
+                android:background="@drawable/button_round1_white_gray"
                 />
         </LinearLayout>
         <!-- 모집글 작성 END -->
