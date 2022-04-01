@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".Login"></activity>
         <activity android:name=".Join"></activity>
         <activity android:name=".Setting"></activity>
