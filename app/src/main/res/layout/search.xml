@@ -10,7 +10,6 @@
     >
     <!--검색어창-->
     <!--검색어창 END-->
-
     <!--키워드 그룹-->
 
     <LinearLayout
@@ -78,11 +77,23 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/popularityContentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_round1_white"
+                android:gravity="center"
+                android:text="최근 검색어"
+                android:elevation="6dp"
+                android:textStyle="bold"
+                style="@style/roundBtnBasic1"/>
+
             <Button
                 android:id="@+id/popularitySearchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
                 android:background="@drawable/button_round1_gray"
                 android:gravity="center"
                 android:text="인기검색어"
@@ -95,23 +106,13 @@
                 android:id="@+id/searchCategoryBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/button_round1_white"
                 android:gravity="center"
                 android:text="카테고리별"
                 android:elevation="6dp"
                 android:textStyle="bold"
-                style="@style/roundBtnBasic1"/>
 
-            <Button
-                android:id="@+id/popularityContentBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="내주변 인기글"
-                android:elevation="6dp"
-                android:textStyle="bold"
                 style="@style/roundBtnBasic1"/>
         </LinearLayout>
         <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
