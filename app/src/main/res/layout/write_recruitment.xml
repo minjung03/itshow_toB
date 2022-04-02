@@ -13,8 +13,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="#FFFFFF"
         android:orientation="horizontal">
-        <Button
+        <ImageView
+            android:id="@+id/img_SettingBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -35,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:scrollbars="none"
         tools:context=".WriteRecruitment">
         <!-- 모집글 작성 -->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -195,7 +198,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:fontFamily="@font/suncheonb"
-                        android:textColor="#86000000"
+                        android:textColor="#000000"
                         android:textSize="10sp"
                         android:text="음식"
                         />

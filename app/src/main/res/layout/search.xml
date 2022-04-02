@@ -51,10 +51,11 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="25dp"
                 android:padding="10dp"
+                android:singleLine="true"
                 android:fontFamily="@font/suncheonb"
                 android:background="@drawable/button_round1_white"
                 android:text=""
-                android:textSize="17dp" />
+                android:textSize="13dp" />
 
             <Button
                 android:layout_width="30dp"

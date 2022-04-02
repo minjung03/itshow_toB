@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting);
-
+        setContentView(R.layout.details_recruitment);
+/*
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(login_intent);
             }
         }, 2000); // 2초 뒤 자동 화면 전환
-
+*/
     }
+
 }
