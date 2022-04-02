@@ -167,7 +167,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_url_details"
+                    android:id="@+id/text_order_details"
                     android:textSize="10sp"
                     android:fontFamily="@font/suncheonb"
                     android:text="쿠팡(https://www.coupang.com/)"
