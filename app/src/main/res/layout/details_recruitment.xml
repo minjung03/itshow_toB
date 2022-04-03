@@ -40,9 +40,7 @@
         android:scrollbars="none"
         tools:context=".WriteRecruitment">
         <!-- 모집글 작성 -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="700dp"
             android:layout_marginTop="20dp"
@@ -250,57 +248,82 @@
 
 
             <TextView
+                android:id="@+id/text_value_details"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:text="쿠팡 마켓에서 생필품 같이 사실 분 구해요!"
-                android:id="@+id/text_value_details"
-                android:textSize="10sp"
                 android:gravity="top"
                 android:padding="20dp"
-                />
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="180dp"
-                android:background="@drawable/blue_person"
-                />
-            <TextView
+                android:text="쿠팡 마켓에서 생필품 같이 사실 분 구해요!"
+                android:textSize="10sp" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="신림 사는 미림이"
-                android:gravity="right"
-                android:textSize="10sp"
-                />
-        </LinearLayout>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="180dp"
+                    android:background="@drawable/blue_person"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="신림 사는 미림이"
+                    android:gravity="right"
+                    android:textSize="10sp"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
         <!-- 모집글 작성 END -->
 
     </ScrollView>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/recruitment_chat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="43dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bin_heart"/>
+        <TextView
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/suncheonb"
+            android:textSize="10sp"
+
+            android:text="12"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginLeft="50dp"
             android:gravity="center"
             android:id="@+id/btn_sumit_details"
             android:textColor="#FFFFFF"
             android:fontFamily="@font/suncheonb"
             android:textSize="20sp"
-            android:text="등록 ✔"
-            android:background="@drawable/button_round1_blue"
+            android:text="채팅 하기 "
             />
-    </LinearLayout>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="85dp"
+            android:layout_gravity="center"
+            android:background="@drawable/chatting_img"/>
+    </FrameLayout>
 </LinearLayout>
