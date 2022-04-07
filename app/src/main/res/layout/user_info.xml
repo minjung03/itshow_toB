@@ -10,29 +10,27 @@
         android:layout_margin="30dp"
         android:layout_gravity="right"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/layout_userImg"
-        android:layout_margin="30dp">
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:id="@+id/user_info_Image"
-            android:src="@drawable/user_nomal"
-            android:onClick="onCilck"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/Btn_imageEdit"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/image_edit" />
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/layout_userImg">
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:id="@+id/user_info_Image"
+                android:src="@drawable/user_nomal"
+                android:onClick="onCilck"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:src="@drawable/image_edit"/>
+            </FrameLayout>
+        </FrameLayout>
 
 
 </LinearLayout>
