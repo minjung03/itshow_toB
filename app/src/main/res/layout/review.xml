@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/search_above_round"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/suncheonr"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="10sp"
+            android:shadowColor="#4D000000"
+            android:shadowDx="-7.0"
+            android:shadowDy="7.0"
+            android:shadowRadius="20.0"
+            android:text="Tip. 각 사용자마다 별점을 남길 수 있어요"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/arrow_black" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
