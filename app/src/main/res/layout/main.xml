@@ -28,6 +28,7 @@
         android:layout_height="120dp"
         android:padding="30dp">
         <ImageView
+            android:id="@+id/main_serch"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_serch"
@@ -41,6 +42,7 @@
             android:text="검색"
             />
         <ImageView
+            android:id="@+id/main_daily_supplies"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_daily_supplies"
@@ -56,6 +58,7 @@
             />
 
         <ImageView
+            android:id="@+id/main_shopping"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_shopping"
@@ -71,6 +74,7 @@
             />
 
         <ImageView
+            android:id="@+id/main_delivery"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_delivery"
@@ -86,6 +90,7 @@
             />
 
         <ImageView
+            android:id="@+id/main_sundries"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_sundries"
@@ -101,6 +106,7 @@
             />
 
         <ImageView
+            android:id="@+id/main_clothing"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/main_clothing"
