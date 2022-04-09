@@ -180,6 +180,7 @@
 
         </com.google.android.flexbox.FlexboxLayout>
         <!-- 버튼에 따른 키워드 END-->
+
     </LinearLayout>
     <!--키워드 그룹 END-->
 

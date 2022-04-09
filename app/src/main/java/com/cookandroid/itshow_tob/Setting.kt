@@ -1,33 +1,37 @@
-package com.cookandroid.itshow_tob;
+package com.cookandroid.itshow_tob
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.CompoundButton
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.Switch
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 
-public class Setting extends AppCompatActivity {
+class Setting : AppCompatActivity() {
 
-    ImageView img_SettingBack;
-    Switch switch_appPush;
-    RelativeLayout layout_name_edit, layout_ID_PASS_edit, layout_Help, layout_UserDelete;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting);
 
-        img_SettingBack = findViewById(R.id.img_SettingBack);
-        switch_appPush = findViewById(R.id.switch_appPush);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.setting)
 
-        layout_name_edit = findViewById(R.id.layout_name_edit);
-        layout_ID_PASS_edit = findViewById(R.id.layout_ID_PASS_edit);
-        layout_Help = findViewById(R.id.layout_Help);
-        layout_UserDelete = findViewById(R.id.layout_UserDelete);
+         var img_SettingBack: ImageView
+         var switch_appPush: Switch
+         var layout_name_edit: RelativeLayout
+         var layout_ID_PASS_edit: RelativeLayout
+         var layout_Help: RelativeLayout
+         var layout_UserDelete: RelativeLayout
+
+        img_SettingBack = findViewById(R.id.img_SettingBack)
+        switch_appPush = findViewById(R.id.switch_appPush)
+
+        layout_name_edit = findViewById(R.id.layout_name_edit)
+        layout_ID_PASS_edit = findViewById(R.id.layout_ID_PASS_edit)
+        layout_Help = findViewById(R.id.layout_Help)
+        layout_UserDelete = findViewById(R.id.layout_UserDelete)
 
         // 뒤로가기 버튼 (내 프로필 화면으로 이동)
         /*img_SettingBack.setOnClickListener(new View.OnClickListener() {
@@ -38,20 +42,16 @@ public class Setting extends AppCompatActivity {
             }
         });*/
 
-        switch_appPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
-                    // 앱 알림 동의
-                }
-                else {
-                    // 앱 알림 비동의
-                }
+        switch_appPush.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if (isChecked) {
+                // 앱 알림 동의
+            } else {
+                // 앱 알림 비동의
             }
-        });
+        }
 
 
-       /* // 각 레이아웃 클릭 시 해당 화면으로 이동
+        /* // 각 레이아웃 클릭 시 해당 화면으로 이동
         layout_name_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
