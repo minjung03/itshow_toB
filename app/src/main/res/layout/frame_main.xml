@@ -31,6 +31,7 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/btn_home"
             android:layout_margin="40dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -38,6 +39,7 @@
             android:backgroundTint="#818181"
             />
         <ImageButton
+            android:id="@+id/btn_dibs"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="40dp"
@@ -47,6 +49,7 @@
             android:backgroundTint="#818181"
             />
         <ImageButton
+            android:id="@+id/btn_write"
             android:layout_gravity="center_horizontal"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -56,6 +59,7 @@
             android:background="@drawable/button_circle1_light_blue"
             />
         <ImageButton
+            android:id="@+id/btn_user_info"
             android:layout_gravity="right"
             android:layout_marginBottom="40dp"
             android:layout_margin="40dp"
@@ -65,6 +69,7 @@
             android:backgroundTint="#818181"
             />
         <ImageButton
+            android:id="@+id/btn_cheat_list"
             android:layout_gravity="right"
             android:layout_marginBottom="40dp"
             android:layout_marginRight="110dp"
