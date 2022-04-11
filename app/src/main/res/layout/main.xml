@@ -130,10 +130,20 @@
 
     </FrameLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="430dp"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        tools:context=".Main">
+
+    </ScrollView>
+    <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    </FrameLayout>
+
 
 </LinearLayout>
