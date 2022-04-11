@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.search)
+        setContentView(R.layout.main)
         /*
         new Handler().postDelayed(new Runnable() {
             @Override
