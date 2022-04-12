@@ -177,7 +177,6 @@
                 android:text="요기요"
                 android:textSize="12dp"
                 style="@style/roundBtnBasic1"/>
-
         </com.google.android.flexbox.FlexboxLayout>
         <!-- 버튼에 따른 키워드 END-->
 

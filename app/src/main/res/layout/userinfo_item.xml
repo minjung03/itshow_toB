@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="200dp"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/main_item_style">
 
 
     <RelativeLayout
         android:layout_margin="25dp"
         android:id="@+id/Title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/item_Title"
             android:textSize="15sp"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:text="크리넥스 30롤 4개 4만원에 판매하는거 나눠사실 분 채팅주세요 :) 사이트는 아래 첨부"
             android:layout_below="@+id/layout_minPrice"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/item_textDetail"
             android:textSize="12sp"/>
 
@@ -67,36 +68,36 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/item_textDetail">
 
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:src="@drawable/map_icon"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_locationUser"
                 android:text="미림 3동"
-                android:textSize="9sp"
-                android:layout_marginRight="4dp"/>
+                android:textSize="11sp"
+                android:layout_marginRight="5dp"/>
 
 
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:src="@drawable/heart"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/item_heartUser"
                 android:text="미림 3동"
-                android:textSize="9sp"/>
+                android:textSize="11sp"/>
 
             <TextView
                 android:layout_width="match_parent"
