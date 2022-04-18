@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
@@ -66,6 +67,8 @@
         </LinearLayout>
     </LinearLayout>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -121,66 +124,20 @@
         <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
 
         <!-- 버튼에 따른 키워드 -->
-        <com.google.android.flexbox.FlexboxLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyceler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:flexWrap="wrap"
-            app:justifyContent="center"
-            android:gravity="top"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btn_searchWord1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="물티슈"
-                android:textSize="12dp"
-                style="@style/roundBtnBasic1"
-                />
-            <Button
-                android:id="@+id/btn_searchWord2"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="배달의 민족"
-                android:textSize="12dp"
-                style="@style/roundBtnBasic1"/>
-            <Button
-                android:id="@+id/btn_searchWord3"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="쿠팡 로켓배송"
-                android:textSize="12dp"
-                style="@style/roundBtnBasic1"/>
-            <Button
-                android:id="@+id/btn_searchWord4"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="쿠팡"
-                android:textSize="12dp"
-                style="@style/roundBtnBasic1"/>
-            <Button
-                android:id="@+id/btn_searchWord5"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="요기요"
-                android:textSize="12dp"
-                style="@style/roundBtnBasic1"/>
-        </com.google.android.flexbox.FlexboxLayout>
+            android:gravity="center"
+            android:orientation="horizontal"
+            />
         <!-- 버튼에 따른 키워드 END-->
 
     </LinearLayout>
     <!--키워드 그룹 END-->
 
 </LinearLayout>
+</layout>
