@@ -67,36 +67,36 @@
         </LinearLayout>
     </LinearLayout>
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="top"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
         <!-- button_인기검색어_카테고리별_내주변 인기글 -->
-
-        <LinearLayout
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/search_tab"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            app:tabTextColor="@color/black"
+            app:tabIndicatorColor="@color/blue"
+            >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/btn_recentlySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:background="#000000"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_recentlySearch"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/button_round1_white"
-                android:gravity="center"
-                android:text="최근 검색어"
-                android:elevation="6dp"
-                android:textStyle="bold"
-                style="@style/roundBtnBasic1"/>
-
-            <Button
+            android:text="최근 검색어"
+            android:elevation="6dp"
+            android:textStyle="bold"
+            style="@style/roundBtnBasic1"/>
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/btn_popularitySearch"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -108,7 +108,7 @@
                 android:textStyle="bold"
                 style="@style/roundBtnBasic1"/>
 
-            <Button
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/btn_categorySearch"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -120,24 +120,24 @@
                 android:textStyle="bold"
 
                 style="@style/roundBtnBasic1"/>
-        </LinearLayout>
-        <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
 
-        <!-- 버튼에 따른 키워드 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyceler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            />
-        <!-- 버튼에 따른 키워드 END-->
+        </com.google.android.material.tabs.TabLayout>
+    </FrameLayout>
 
-    </LinearLayout>
-    <!--키워드 그룹 END-->
+    <!-- 버튼에 따른 키워드 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyceler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager" />
+    <!-- 버튼에 따른 키워드 END-->
 
 </LinearLayout>
+    <!--키워드 그룹 END-->
+
+
 </layout>
