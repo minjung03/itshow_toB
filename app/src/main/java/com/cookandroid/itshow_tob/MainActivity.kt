@@ -13,16 +13,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main)
+        setContentView(R.layout.search)
 
-        /*
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent login_intent = new Intent(MainActivity.this, WriteRecruitment.class);
-                startActivity(login_intent);
-            }
-        }, 2000); // 2초 뒤 자동 화면 전환
-*/
+//        Handler().postDelayed(Runnable() {
+//            kotlin.run {
+//                val login_intent = Intent(this, Search::class.java)
+//                startActivity(login_intent)
+//            }
+//        }, 2000); // 2초 뒤 자동 화면 전환
+
     }
 }
