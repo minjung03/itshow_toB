@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Review"></activity>
         <activity android:name=".FrameMain" />
-        <activity android:name=".Search" />
+        <activity android:name=".Search"/>
         <activity android:name=".WriteRecruitment" />
         <activity android:name=".MainActivity">
             <intent-filter>

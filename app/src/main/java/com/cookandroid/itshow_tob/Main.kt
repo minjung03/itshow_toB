@@ -17,7 +17,7 @@ class Main : AppCompatActivity() {
          var main_sundries: ImageView
          var main_clothing: ImageView
 
-//        main_serch = findViewById(R.id.main)
+//        main_serch = findViewById(R.id.main_serch)
 //        main_daily_supplies = findViewById(R.id.main_daily_supplies)
 //        main_shopping = findViewById(R.id.main_shopping)
 //        main_delivery = findViewById(R.id.main_delivery)
