@@ -60,7 +60,7 @@
                 <EditText
                     android:id="@+id/edit_content"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
@@ -73,6 +73,7 @@
             </LinearLayout>
 
         <SlidingDrawer
+            android:layout_marginTop="75dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#00FFFFFF"
@@ -81,8 +82,9 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/handle"
+                android:padding="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/search_above_round"
                 android:fontFamily="@font/suncheonb"
                 android:gravity="center"
@@ -98,7 +100,13 @@
                 android:gravity="top"
                 android:orientation="vertical"
                 android:padding="30dp">
-
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -250,7 +258,51 @@
 
                 </LinearLayout>
                 <!--리뷰 END-->
+                    <!--리뷰-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal">
 
+                        <ImageView
+                            android:id="@+id/image_profile4"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/button_round1_white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_name4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/suncheonb"
+                                android:text="리뷰리뷰"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <RatingBar
+                                android:id="@+id/ratingbar_stars4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:isIndicator="false"
+                                android:numStars="5"
+                                android:progressBackgroundTint="#FFFFFF"
+                                android:progressTint="#FFEB3B"
+                                android:rating="5"
+                                android:stepSize="0.5" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <!--리뷰 END-->
                 <Button
                     android:id="@+id/btn_completed_write"
                     android:layout_width="wrap_content"
@@ -262,7 +314,8 @@
                     android:paddingRight="20dp"
                     android:text="작성 완료 →"
                     android:textSize="12sp" />
-
+                </LinearLayout>
+            </ScrollView>
             </LinearLayout>
         </SlidingDrawer>
     </FrameLayout>
