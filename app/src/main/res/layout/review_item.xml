@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--리뷰-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:background="#315ff5">
+
+        <ImageView
+            android:id="@+id/image_profile_review"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_round1_white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_name_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suncheonb"
+                android:text="리뷰리뷰"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+            <RatingBar
+                android:id="@+id/ratingbar_stars_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:progressBackgroundTint="#FFFFFF"
+                android:progressTint="#FFEB3B"
+                android:rating="0.5"
+                android:stepSize="0.5" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--리뷰 END-->
+
+</LinearLayout>
