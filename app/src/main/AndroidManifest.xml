@@ -9,18 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Review">
+        <activity android:name=".Review"></activity>
+        <activity android:name=".FrameMain" />
+        <activity android:name=".Search"/>
+        <activity android:name=".WriteRecruitment" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".FrameMain" />
-        <activity android:name=".Search"/>
-        <activity android:name=".WriteRecruitment" />
-        <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".Join" />
