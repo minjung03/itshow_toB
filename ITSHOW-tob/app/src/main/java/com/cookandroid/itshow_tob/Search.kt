@@ -11,6 +11,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import android.os.Build.VERSION_CODES.O
 import com.cookandroid.itshow_tob.Search
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,18 +21,18 @@ import androidx.fragment.app.Fragment
 import com.cookandroid.itshow_tob.databinding.WriteRecruitmentBinding
 import com.google.android.flexbox.*
 
-class Search : Fragment() {
+class Search : AppCompatActivity() {
     private var sBinding: SearchBinding? = null
     private val binding get() = sBinding!!
-    private lateinit var mainContext: FrameMain
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         sBinding = SearchBinding.inflate(layoutInflater)
-        val view = binding.root
+        setContentView( binding.root)
 
-        val btnButton1 = view.findViewById<Button>(R.id.btn_recentlySearch)
-        val btnButton2 = view.findViewById<Button>(R.id.btn_popularitySearch)
+        val btnButton1 = findViewById<Button>(R.id.btn_recentlySearch)
+        val btnButton2 = findViewById<Button>(R.id.btn_popularitySearch)
 
         btnButton1.setOnClickListener{
             btnButton1.setBackgroundResource(R.drawable.button_round1_gray)
@@ -73,7 +74,7 @@ class Search : Fragment() {
                 SearchWord("생활용품 공동구매", "delivery link")
         )
 
-        val flexBoxLayoutManager = FlexboxLayoutManager(mainContext) as FlexboxLayoutManager
+        val flexBoxLayoutManager = FlexboxLayoutManager(this@Search) as FlexboxLayoutManager
         flexBoxLayoutManager.flexWrap = FlexWrap.WRAP
         flexBoxLayoutManager.alignItems = AlignItems.CENTER
         flexBoxLayoutManager.justifyContent = JustifyContent.CENTER
@@ -81,12 +82,6 @@ class Search : Fragment() {
         //binding.recycelerView.setHasFixedSize(true)
         binding.recycelerView.adapter = SearchAdapter(searchWordList)
 
-        return view
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainContext = context as FrameMain
     }
 
 }

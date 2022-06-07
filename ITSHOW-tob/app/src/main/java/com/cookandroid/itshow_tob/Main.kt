@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +16,14 @@ import com.google.android.material.tabs.TabLayout
 
 class Main : Fragment() {
 
-    private lateinit var mainContext: FrameMain
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.main, container, false)
 
         val main_serch = view.findViewById<ImageView>(R.id.main_serch)
 
         main_serch.setOnClickListener{
-            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
-            val intent = Intent(mainContext, Search::class.java)
-            startActivity(intent)
+            val intent = Intent(activity, Search::class.java)
+            activity?.startActivity(intent)
         }
 
         val vp = view.findViewById<ViewPager>(R.id.main_viewPager)
@@ -53,10 +51,4 @@ class Main : Fragment() {
 
         return view
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainContext = context as FrameMain
-    }
-
 }
