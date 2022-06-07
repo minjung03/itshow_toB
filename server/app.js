@@ -77,7 +77,7 @@ app.post('/recruitment/new', (req, res)=>{
 });
 
 //유저 이름 바꾸기
-app.put('/user/:u_id/renameUser', (req, res)=>{
+app.put('/users/:u_id/renameUser', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
@@ -113,6 +113,38 @@ app.delete('/users/:u_id/deleteUser', (req, res)=>{
       if(results){
         res.send(results)
       }
+      if (error) throw error;
+
+      connection.release();
+    });
+
+  });
+});
+
+//유저 정보 모두 조회(게시글 번호, 평점, ) ---- 아이디로 조회
+app.get('/users/:u_id', (req, res)=>{
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    let userId = req.params.u_id; //u_id는 path로 가져옵니다
+
+    connection.query(`SELECT * FROM user WHERE u_id="${userId}"`, function (error, results, fields) {
+      if(results){ res.send(results[0]) }
+      if (error) throw error;
+      connection.release();
+    });
+
+  });
+});
+
+//유저 정보를 닉네임으로 조회
+app.get('/users', (req, res)=>{
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+    const u_name = req.query.u_name?req.query.u_name:null;//유저의 게시물들 조회
+
+    connection.query(`SELECT * FROM user WHERE u_name="${u_name}"`, function (error, results, fields) {
+      if(results){ res.send(results[0]) }
       if (error) throw error;
 
       connection.release();

@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -17,8 +18,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.regex.Pattern
 
 class Setting : AppCompatActivity() {
+    val TAG = "dahuin"
+
 
     //회원의 정보를 모두 삭제하는 코드
     fun delete_userInfo(apiService: UserAPIService):String{
@@ -50,7 +54,74 @@ class Setting : AppCompatActivity() {
 
     }
 
-    val TAG = "dahuin"
+    //회원의 이름을 바꾸는 코드
+    fun rename_user(apiService: UserAPIService, infoDialog: AlertDialog, textContent_info:TextView, editNameDialog:AlertDialog, editNameView:View){
+        //정보 삭제 수행
+        val u_id = "1" //temp
+        var userAlreadyExists = false
+        val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
+
+        val textNickname = editTextNickname.text.toString()
+
+        //로그인이 돼있을경우
+        if(!u_id.isBlank()) {
+            //닉네임이 존재하는지 확인
+            val apiCallForData = apiService.getUserInfoWithName(textNickname)
+
+            apiCallForData.enqueue(object : Callback<UserInfoDatas> {
+                override fun onFailure(call: Call<UserInfoDatas>, t: Throwable) {
+                    Log.d(TAG, "1실패 ${t.message}")
+                    //유저가 존재하지 않음
+                    userAlreadyExists = false
+                }
+                override fun onResponse(call: Call<UserInfoDatas>, response: Response<UserInfoDatas>) {
+                    Log.d(TAG, "성공 ${response.raw()}")
+                    if(response.body() != null){
+                        //유저가 존재한다.
+                        userAlreadyExists = true
+                    }
+                }
+            })
+
+            Log.d(TAG, "textNickname:"+textNickname)
+            if(userAlreadyExists) {
+                textContent_info.text = "닉네임이 이미 존재합니다."
+                infoDialog.show()
+            }
+            else if (textNickname.isBlank() || textNickname.contains(" ")) {
+                //공백 포함 여부
+                textContent_info.text = "닉네임에는 공백이 들어갈 수 없습니다."
+                infoDialog.show()
+            } else if (textNickname.length < 2) {
+                textContent_info.text = "닉네임은 최소 2글자 이상입니다."
+                infoDialog.show()
+            } else {
+
+                val apiCallForData = apiService.renameUser(u_id, textNickname)
+
+                apiCallForData.enqueue(object : Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Log.d(TAG, "실패 ${t.message}")
+                        textContent_info.text = "닉네임 변경에 실패했습니다."
+                        infoDialog.show()
+                    }
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        Log.d(TAG, "성공 ${response.raw()}")
+                        textContent_info.text = "닉네임이 " + textNickname + "로 변경되었습니다."
+                        editNameDialog.dismiss()
+                        infoDialog.show()
+                    }
+                })
+
+
+            }
+        }
+        else {
+            textContent_info.text = "로그인 되어있지 않습니다."
+            infoDialog.show()
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,13 +154,6 @@ class Setting : AppCompatActivity() {
         val infoDialog = AlertDialog.Builder(this).setView(infoView).create()
         btnOk_info.setOnClickListener{infoDialog.dismiss()}
 
-        //닉네임 변경
-        val editNameView = layoutInflater.inflate(R.layout.dialog_edit_nickname, null)
-        val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
-        val textCurNicname = editNameView.findViewById<TextView>(R.id.textCurNicname)
-        val btnChange = editNameView.findViewById<Button>(R.id.btnChange)
-        val editNameDialog = AlertDialog.Builder(this).setView(editNameView).create()
-
         //apiService 생성
         val retrofit = Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3000") //로컬호스트로 접속하기 위해!
@@ -98,23 +162,21 @@ class Setting : AppCompatActivity() {
 
         val apiService = retrofit.create(UserAPIService::class.java)
 
+        //닉네임 변경
+        val editNameView = layoutInflater.inflate(R.layout.dialog_edit_nickname, null)
+        val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
+        val textCurNicname = editNameView.findViewById<TextView>(R.id.textCurNicname)
+        val btnChange = editNameView.findViewById<Button>(R.id.btnChange)
+        val editNameDialog = AlertDialog.Builder(this).setView(editNameView).create()
+
         btn_name_edit.setOnClickListener{
-            textCurNicname.text = "김다흰"
+            textCurNicname.text = "김다흰" //현재 닉네임
             editTextNickname.setText("")
             editNameDialog.show()
         }
         btnChange.setOnClickListener{
-            if(!editTextNickname.text.isBlank()){
-                textContent_info.text = "닉네임이 " + editTextNickname.text + "로 변경되었습니다."
-                editNameDialog.dismiss()
-                infoDialog.show()
-            }else if(true){
-                textContent_info.text = "닉네임이 이미 존재합니다."
-                infoDialog.show()
-            }else{
-                textContent_info.text = "닉네임은 최소 2글자 이상입니다."
-                infoDialog.show()
-            }
+            //닉네임 변경 버튼을 눌렀을때
+            rename_user(apiService, infoDialog, textContent_info, editNameDialog, editNameView)
         }
 
         //도움말
@@ -137,10 +199,9 @@ class Setting : AppCompatActivity() {
         }
         btnOk.setOnClickListener {
             deleteUserDialog.dismiss()
-            val message = delete_userInfo(apiService)
+            val message = delete_userInfo(apiService) //계정 정보 모두 삭제
             textContent_info.text = message //정보창에 띄울 메시지를 가져온다.
             infoDialog.show()
-
         }
         btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
     }
