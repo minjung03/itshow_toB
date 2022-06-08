@@ -1,7 +1,10 @@
 package com.cookandroid.itshow_tob
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +13,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import kotlinx.android.synthetic.main.dialog_confirm.*
 import okhttp3.ResponseBody
 import org.w3c.dom.Text
@@ -54,8 +58,21 @@ class Setting : AppCompatActivity() {
 
     }
 
+
     //회원의 이름을 바꾸는 코드
     fun rename_user(apiService: UserAPIService, infoDialog: AlertDialog, textContent_info:TextView, editNameDialog:AlertDialog, editNameView:View){
+        //로딩창 객체 생성
+        val loadingDialog = ProgressDialog(this)
+        //투명하게
+        loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+
+        //로딩중
+        /*
+        * https://daldalhanstory.tistory.com/189
+        *https://jinsangjin.tistory.com/45
+        * */
+
         //정보 삭제 수행
         val u_id = "1" //temp
         var userAlreadyExists = false
@@ -96,7 +113,6 @@ class Setting : AppCompatActivity() {
                 textContent_info.text = "닉네임은 최소 2글자 이상입니다."
                 infoDialog.show()
             } else {
-
                 val apiCallForData = apiService.renameUser(u_id, textNickname)
 
                 apiCallForData.enqueue(object : Callback<ResponseBody> {

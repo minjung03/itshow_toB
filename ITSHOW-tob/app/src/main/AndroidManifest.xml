@@ -39,7 +39,7 @@
         <activity android:name=".Setting">
 
         </activity>
-        <activity android:name=".Main" />
+        <activity android:name=".MainFragment" />
         <activity android:name=".Chatroom" />
         <activity android:name=".DetailsRecruitment" /> <!-- 사진 저장 관련 -->
         <provider

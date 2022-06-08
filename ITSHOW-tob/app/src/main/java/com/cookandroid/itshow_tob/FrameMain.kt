@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 
 class FrameMain : AppCompatActivity() {
@@ -17,7 +16,7 @@ class FrameMain : AppCompatActivity() {
 
         //프래그먼트들
         val fragmentSearch = Search()
-        val fragmentMain= Main()
+        val fragmentMain= MainFragment()
         val fragmentUserInfo= UserInfo()
 
         //프래그먼트를 적용
