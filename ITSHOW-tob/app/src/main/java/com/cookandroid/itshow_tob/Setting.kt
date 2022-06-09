@@ -1,6 +1,5 @@
 package com.cookandroid.itshow_tob
 
-import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
@@ -31,7 +30,7 @@ class Setting : AppCompatActivity() {
     //회원의 정보를 모두 삭제하는 코드
     fun delete_userInfo(apiService: UserAPIService):String{
         //정보 삭제 수행
-        val u_id = "dahuin" //temp
+        val u_id = "dahuin" //temp. 항상 저장된 아이디를 가져와야함.
         var message = "계정 정보 삭제에 실패했습니다."
 
         //로그인이 돼있을경우
@@ -62,7 +61,7 @@ class Setting : AppCompatActivity() {
     //회원의 이름을 바꾸는 코드
     fun rename_user(apiService: UserAPIService, infoDialog: AlertDialog, textContent_info:TextView, editNameDialog:AlertDialog, editNameView:View){
         //로딩창 객체 생성
-        val loadingDialog = ProgressDialog(this)
+        val loadingDialog = LoadingDialog(this)
         //투명하게
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -74,7 +73,7 @@ class Setting : AppCompatActivity() {
         * */
 
         //정보 삭제 수행
-        val u_id = "1" //temp
+        val u_id = "dahuin" //temp
         var userAlreadyExists = false
         val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
 
@@ -85,17 +84,21 @@ class Setting : AppCompatActivity() {
             //닉네임이 존재하는지 확인
             val apiCallForData = apiService.getUserInfoWithName(textNickname)
 
+            loadingDialog.show()
+
             apiCallForData.enqueue(object : Callback<UserInfoDatas> {
                 override fun onFailure(call: Call<UserInfoDatas>, t: Throwable) {
                     Log.d(TAG, "1실패 ${t.message}")
                     //유저가 존재하지 않음
                     userAlreadyExists = false
+                    loadingDialog.dismiss()
                 }
                 override fun onResponse(call: Call<UserInfoDatas>, response: Response<UserInfoDatas>) {
                     Log.d(TAG, "성공 ${response.raw()}")
                     if(response.body() != null){
                         //유저가 존재한다.
                         userAlreadyExists = true
+                        loadingDialog.dismiss()
                     }
                 }
             })
@@ -113,19 +116,28 @@ class Setting : AppCompatActivity() {
                 textContent_info.text = "닉네임은 최소 2글자 이상입니다."
                 infoDialog.show()
             } else {
-                val apiCallForData = apiService.renameUser(u_id, textNickname)
-
+                val apiCallForData = apiService.renameUser(u_id, UserNameData(textNickname))
+                loadingDialog.show()
                 apiCallForData.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         Log.d(TAG, "실패 ${t.message}")
+                        loadingDialog.dismiss()
+
                         textContent_info.text = "닉네임 변경에 실패했습니다."
                         infoDialog.show()
                     }
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         Log.d(TAG, "성공 ${response.raw()}")
-                        textContent_info.text = "닉네임이 " + textNickname + "로 변경되었습니다."
-                        editNameDialog.dismiss()
-                        infoDialog.show()
+                        loadingDialog.dismiss()
+
+                        if(response.raw().code() == 200) {
+                            textContent_info.text = "닉네임이 " + textNickname + "로 변경되었습니다."
+                            editNameDialog.dismiss()
+                            infoDialog.show()
+                        }else if(response.raw().code() == 400){
+                            textContent_info.text = "닉네임 변경에 실패했습니다."
+                            infoDialog.show()
+                        }
                     }
                 })
 

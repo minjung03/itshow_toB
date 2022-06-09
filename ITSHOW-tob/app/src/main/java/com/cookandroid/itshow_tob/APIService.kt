@@ -34,7 +34,7 @@ interface UserAPIService {
     @PUT("/users/{u_id}/renameUser")
     fun renameUser(
             @Path("u_id") u_id:String,
-            @Body u_name:String //변경할 닉네임
+            @Body u_name:UserNameData //변경할 닉네임
     ): Call<ResponseBody>
 
     //유저 정보 모두 삭제
@@ -43,6 +43,8 @@ interface UserAPIService {
 }
 
 data class UserInfoDatas(val u_id:String, val u_name:String, val u_star:Double)
+
+data class UserNameData(val u_name:String)
 
 //게시글 정보를 담을곳. Gson은 객체를 JSON 표현으로 변환하는 데 사용할 수 있는 라이브러리인듯하다.
 data class RecruitmentDatas(val u_id:String, val r_title : String, val r_content: String, val r_minPrice: Int, val r_inprogress:Int,

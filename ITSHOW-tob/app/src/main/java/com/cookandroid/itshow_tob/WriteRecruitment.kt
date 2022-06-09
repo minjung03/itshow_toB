@@ -18,6 +18,8 @@ import java.util.*
 import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.text.Editable
 import android.text.Selection
@@ -145,6 +147,11 @@ class WriteRecruitment : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun api_test(){
 
+        //로딩창 객체 생성
+        val loadingDialog = LoadingDialog(this)
+        //투명하게
+        loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         val textTitle = findViewById<EditText>(R.id.edit_title).text.toString()
         val textContent = findViewById<EditText>(R.id.edit_content).text.toString()
         var intMinAmount = findViewById<EditText>(R.id.edit_minAmount).text.toString().replace(",", "")
@@ -183,6 +190,9 @@ class WriteRecruitment : AppCompatActivity() {
                 .build()
 
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
+
+        loadingDialog.show()
+
         if(intMinAmount.equals("")){ intMinAmount = "0" }
         Log.d(TAG, (intMinAmount.toInt().toString()))
         val apiCallForData = apiService.createRecruitment(createRecruitmentDatas(u_id, textTitle,
@@ -192,11 +202,13 @@ class WriteRecruitment : AppCompatActivity() {
         apiCallForData.enqueue(object: Callback<createRecruitmentDatas>{
             override fun onFailure(call: Call<createRecruitmentDatas>, t: Throwable) {
                 Log.d(TAG, "실패 ${t.message}")
+                loadingDialog.dismiss()
                 Toast.makeText(this@WriteRecruitment, "게시글 등록에 실패했습니다..!", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<createRecruitmentDatas>, response: Response<createRecruitmentDatas>) {
                 Log.d(TAG, "성공 ${response.raw()}")
+                loadingDialog.dismiss()
                 Toast.makeText(this@WriteRecruitment, "게시글이 등록되었습니다!", Toast.LENGTH_LONG).show()
                 finish()
             }
