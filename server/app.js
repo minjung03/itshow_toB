@@ -147,7 +147,7 @@ app.get('/users/:u_email/recent-search', (req, res)=>{
     const u_email = req.params.u_email
 
     try{
-      connection.query(`SELECT DISTINCT(s.s_word) FROM (SELECT s_word, s_time FROM tob_db.search WHERE u_email="${u_email}" order by s_time) as s;`, function (error, results, fields) {
+      connection.query(`SELECT s_word FROM search WHERE u_email="${u_email}" ORDER BY s_time DESC;`, function (error, results, fields) {
         if(results){ res.send(results) }
         if (error) throw error;
         connection.release();
@@ -179,17 +179,32 @@ app.post('/search/new', (req, res)=>{
     if (err) throw err; // not connected!
     
     const { u_email, s_word } = req.body;
-    const post = {
-        u_email: u_email,
-        s_word: s_word,
-        s_time: new Date() //검색어를 저장하는 시간
-    };
 
     try{
-      connection.query(`INSERT search SET ?`, post, function (error, results, fields) {
-        if(results){ res.send(results) }
+      connection.query(`SELECT * FROM search WHERE u_email="${u_email}" AND s_word="${s_word}"`, function (error, results, fields) {
+        if(results){ 
+          // res.send(results);/
+          if(results[0]){ //이 사람이 이 단어를 검색한적이 있으면 cnt를 더해주고 시간을 갱신해줌
+            connection.query(`UPDATE search SET s_cnt=s_cnt+1, s_time=now() WHERE u_email="${u_email}" AND s_word="${s_word}"`, function (error, results, fields) {
+              if(results){ res.send("success") }
+              if (error) throw error;
+              connection.release();
+            });
+          }else{//이 사람이 이 단어를 검색한 적이 없으면 생성
+            const post = {
+              u_email: u_email,
+              s_word: s_word,
+              s_time: new Date() //검색어를 저장하는 시간
+            };
+            connection.query(`INSERT search SET ?`, post, function (error, results, fields) {
+              if(results){ res.send("success") }
+              if (error) throw error;
+              connection.release();
+            });
+          }
+        }
         if (error) throw error;
-        connection.release();
+
       });
    }catch(e){console.log(e);}
 
@@ -202,9 +217,7 @@ app.get('/search/popular', (req, res)=>{
     if (err) throw err; // not connected!
 
     try{
-      connection.query(`SELECT s_word FROM search 
-	      GROUP BY s_word
-        ORDER BY count(s_word) DESC;`, function (error, results, fields) {
+      connection.query(`SELECT s_word FROM search GROUP BY s_word ORDER BY SUM(s_cnt) DESC;`, function (error, results, fields) {
         if(results){ res.send(results) }
         if (error) throw error;
         connection.release();

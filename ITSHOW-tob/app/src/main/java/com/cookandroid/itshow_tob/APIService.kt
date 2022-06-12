@@ -51,7 +51,7 @@ interface SearchAPIService{
     @POST("/search/new")
     fun newSearchWord(
             @Body searchWord:CreateSearchWord
-    ):Call<CreateSearchWord>
+    ):Call<ResponseBody>
 }
 
 data class SearchWordData(val s_word:String)
