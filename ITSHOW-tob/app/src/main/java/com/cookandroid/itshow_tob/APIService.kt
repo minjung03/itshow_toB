@@ -42,6 +42,22 @@ interface UserAPIService {
     fun deleteUser(@Path("u_id") u_id:String) : Call<ResponseBody>
 }
 
+interface SearchAPIService{
+    @GET("/users/{u_email}/recent-search")
+    fun searchRecent(@Path("u_email") u_email:String):Call<JsonArray>
+    @GET("/search/popular")
+    fun searchPopular():Call<JsonArray>
+    //검색어 저장
+    @POST("/search/new")
+    fun newSearchWord(
+            @Body searchWord:CreateSearchWord
+    ):Call<CreateSearchWord>
+}
+
+data class SearchWordData(val s_word:String)
+
+data class CreateSearchWord(val u_email:String, val s_word:String)
+
 data class UserInfoDatas(val u_id:String, val u_name:String, val u_star:Double)
 
 data class UserNameData(val u_name:String)

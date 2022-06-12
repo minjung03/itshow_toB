@@ -22,6 +22,8 @@ const pool  = mysql.createPool({
   database        : 'tob_db'
 });
 
+//
+
 //게시글 가져오기
 app.get('/recruitment', (req, res)=>{
   const u_id = req.query.u_id?req.query.u_id:null;//유저의 게시물들 조회
@@ -137,6 +139,24 @@ app.get('/users/:u_id', (req, res)=>{
   });
 });
 
+//누구의 최근 검색어인지...??
+//최근 검색어 -> search 테이블에서 가장 최근순
+app.get('/users/:u_email/recent-search', (req, res)=>{
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+    const u_email = req.params.u_email
+
+    try{
+      connection.query(`SELECT DISTINCT(s.s_word) FROM (SELECT s_word, s_time FROM tob_db.search WHERE u_email="${u_email}" order by s_time) as s;`, function (error, results, fields) {
+        if(results){ res.send(results) }
+        if (error) throw error;
+        connection.release();
+      });
+    }catch(e){ console.log(e); }
+
+  });
+});
+
 //유저 정보를 닉네임으로 조회
 app.get('/users', (req, res)=>{
   pool.getConnection(function(err, connection) {
@@ -149,6 +169,47 @@ app.get('/users', (req, res)=>{
 
       connection.release();
     });
+
+  });
+});
+
+//검색어 저장
+app.post('/search/new', (req, res)=>{
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+    
+    const { u_email, s_word } = req.body;
+    const post = {
+        u_email: u_email,
+        s_word: s_word,
+        s_time: new Date() //검색어를 저장하는 시간
+    };
+
+    try{
+      connection.query(`INSERT search SET ?`, post, function (error, results, fields) {
+        if(results){ res.send(results) }
+        if (error) throw error;
+        connection.release();
+      });
+   }catch(e){console.log(e);}
+
+  });
+});
+
+//인기 검색어 -> search 테이블에서 많이 검색된순
+app.get('/search/popular', (req, res)=>{
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    try{
+      connection.query(`SELECT s_word FROM search 
+	      GROUP BY s_word
+        ORDER BY count(s_word) DESC;`, function (error, results, fields) {
+        if(results){ res.send(results) }
+        if (error) throw error;
+        connection.release();
+      });
+    }catch(e){ console.log(e); }
 
   });
 });

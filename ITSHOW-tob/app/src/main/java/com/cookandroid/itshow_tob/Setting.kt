@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.regex.Pattern
 
 class Setting : AppCompatActivity() {
-    val TAG = "dahuin"
+    val TAG = "ToB"
 
 
     //회원의 정보를 모두 삭제하는 코드

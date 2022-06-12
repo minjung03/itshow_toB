@@ -54,7 +54,7 @@ class WriteRecruitment : AppCompatActivity() {
     private val PICK_FROM_CAMERA = 0
     private val PICK_FROM_ALBUM = 1
     private val CROP_FROM_IMAGE = 2
-    private val TAG = "DAHUIN_TAG"
+    private val TAG = "ToB"
     private lateinit var mImageCaptureUri:Uri
     private var imgPath = ""
     val multiChoiceAdapterList = ArrayList<MultiChoiceModel>(arrayListOf(

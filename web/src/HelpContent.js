@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Grommet, Button, PageHeader, Anchor } from 'grommet';
 
 function HelpContent() {

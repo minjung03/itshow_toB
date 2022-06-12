@@ -1,4 +1,4 @@
-import { useNavigate } from 'react'
+import React from 'react';
 import { Grommet, Button, Box, Grid, Text, Footer, Anchor, Header, Nav } from 'grommet';
 import HelpContent from './HelpContent';
 
@@ -21,7 +21,7 @@ function Test() {
   </Nav>
 </Header>
         <Grid
-          rows={['small', 'small', 'small']}
+          rows={['large', 'small', 'small']}
           columns={['1', '1']}
           gap="small"
           areas={[
@@ -31,7 +31,16 @@ function Test() {
           ]}
         >
 
-          <Box gridArea="header" background="brand" />
+          <Box gridArea="header" > {/*background="brand"*/}
+            <div>
+              <p>ToB는 어쩌고 저쩌고</p>
+              <p>어쩌고 저쩌고</p>
+              <p>어쩌고 저쩌고</p>
+              <p>어쩌고 저쩌고</p>
+              <p>어쩌고 저쩌고</p>
+              <p>어쩌고 저쩌고</p>
+            </div>
+          </Box>
           <Box gridArea="nav" background="light-5" />
           <Box gridArea="main" background="light-2" />
 
