@@ -108,6 +108,7 @@ class Search : AppCompatActivity() {
                             //인기 검색어 버튼이 눌려있는 상태
                             btn_popularitySearch.callOnClick()
                         }
+                        edit_search.setText("")
                         loadingDialog.dismiss()
                     }
                 })
