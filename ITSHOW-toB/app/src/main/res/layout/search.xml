@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        >
+        <!--검색어창-->
+        <!--검색어창 END-->
+        <!--키워드 그룹-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/search_lower_round"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/suncheonr"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="10sp"
+                android:shadowColor="#4D000000"
+                android:shadowDx="-7.0"
+                android:shadowDy="7.0"
+                android:shadowRadius="20.0"
+                android:text="검색어를
+            입력하세요"
+                android:textColor="#FFFFFF"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="310dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/button_round1_white"
+                    android:fontFamily="@font/suncheonb"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/search_white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <!-- button_인기검색어_카테고리별_내주변 인기글 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_recentlySearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/button_round1_white"
+                    android:gravity="center"
+                    android:text="최근 검색어"
+                    android:elevation="6dp"
+                    android:textStyle="bold"
+                    style="@style/roundBtnBasic1"/>
+
+                <Button
+                    android:id="@+id/btn_popularitySearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_round1_gray"
+                    android:gravity="center"
+                    android:text="인기검색어"
+                    android:textColor="#FFFFFF"
+                    android:elevation="6dp"
+                    android:textStyle="bold"
+                    style="@style/roundBtnBasic1"/>
+
+            </LinearLayout>
+            <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
+
+            <!-- 버튼에 따른 키워드 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyceler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                />
+            <!-- 버튼에 따른 키워드 END-->
+
+        </LinearLayout>
+        <!--키워드 그룹 END-->
+
+    </LinearLayout>
+</layout>
