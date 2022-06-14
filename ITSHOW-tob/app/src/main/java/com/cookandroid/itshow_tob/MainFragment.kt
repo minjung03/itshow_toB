@@ -18,7 +18,8 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.main.*
 
 class MainFragment : Fragment() {
-
+    lateinit var vp : ViewPager
+    lateinit var adapter:PagerAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.main, container, false)
 
@@ -29,14 +30,14 @@ class MainFragment : Fragment() {
             activity?.startActivity(intent)
         }
 
-        val vp = view.findViewById<ViewPager>(R.id.main_viewPager)
-        val adapter = PagerAdapter(parentFragmentManager)
-        adapter.addFragment(Fragment1(), "생활")
-        adapter.addFragment(Fragment1(), "쇼핑몰")
-        adapter.addFragment(Fragment1(), "음식")
-        adapter.addFragment(Fragment1(), "잡화")
-        adapter.addFragment(Fragment1(), "의류")
-        adapter.addFragment(Fragment1(), "화장품")
+        vp = view.findViewById<ViewPager>(R.id.main_viewPager)
+        adapter = PagerAdapter(parentFragmentManager)
+        adapter.addFragment(Fragment1("생활"), "생활")
+        adapter.addFragment(Fragment1("쇼핑몰"), "쇼핑몰")
+        adapter.addFragment(Fragment1("음식"), "음식")
+        adapter.addFragment(Fragment1("잡화"), "잡화")
+        adapter.addFragment(Fragment1("의류"), "의류")
+        adapter.addFragment(Fragment1("화장품"), "화장품")
         vp.setAdapter(adapter)
 
         val tab = view.findViewById<TabLayout>(R.id.tabs)
@@ -50,7 +51,7 @@ class MainFragment : Fragment() {
         images.add(R.drawable.main_clothing)
         images.add(R.drawable.main_cosmetics)
 
-        for (i in 0..5) tab.getTabAt(i)!!.setIcon(images[i])
+        for (i in 0 until images.size) tab.getTabAt(i)!!.setIcon(images[i])
 
         return view
     }

@@ -2,6 +2,7 @@ package com.cookandroid.itshow_tob
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.main_recycler.*
 import kotlinx.android.synthetic.main.main_recycler.view.*
 
 
-class Fragment1 : Fragment() {
+class Fragment1(val category : String) : Fragment() {
 
 
     private var mainList = arrayListOf<MainData>(
@@ -46,6 +47,8 @@ class Fragment1 : Fragment() {
             savedInstanceState: Bundle?
     ): View?
     {
+
+        Log.d("ToB", category)
 
         val view = inflater.inflate(R.layout.main_recycler, container, false)
 
