@@ -30,14 +30,16 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class Fragment1() : Fragment() {
+class Fragment2() : Fragment() {
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View?
     {
-        Log.d("TOB", "카테고리 전체 들어옴")
+
+        Log.d("TOB", "카테고리 생활 들어옴")
 
         var mAdapter : MainCustomAdapter
         val retrofit = Retrofit.Builder()
@@ -52,7 +54,8 @@ class Fragment1() : Fragment() {
         recyclerView_main.layoutManager = staggeredGridLayoutManager
 
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
-        var apiCallForData = apiService.getRecruitmentList()
+        var apiCallForData = apiService.getCategoryRecruitment("생활")
+
 
         apiCallForData.enqueue(object : Callback<JsonArray> {
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {

@@ -28,13 +28,13 @@ class Setting : AppCompatActivity() {
     //회원의 정보를 모두 삭제하는 코드
     fun delete_userInfo(apiService: UserAPIService):String{
         //정보 삭제 수행
-        val u_id = "dahuin" //temp. 항상 저장된 아이디를 가져와야함.
+        val u_email = "s2003@e-mirim.hs.kr" //temp. 항상 저장된 아이디를 가져와야함.
         var message = "계정 정보 삭제에 실패했습니다."
 
         //로그인이 돼있을경우
-        if(!u_id.isBlank()) {
+        if(!u_email.isBlank()) {
             //특정 사용자의 모든 정보를 삭제하는 코드
-            val apiCallForData = apiService.deleteUser(u_id)
+            val apiCallForData = apiService.deleteUser(u_email)
 
             apiCallForData.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -182,7 +182,7 @@ class Setting : AppCompatActivity() {
 
         //apiService 생성
         val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000") //로컬호스트로 접속하기 위해!
+                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 
 class FrameMain : AppCompatActivity() {
@@ -29,10 +30,15 @@ class FrameMain : AppCompatActivity() {
         val btn_cheat_list = findViewById<ImageButton>(R.id.btn_cheat_list)
         val btn_user_info = findViewById<ImageButton>(R.id.btn_user_info)
         val btn_write = findViewById<ImageButton>(R.id.btn_write)
+
         btn_home.setOnClickListener{
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.frameLayout, fragmentMain)
             transaction.commit()
+
+            val intent = Intent(this, FrameMain::class.java)
+            startActivity(intent)
+
         }
         btn_dibs.setOnClickListener{
 

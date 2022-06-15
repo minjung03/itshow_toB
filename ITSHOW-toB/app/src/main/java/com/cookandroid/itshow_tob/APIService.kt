@@ -9,12 +9,12 @@ import retrofit2.http.*
 //게시글 정보를 요청하기 위한 인터페이스
 interface RecruitmentAPIService {
 
-    //게시글 가저오기
+    //전체 게시글 가저오기
     @GET("/recruitment-list")
     fun getRecruitmentList(
     ):Call<JsonArray>
 
-    //게시글 가저오기
+    // 나의 게시글 가저오기
     @GET("/recruitment")
     fun getRecruitmentInfo(
         @Query("r_no") r_no:Int
@@ -25,6 +25,12 @@ interface RecruitmentAPIService {
     fun createRecruitment(
             @Body recruitmentItem:createRecruitmentDatas
     ):Call<createRecruitmentDatas>
+
+    //카테고리별 게시글 가져오기
+    @POST("/recruitment-category")
+    fun getCategoryRecruitment(
+            @Query("category") category:String
+    ):Call<JsonArray>
 }
 
 //유저 관련 api요청
@@ -54,12 +60,37 @@ interface UserAPIService {
     fun deleteUser(@Path("u_id") u_id:String) : Call<ResponseBody>
 }
 
+interface SearchAPIService{
+
+    @GET("/users/{u_email}/recent-search")
+    fun searchRecent(@Path("u_email") u_email:String):Call<JsonArray>
+
+    @GET("/search/popular")
+    fun searchPopular():Call<JsonArray>
+
+    //검색어 저장
+    @POST("/search/new")
+    fun newSearchWord(
+            @Body searchWord:CreateSearchWord
+    ):Call<ResponseBody>
+
+    //게시글 검색
+    @POST("/recruitment-search")
+    fun recruitmentSearch(
+            @Query("search_word") search_word:String
+    ):Call<JsonArray>
+}
+
+data class SearchWordData(val s_word:String)
+
+data class CreateSearchWord(val u_email:String, val s_word:String)
+
 data class UserInfoDatas(val u_email:String, val u_name:String, val u_star:Double)
 
 data class UserNameData(val u_name:String)
 
 //게시글 정보를 담을곳. Gson은 객체를 JSON 표현으로 변환하는 데 사용할 수 있는 라이브러리인듯하다.
-data class RecruitmentDatas(val u_email: String, val r_title : String, val r_content: String, val r_minPrice: Int, val r_inprogress:Int,
+data class RecruitmentDatas(val r_no:Int, val u_email: String, val r_title : String, val r_content: String, val r_minPrice: Int, val r_inprogress:Int,
                                               val r_startDate: String, val r_endDate : String, val r_order:String, val r_location:String,
                                               val r_category:String, val r_imgPath: String)
 

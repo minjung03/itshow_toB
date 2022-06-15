@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="200dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     android:background="@drawable/main_item_style">
 
 
@@ -17,6 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/item_Title"
             android:textSize="15sp"
+            android:textStyle="bold"
             android:text="[급구] 크리넥스 휴지 120롤 나눠사실 분!!" />
 
 
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="크리넥스 30롤 4개 4만원에 판매하는거 나눠사실 분 채팅주세요 :) 사이트는 아래 첨부"
             android:layout_below="@+id/layout_minPrice"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/item_textDetail"
             android:textSize="12sp"/>
 
@@ -67,7 +69,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/item_textDetail">
 
             <ImageView

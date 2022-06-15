@@ -67,63 +67,88 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-            <!-- button_인기검색어_카테고리별_내주변 인기글 -->
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:visibility="invisible"
+                android:background="@drawable/search_list_style"
+                android:id="@+id/layout_search_button"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+                <!-- button_인기검색어_카테고리별_내주변 인기글 -->
 
-                <Button
-                    android:id="@+id/btn_recentlySearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_recentlySearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/button_round1_white"
+                        android:gravity="center"
+                        android:text="최근 검색어"
+                        android:elevation="6dp"
+                        android:textStyle="bold"
+                        style="@style/roundBtnBasic1"/>
+
+                    <Button
+                        android:id="@+id/btn_popularitySearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/button_round1_gray"
+                        android:gravity="center"
+                        android:text="인기검색어"
+                        android:textColor="#FFFFFF"
+                        android:elevation="6dp"
+                        android:textStyle="bold"
+                        style="@style/roundBtnBasic1"/>
+
+                </LinearLayout>
+                <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
+
+                <!-- 버튼에 따른 키워드 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyceler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/button_round1_white"
+                    android:layout_marginRight="20dp"
                     android:gravity="center"
-                    android:text="최근 검색어"
-                    android:elevation="6dp"
-                    android:textStyle="bold"
-                    style="@style/roundBtnBasic1"/>
-
-                <Button
-                    android:id="@+id/btn_popularitySearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:background="@drawable/button_round1_gray"
-                    android:gravity="center"
-                    android:text="인기검색어"
-                    android:textColor="#FFFFFF"
-                    android:elevation="6dp"
-                    android:textStyle="bold"
-                    style="@style/roundBtnBasic1"/>
+                    android:orientation="horizontal"
+                    />
+                <!-- 버튼에 따른 키워드 END-->
 
             </LinearLayout>
-            <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
+            <!--키워드 그룹 END-->
 
-            <!-- 버튼에 따른 키워드 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyceler_view"
+            <LinearLayout
+                android:id="@+id/layout_search_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                />
-            <!-- 버튼에 따른 키워드 END-->
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
-        <!--키워드 그룹 END-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyceler_view_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
 </layout>

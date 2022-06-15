@@ -16,8 +16,6 @@ class MainCustomAdapter (
         private val context: Context, private val dataList: ArrayList<MainData>
 ): RecyclerView.Adapter<MainCustomAdapter.ItemViewHolder>() {
 
-    var mPosition = 0
-
     inner class ItemViewHolder(itemView: View):
             RecyclerView.ViewHolder(itemView){
         val item_Title = itemView.findViewById<TextView>(R.id.item_Title)
@@ -34,6 +32,15 @@ class MainCustomAdapter (
             item_locationUser.text = maindata.location
             item_heartUser.text = maindata.heart.toString()
             item_date.text = maindata.date
+
+            var r_no = maindata.r_no
+
+            itemView.setOnClickListener{
+                Intent(context, DetailsRecruitment::class.java).apply {
+                    putExtra("r_no", r_no)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { context.startActivity(this) }
+            }
         }
     }
 

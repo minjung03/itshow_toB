@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager.widget.ViewPager
@@ -19,7 +21,8 @@ import com.google.android.material.tabs.TabLayout
 class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.main, container, false)
+
+        var view = inflater.inflate(R.layout.main, container, false)
 
         val main_serch = view.findViewById<ImageView>(R.id.main_serch)
 
@@ -30,13 +33,13 @@ class MainFragment : Fragment() {
 
         val vp = view.findViewById<ViewPager>(R.id.main_viewPager)
         val adapter = PagerAdapter(parentFragmentManager)
-        adapter.addFragment(Fragment1(), "생활")
-        adapter.addFragment(Fragment1(), "쇼핑몰")
-        adapter.addFragment(Fragment1(), "음식")
-        adapter.addFragment(Fragment1(), "잡화")
-        adapter.addFragment(Fragment1(), "의류")
-        adapter.addFragment(Fragment1(), "화장품")
-        vp.setAdapter(adapter)
+        adapter.addFragment(Fragment1(), "전체")
+        adapter.addFragment(Fragment2(), "생활")
+        adapter.addFragment(Fragment3(), "음식")
+        adapter.addFragment(Fragment4(), "도서")
+        adapter.addFragment(Fragment5(), "문구")
+        adapter.addFragment(Fragment6(), "잡화")
+        vp.adapter = adapter
 
         val tab = view.findViewById<TabLayout>(R.id.tabs)
         tab.setupWithViewPager(vp)

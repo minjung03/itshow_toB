@@ -109,8 +109,8 @@ class Login : AppCompatActivity() {
                 ?.addOnCompleteListener {
                     task ->
                     if(task.isSuccessful) {
-                        // 로그인 성공 시
 
+                        // 로그인 성공 시
                         /*
                         @RequiresApi(Build.VERSION_CODES.O)
                         fun UserAPI(){
@@ -157,8 +157,10 @@ class Login : AppCompatActivity() {
 
                         }
                         UserAPI()
-                        */
-                        Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
+
+                         */
+
+                        // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
                         startActivity(Intent (this, FrameMain::class.java))
 
                     } else {

@@ -10,12 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/search_lower_round"
-        android:id="@+id/frame"
-        >
+        android:id="@+id/frame">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내 주변 친구 찾기 NO.1"
+            android:text="미림 공구 찾기 NO.1"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="20dp"
             android:textSize="25sp"
@@ -45,6 +44,7 @@
             android:layout_marginLeft="5dp"
             android:textStyle="bold"
             android:layout_marginTop="33dp"/>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_marginLeft="50dp"
@@ -52,51 +52,9 @@
             android:layout_height="wrap_content"
             app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
             app:tabTextColor="@color/black"
-            app:tabIndicatorColor="@color/blue"
-            >
+            app:tabIndicatorColor="@color/blue">
 
-
-
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_daily_supplies"
-
-                android:text="생활" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_shopping"
-                android:text="쇼핑물" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_delivery"
-                android:text="배달음식" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_sundries"
-                android:text="잡화" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_clothing"
-                android:text="의류" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/main_daily_supplies"
-
-                android:text="생활" />
         </com.google.android.material.tabs.TabLayout>
-
     </FrameLayout>
 
     <androidx.viewpager.widget.ViewPager

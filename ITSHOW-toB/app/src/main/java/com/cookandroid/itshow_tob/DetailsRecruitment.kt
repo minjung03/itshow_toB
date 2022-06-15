@@ -1,13 +1,17 @@
 package com.cookandroid.itshow_tob
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
 import com.google.gson.*
 import org.w3c.dom.Text
 import retrofit2.Call
@@ -37,10 +41,11 @@ class DetailsRecruitment : AppCompatActivity() {
         val textCategory = findViewById<TextView>(R.id.text_category_details)
 
         //no을 통해 게시글 정보를 불러오는 코드
-        val r_no = 3 //temp
+        val r_no = intent.getSerializableExtra("r_no") as Int
+        Log.d(TAG, "r_no : "+r_no.toString());
 
         val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000") //로컬호스트로 접속하기 위해!
+                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -101,11 +106,13 @@ class DetailsRecruitment : AppCompatActivity() {
 
                 }
             }
-
-
         })
-
         //no을 통해 게시글 정보를 불러오는 코드 END
+
+        val img_DetailsBack = findViewById<ImageView>(R.id.img_DetailsBack)
+        img_DetailsBack.setOnClickListener{
+            finish()
+        }
 
     }
 

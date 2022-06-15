@@ -185,7 +185,7 @@ class WriteRecruitment : AppCompatActivity() {
         val u_email = "s2003@e-mirim.hs.kr" //temp
 
         val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000") //로컬호스트로 접속하기 위해!
+                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -210,7 +210,8 @@ class WriteRecruitment : AppCompatActivity() {
                 Log.d(TAG, "성공 ${response.raw()}")
                 loadingDialog.dismiss()
                 Toast.makeText(this@WriteRecruitment, "게시글이 등록되었습니다!", Toast.LENGTH_LONG).show()
-                finish()
+                val intent = Intent(this@WriteRecruitment, FrameMain::class.java)
+                startActivity(intent)
             }
 
         })
