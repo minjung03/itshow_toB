@@ -11,63 +11,62 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/image_settings"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/settings_icon"
+                android:layout_gravity="right"
                 android:layout_margin="30dp"
-                android:layout_gravity="right"/>
+                android:src="@drawable/settings_icon" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center">
+
                 <ImageView
+                    android:id="@+id/user_info_Image"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
-                    android:id="@+id/user_info_Image"
-                    android:src="@drawable/user_nomal"
-                    android:onClick="onCilck"/>
+                    android:onClick="onCilck"
+                    android:src="@drawable/user_nomal" />
             </FrameLayout>
 
             <TextView
+                android:id="@+id/user_info_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/user_info_name"
-                android:text="김민정"
+                android:layout_marginRight="30dp"
                 android:gravity="center"
+                android:text="김민정"
                 android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
                 android:gravity="center">
 
-                <com.willy.ratingbar.BaseRatingBar
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.willy.ratingbar.BaseRatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srb_starWidth="20dp"
-                    app:srb_starHeight="20dp"
-                    app:srb_numStars="5"
-                    app:srb_rating="4.5"
-                    app:srb_isIndicator="true"
-                    app:srb_stepSize="0.5"
                     app:srb_drawableEmpty="@drawable/star_empty"
                     app:srb_drawableFilled="@drawable/star_full"
-                    />
+                    app:srb_isIndicator="true"
+                    app:srb_numStars="5"
+                    app:srb_rating="4.5"
+                    app:srb_starHeight="20dp"
+                    app:srb_starWidth="20dp"
+                    app:srb_stepSize="0.5" />
             </LinearLayout>
 
 
@@ -75,98 +74,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
                 android:gravity="center">
 
                 <LinearLayout
-                    android:layout_marginRight="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/layout_review_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/info_review"/>
+                        android:src="@drawable/info_review" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:text="리뷰"
                         android:textColor="#6F6F6F"
-                        android:text="리뷰"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="0.1dp"
                     android:layout_height="40dp"
-                    android:background="#4B4B4B"/>
+                    android:background="#4B4B4B" />
 
                 <LinearLayout
+                    android:id="@+id/layout_follow_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/layout_follow_info"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/follower"/>
+                        android:src="@drawable/follower" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:text="팔로우"
                         android:textColor="#6F6F6F"
-                        android:text="팔로우"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="0.1dp"
                     android:layout_height="40dp"
-                    android:background="#4B4B4B"/>
+                    android:background="#4B4B4B" />
 
 
                 <LinearLayout
-                    android:layout_marginLeft="40dp"
+                    android:id="@+id/layout_follower_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/layout_follower_info"
+                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/follow"/>
+                        android:src="@drawable/follow" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:text="팔로워"
                         android:textColor="#6F6F6F"
-                        android:text="팔로워"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
-<!--            <view-->
-<!--                android:layout_width="330dp"-->
-<!--                android:layout_height="1px"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_margin="20dp"-->
-<!--                android:background="#4B4B4B"/>-->
+            <!--            <view-->
+            <!--                android:layout_width="330dp"-->
+            <!--                android:layout_height="1px"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_margin="20dp"-->
+            <!--                android:background="#4B4B4B"/>-->
 
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/recyceler_view"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_marginRight="30dp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"-->
-<!--                />-->
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/recyceler_view"-->
+            <!--                android:layout_marginLeft="30dp"-->
+            <!--                android:layout_marginRight="30dp"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"-->
+            <!--                />-->
 
         </LinearLayout>
     </ScrollView>

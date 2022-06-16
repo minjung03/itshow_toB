@@ -52,7 +52,6 @@
                 android:text="15,000원"
                 android:layout_toRightOf="@+id/item_titlePrice"
                 android:layout_below="@+id/item_Title"/>
-
         </LinearLayout>
 
         <TextView

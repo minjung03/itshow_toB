@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.cookandroid.itshow_tob.databinding.SearchBinding
 
 class SearchAdapter(val searchWordList: ArrayList<SearchWord>):RecyclerView.Adapter<SearchAdapter.CustomViewHolder>(){
 

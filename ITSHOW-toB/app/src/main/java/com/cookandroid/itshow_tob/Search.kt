@@ -1,6 +1,5 @@
 package com.cookandroid.itshow_tob
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,24 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.itshow_tob.databinding.SearchBinding
-import androidx.core.app.ComponentActivity.ExtraData
 import android.os.Build.VERSION_CODES.O
-import com.cookandroid.itshow_tob.Search
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Build
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.cookandroid.itshow_tob.databinding.WriteRecruitmentBinding
 import com.google.android.flexbox.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -38,8 +28,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 

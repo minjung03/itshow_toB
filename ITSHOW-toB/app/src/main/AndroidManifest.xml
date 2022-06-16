@@ -19,21 +19,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MainActivity" >
+        <activity android:name=".FollowList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpContent"/>
-        <activity android:name=".FrameMain"/>
-        <activity android:name=".Review"/>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".HelpContent" />
+        <activity android:name=".FrameMain" />
+        <activity android:name=".Review" />
         <activity android:name=".Search" />
-        <activity android:name=".WriteRecruitment"/>
+        <activity android:name=".WriteRecruitment" />
         <activity android:name=".Login" />
         <activity android:name=".Join" />
-        <activity android:name=".Setting"/>
+        <activity android:name=".Setting" />
         <activity android:name=".Chatroom" />
         <activity android:name=".DetailsRecruitment" /> <!-- 사진 저장 관련 -->
         <provider

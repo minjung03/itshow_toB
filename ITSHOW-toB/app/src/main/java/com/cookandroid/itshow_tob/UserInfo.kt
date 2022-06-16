@@ -48,7 +48,7 @@ class UserInfo : Fragment() {
 
             user_name.setText(displayName);
             //user_image.setImageBitmap(photoUrl)
-            Glide.with(this).load(photoUrl).into(user_image);
+            Glide.with(this).load(photoUrl).into(user_image)
 
             //Toast.makeText(this,  name.toString(), Toast.LENGTH_LONG).show()
             //Log.d(ContentValues.TAG, "handleSignInResult:personEmail $photoUrl")

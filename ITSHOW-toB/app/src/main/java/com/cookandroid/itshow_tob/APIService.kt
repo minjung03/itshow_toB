@@ -3,7 +3,6 @@ package com.cookandroid.itshow_tob
 import com.google.gson.JsonArray
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
 
 //게시글 정보를 요청하기 위한 인터페이스
@@ -81,7 +80,44 @@ interface SearchAPIService{
     ):Call<JsonArray>
 }
 
+interface FlowAPIService{
+
+    //어떤 사람의 팔로잉 목록을 가져옴
+    @GET("/users/{u_email}/following")
+    fun flowingListOfUser(
+            @Path("u_email") u_email:String
+    ):Call<UserInfoDatas>
+
+    //어떤 사람의 팔로워 목록을 가져옴
+    @GET("/users/{following}/followers")
+    fun followerListOfUser(
+            @Path("following") following:String
+    ):Call<UserInfoDatas>
+
+    //어떤 사람이 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
+    @GET("/follow/whether")
+    fun followWether(
+            @Query("u_email") u_email:String,
+            @Query("following") following:String
+    ):Call<ResponseBody>
+
+    //팔로우하기
+    @POST("/follow/new")
+    fun newFlow(
+            @Body searchWord: FollowData
+    ):Call<ResponseBody>
+
+    //언팔로우하기
+    @POST("/follow/delete")
+    fun unFlow(
+            @Body searchWord: FollowData
+    ):Call<ResponseBody>
+
+}
+
 data class SearchWordData(val s_word:String)
+
+data class FollowData(val u_email: String, val flowing: String)
 
 data class CreateSearchWord(val u_email:String, val s_word:String)
 

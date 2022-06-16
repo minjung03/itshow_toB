@@ -99,16 +99,16 @@ app.post('/recruitment/new', (req, res)=>{
 });
 
 //유저 이름 바꾸기
-app.put('/users/:u_id/renameUser', (req, res)=>{
+app.put('/users/:u_email/renameUser', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
     console.log(req.body);
 
-    let userId = req.params.u_id; //u_id는 path로 가져옵니다
+    let u_email = req.params.u_email; //u_email는 path로 가져옵니다
     let userName = req.body.u_name; //body에 넣어서 가져옵니다.
 
-    connection.query(`UPDATE user SET u_name="${userName}" WHERE u_id="${userId}"`, function (error, results, fields) {
+    connection.query(`UPDATE user SET u_name="${userName}" WHERE u_email="${u_email}"`, function (error, results, fields) {
       // When done with the connection, release it.
       if(results){
         res.send(results)
@@ -122,15 +122,15 @@ app.put('/users/:u_id/renameUser', (req, res)=>{
 });
 
 //유저를 삭제
-app.delete('/users/:u_id/deleteUser', (req, res)=>{
+app.delete('/users/:u_email/deleteUser', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
     console.log(req.body);
 
-    let userId = req.params.u_id; //u_id는 path로 가져옵니다
+    let u_email = req.params.u_email; //u_email는 path로 가져옵니다
 
-    connection.query(`DELETE FROM user WHERE u_id="${userId}"`, function (error, results, fields) {
+    connection.query(`DELETE FROM user WHERE u_email="${u_email}"`, function (error, results, fields) {
       // When done with the connection, release it.
       if(results){
         res.send(results)
@@ -144,13 +144,13 @@ app.delete('/users/:u_id/deleteUser', (req, res)=>{
 });
 
 //유저 정보 모두 조회(게시글 번호, 평점, ) ---- 아이디로 조회
-app.get('/users/:u_id', (req, res)=>{
+app.get('/users/:u_email', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
-    let userId = req.params.u_id; //u_id는 path로 가져옵니다
+    let u_email = req.params.u_email; //u_email는 path로 가져옵니다
 
-    connection.query(`SELECT * FROM user WHERE u_id="${userId}"`, function (error, results, fields) {
+    connection.query(`SELECT * FROM user WHERE u_email="${u_email}"`, function (error, results, fields) {
       if(results){ res.send(results[0]) }
       if (error) throw error;
       connection.release();
@@ -192,5 +192,113 @@ app.post('/users/new', (req, res)=>{
       connection.release();
     });
 
+  });
+});
+
+
+// =================== flow =================== //
+
+//어떤 사람의 팔로잉 목록
+app.get('/users/:u_email/flowings', (req, res)=>{
+  const u_email = req.params.u_email;
+  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM follow as f
+  JOIN tob_db.user AS u ON f.flowing = u.u_email
+    WHERE f.u_email="${u_email}";`;
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    try{
+      connection.query(select_query, function (error, results, fields) {
+        if(results){ 
+          const flowings = {
+            flowingList:results.slice()
+          };
+          res.send(flowings);
+         }
+        if (error) throw error;
+        connection.release();
+      });
+    }catch(e){ res.send(e); }
+
+  });
+});
+
+//어떤 사람의 팔로워 목록(그 사람을 팔로잉 한 사람들...)
+app.get('/users/:following/followers', (req, res)=>{
+  const following = req.params.following;
+  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM flow as f
+  JOIN tob_db.user AS u ON f.u_email = u.u_email
+    WHERE f.following="${following}";`;
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    try{
+      connection.query(select_query, function (error, results, fields) {
+        if(results){ 
+          const flowers = {
+            flowerList:results.slice()
+          };
+          res.send(flowers);
+         }
+        if (error) throw error;
+        connection.release();
+      });
+    }catch(e){ res.send(e); }
+  });
+});
+
+//팔로우하기(튜플 생성)
+app.post('/follow/new', (req, res)=>{
+  const { u_email, flowing } = req.body;
+  const insert_query = `INSERT INTO follow VALUES("${u_email}", "${flowing}");`;
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+    try{
+      connection.query(insert_query, function (error, results, fields) {
+        if(results){ res.send(results); }
+        if (error) throw error;
+
+      });
+    }catch(e){res.send(e);}
+  });
+});
+
+
+//언팔로우하기(튜플 제거)
+app.delete('/follow/delete', (req, res)=>{
+  const { u_email, following } = req.body;
+  const delete_query = `DELETE FROM follow WHERE u_email="${u_email}" AND following="${following}";`;
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    try{
+      connection.query(delete_query, function (error, results, fields) {
+        if(results){ res.send(results); }
+        if (error) throw error;
+
+      });
+   }catch(e){res.send(e);}
+
+  });
+});
+
+//어떤 사람이 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
+app.get('/follow/whether', (req, res)=>{
+  const u_email = req.query.u_email;
+  const following = req.query.following;
+  const select_query = `SELECT * FROM follow WHERE u_email="${u_email}" AND following="${following}";`;
+  pool.getConnection(function(err, connection) {
+    if (err) throw err; // not connected!
+
+    try{
+      connection.query(select_query, function (error, results, fields) {
+        if(results){ 
+          if(results[0]) res.send(true); //팔로우중
+          else res.send(false); //팔로우중이아님
+         }
+        if (error) throw error;
+        connection.release();
+      });
+    }catch(e){ res.send(e); }
   });
 });
