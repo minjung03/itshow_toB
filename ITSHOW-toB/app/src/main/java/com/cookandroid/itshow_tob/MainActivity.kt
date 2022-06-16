@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler().postDelayed(Runnable() {
             run() {
-                val intent = Intent(this@MainActivity, FrameMain::class.java)
+                val intent = Intent(this@MainActivity, Login::class.java)
                 startActivity(intent);
             }
         }, 1500); // 1.5초 뒤 자동 화면 전환

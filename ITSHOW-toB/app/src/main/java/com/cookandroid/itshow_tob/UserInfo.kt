@@ -35,6 +35,10 @@ class UserInfo : Fragment() {
         var user_image: ImageView
         user_image = view.findViewById(R.id.user_info_Image)
 
+        user_image.setOnClickListener(View.OnClickListener{
+
+        })
+
 
         //사용자 정보 가져오기
         val user = auth!!.currentUser
