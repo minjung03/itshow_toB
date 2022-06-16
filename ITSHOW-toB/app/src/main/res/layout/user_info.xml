@@ -100,7 +100,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="0.1dp"
+                    android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B" />
 
@@ -128,7 +128,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="0.1dp"
+                    android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B" />
 

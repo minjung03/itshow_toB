@@ -35,11 +35,12 @@ interface RecruitmentAPIService {
 //유저 관련 api요청
 interface UserAPIService {
 
-    // 유저 정보 저장
     @POST("/users/new")
     fun addUser(
-        @Body adduser:UserInfoDatas
-    ):Call<UserInfoDatas>
+            @Query("u_email") u_email:String,
+            @Query("u_name") u_name:String,
+            @Query("u_img") u_img:String,
+    ):Call<JsonArray>
 
     //유저이름으로 유저 정보 조회
     @GET("/users")
@@ -48,15 +49,15 @@ interface UserAPIService {
     ):Call<UserInfoDatas>
 
     //유저 이름 변경
-    @PUT("/users/{u_id}/renameUser")
+    @PUT("/users/{u_email}/renameUser")
     fun renameUser(
-            @Path("u_id") u_id:String,
+            @Path("u_email") u_email:String,
             @Body u_name:UserNameData //변경할 닉네임
     ): Call<ResponseBody>
 
     //유저 정보 모두 삭제
-    @DELETE("users/{u_id}/deleteUser")
-    fun deleteUser(@Path("u_id") u_id:String) : Call<ResponseBody>
+    @DELETE("users/{u_email}/deleteUser")
+    fun deleteUser(@Path("u_email") u_email:String) : Call<ResponseBody>
 }
 
 interface SearchAPIService{

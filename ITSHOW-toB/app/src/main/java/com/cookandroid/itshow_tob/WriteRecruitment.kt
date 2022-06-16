@@ -58,17 +58,11 @@ class WriteRecruitment : AppCompatActivity() {
     private lateinit var mImageCaptureUri:Uri
     private var imgPath = ""
     val multiChoiceAdapterList = ArrayList<MultiChoiceModel>(arrayListOf(
-            MultiChoiceModel("음식", R.color.blue),
-            MultiChoiceModel("편의", R.color.blue),
             MultiChoiceModel("생활", R.color.blue),
-            MultiChoiceModel("의류", R.color.blue),
+            MultiChoiceModel("음식", R.color.blue),
             MultiChoiceModel("도서", R.color.blue),
             MultiChoiceModel("문구", R.color.blue),
-            MultiChoiceModel("잡화", R.color.blue),
-            MultiChoiceModel("화장품", R.color.blue),
-            MultiChoiceModel("쇼핑몰", R.color.blue),
-            MultiChoiceModel("배달", R.color.blue),
-            MultiChoiceModel("기타", R.color.blue)
+            MultiChoiceModel("잡화", R.color.blue)
     ))
 
     //이미지를 선택할 수 있도록 하는 함수

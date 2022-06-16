@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,12 +24,19 @@ import java.util.regex.Pattern
 
 class Setting : AppCompatActivity() {
     val TAG = "dahuin"
+    var message : String = ""
 
-
+/*
     //회원의 정보를 모두 삭제하는 코드
     fun delete_userInfo(apiService: UserAPIService):String{
+
+        //로딩창 객체 생성
+        val loadingDialog = LoadingDialog(this)
+        //투명하게
+        loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         //정보 삭제 수행
-        val u_email = "s2003@e-mirim.hs.kr" //temp. 항상 저장된 아이디를 가져와야함.
+        val u_email = "s2007@e-mirim.hs.kr" //temp. 항상 저장된 아이디를 가져와야함.
         var message = "계정 정보 삭제에 실패했습니다."
 
         //로그인이 돼있을경우
@@ -39,21 +47,27 @@ class Setting : AppCompatActivity() {
             apiCallForData.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.d(TAG, "실패 ${t.message}")
-                    message = ""
+                    loadingDialog.dismiss()
                 }
 
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     Log.d(TAG, "성공 ${response.raw()}")
                     message = "모든 정보가 삭제되었습니다."
+                    loadingDialog.dismiss()
+                    Log.d(TAG, "성공 $message")
                 }
             })
+
         }
         else {
             message = "로그인 되어있지 않습니다."
         }
-        return message
 
+        Log.d(TAG, "성공 $message")
+
+        return message
     }
+*/
 
 
     //회원의 이름을 바꾸는 코드
@@ -71,14 +85,14 @@ class Setting : AppCompatActivity() {
         * */
 
         //정보 삭제 수행
-        val u_id = "dahuin" //temp
+        val u_email = "s2003@e-mirim.hs.kr" //temp
         var userAlreadyExists = false
         val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
 
         val textNickname = editTextNickname.text.toString()
 
         //로그인이 돼있을경우
-        if(!u_id.isBlank()) {
+        if(!u_email.isBlank()) {
             //닉네임이 존재하는지 확인
             val apiCallForData = apiService.getUserInfoWithName(textNickname)
 
@@ -114,7 +128,7 @@ class Setting : AppCompatActivity() {
                 textContent_info.text = "닉네임은 최소 2글자 이상입니다."
                 infoDialog.show()
             } else {
-                val apiCallForData = apiService.renameUser(u_id, UserNameData(textNickname))
+                val apiCallForData = apiService.renameUser(u_email, UserNameData(textNickname))
                 loadingDialog.show()
                 apiCallForData.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -196,7 +210,7 @@ class Setting : AppCompatActivity() {
         val editNameDialog = AlertDialog.Builder(this).setView(editNameView).create()
 
         btn_name_edit.setOnClickListener{
-            textCurNicname.text = "김다흰" //현재 닉네임
+            textCurNicname.text = "김다흰babu" //현재 닉네임
             editTextNickname.setText("")
             editNameDialog.show()
         }
@@ -225,10 +239,33 @@ class Setting : AppCompatActivity() {
         }
         btnOk.setOnClickListener {
             deleteUserDialog.dismiss()
-            val message = delete_userInfo(apiService) //계정 정보 모두 삭제
-            textContent_info.text = message //정보창에 띄울 메시지를 가져온다.
+
+            //정보 삭제 수행
+            val u_email = "s2003@e-mirim.hs.kr" //temp. 항상 저장된 아이디를 가져와야함.
+
+            //특정 사용자의 모든 정보를 삭제하는 코드
+            val apiCallForData = apiService.deleteUser(u_email)
+
+            apiCallForData.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.d(TAG, "실패 ${t.message}")
+                    textContent_info.text = "삭제 실패" //정보창에 띄울 메시지를 가져온다.
+                    infoDialog.show()
+                }
+
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    textContent_info.text = "모든 정보가 삭제되었습니다." //정보창에 띄울 메시지를 가져온다.
+                    infoDialog.show()
+                    Log.d(TAG, "안녕"+response.body()?.string())
+                    Log.d(TAG, "성공 ${response.raw()}")
+                }
+            })
+            textContent_info.text = "삭제 실패" //정보창에 띄울 메시지를 가져온다.
             infoDialog.show()
         }
+
+
+
         btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
     }
 }
