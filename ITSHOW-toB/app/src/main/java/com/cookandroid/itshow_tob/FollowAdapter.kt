@@ -1,5 +1,6 @@
 package com.cookandroid.itshow_tob
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
@@ -8,19 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.scale
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import retrofit2.http.Url
+import com.google.firebase.auth.UserInfo
+import java.io.BufferedInputStream
 import java.io.IOException
-import java.io.InputStream
-import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
-import java.net.URLConnection
+import kotlin.coroutines.coroutineContext
 
 
-class FollowAdapter(val followDataList: ArrayList<FollowDataOfUserInfo>):RecyclerView.Adapter<FollowAdapter.CustomViewHolder>(){
+class FollowAdapter(val followDataList: ArrayList<FollowListData>):RecyclerView.Adapter<FollowAdapter.CustomViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): FollowAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.follow_list_item, parent, false)
@@ -28,43 +27,19 @@ class FollowAdapter(val followDataList: ArrayList<FollowDataOfUserInfo>):Recycle
         return CustomViewHolder(view).apply {
             itemView.setOnClickListener{
                 val curPos : Int = adapterPosition //누른 뷰의 순서값
-                val followData : FollowDataOfUserInfo = followDataList.get(curPos)
+                val followData : FollowListData = followDataList.get(curPos)
+
+                //그 사람의 프로필로 이동하는 코드
+                val intent = Intent(parent.context, UserInfo::class.java)
+                parent.context.startActivity(intent)
             }
         }
     }
+
     override fun onBindViewHolder(holder: FollowAdapter.CustomViewHolder, position: Int) {
         holder.name.text = followDataList.get(position).name
-        Log.d(TAG, followDataList.get(position).img)
-
         //url로 이미지 로드
-        var bitmap = getBitmapFromURL(followDataList.get(position).img)
-        Log.d(TAG, bitmap?.height.toString())
-        holder.img.setImageResource(R.drawable.user_nomal)
-        holder.img.setImageBitmap(bitmap)
-    }
-
-    fun getBitmapFromURL(url: String?): Bitmap? {
-        val imgUrl:URL
-		val connection:HttpURLConnection
-        val input:InputStream
-
-		val retBitmap:Bitmap?
-
-		try{
-			imgUrl = URL(url)
-			connection = imgUrl.openConnection() as HttpURLConnection
-			connection.setDoInput(true) //url로 input받는 flag 허용
-			connection.connect(); //연결
-			input = connection.getInputStream(); // get inputstream
-			retBitmap = BitmapFactory.decodeStream(input)
-		}catch(e:Exception) {
-            e.printStackTrace();
-            return null;
-        }
-        if(connection != null) {
-            connection.disconnect();
-        }
-        return retBitmap;
+        Glide.with(holder.itemView).load(followDataList.get(position).name).into(holder.img)
     }
 
     override fun getItemCount(): Int {

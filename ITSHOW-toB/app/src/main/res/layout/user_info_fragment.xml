@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/user_info_Image"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
@@ -105,7 +105,7 @@
                     android:background="#4B4B4B" />
 
                 <LinearLayout
-                    android:id="@+id/layout_follow_info"
+                    android:id="@+id/layout_follower_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -122,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="팔로우"
+                        android:text="팔로워"
                         android:textColor="#6F6F6F"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -134,7 +134,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/layout_follower_info"
+                    android:id="@+id/layout_following_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
@@ -150,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="팔로워"
+                        android:text="팔로잉"
                         android:textColor="#6F6F6F"
                         android:textStyle="bold" />
                 </LinearLayout>

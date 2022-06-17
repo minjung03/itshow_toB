@@ -245,10 +245,6 @@ class Search : AppCompatActivity() {
             //버튼에 따른 키워드
 
             //인기검색어
-            val retrofit = Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
             val apiService = retrofit.create(SearchAPIService::class.java)
             loadingDialog.show()
             val apiCallForData = apiService.searchPopular()

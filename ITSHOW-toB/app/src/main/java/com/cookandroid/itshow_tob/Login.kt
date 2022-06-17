@@ -68,8 +68,12 @@ class Login : AppCompatActivity() {
             val uid = user.uid
             // Toast.makeText(this,  email.toString(), Toast.LENGTH_LONG).show()
             Log.d(TAG, "정보 가져옴 $email")
-
+            USER_EMAIL = email.toString()
+            USER_NAME = name.toString()
+            USER_IMG = photoUrl.toString()
         }
+
+
     } // onCreate
 
     fun googleLogin() {

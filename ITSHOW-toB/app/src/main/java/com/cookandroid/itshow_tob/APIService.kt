@@ -3,7 +3,15 @@ package com.cookandroid.itshow_tob
 import com.google.gson.JsonArray
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+
+
+val retrofit = Retrofit.Builder()
+        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
 //게시글 정보를 요청하기 위한 인터페이스
 interface RecruitmentAPIService {
@@ -39,7 +47,7 @@ interface UserAPIService {
     fun addUser(
             @Query("u_email") u_email:String,
             @Query("u_name") u_name:String,
-            @Query("u_img") u_img:String,
+            @Query("u_img") u_img:String
     ):Call<JsonArray>
 
     //유저이름으로 유저 정보 조회
@@ -84,16 +92,16 @@ interface SearchAPIService{
 interface FlowAPIService{
 
     //어떤 사람의 팔로잉 목록을 가져옴
-    @GET("/users/{u_email}/following")
+    @GET("/users/{u_email}/followings")
     fun flowingListOfUser(
             @Path("u_email") u_email:String
-    ):Call<UserInfoDatas>
+    ):Call<JsonArray>
 
     //어떤 사람의 팔로워 목록을 가져옴
     @GET("/users/{following}/followers")
     fun followerListOfUser(
             @Path("following") following:String
-    ):Call<UserInfoDatas>
+    ):Call<JsonArray>
 
     //어떤 사람이 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
     @GET("/follow/whether")
@@ -122,7 +130,7 @@ data class FollowData(val u_email: String, val flowing: String)
 
 data class CreateSearchWord(val u_email:String, val s_word:String)
 
-data class UserInfoDatas(val u_email:String, val u_name:String, val u_star:Double)
+data class UserInfoDatas(val u_email:String, val u_name:String, val u_star:Double, val u_img: String)
 
 data class UserNameData(val u_name:String)
 

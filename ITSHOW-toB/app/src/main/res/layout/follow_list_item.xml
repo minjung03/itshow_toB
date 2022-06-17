@@ -9,11 +9,10 @@
     android:layout_margin="4dp"
     >
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_userProfile"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:onClick="onCilck"
         android:src="@drawable/user_nomal" />
     <TextView
         android:id="@+id/text_userName"

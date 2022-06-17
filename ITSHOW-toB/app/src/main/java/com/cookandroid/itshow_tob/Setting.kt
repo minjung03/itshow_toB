@@ -195,11 +195,6 @@ class Setting : AppCompatActivity() {
         btnOk_info.setOnClickListener{infoDialog.dismiss()}
 
         //apiService 생성
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
         val apiService = retrofit.create(UserAPIService::class.java)
 
         //닉네임 변경

@@ -1,8 +1,5 @@
 const express = require('express');
 const http = require('http');
-const url = require('url');
-const fs = require('fs');
-const querystring = require('querystring');
 const app = express();
 
 app.use(express.json());
@@ -18,7 +15,7 @@ const pool  = mysql.createPool({
   connectionLimit : 10,
   host            : 'localhost',
   user            : 'root',
-  password        : 'mirim3203',
+  password        : '1234',
   database        : 'tob_db'
 });
 
@@ -197,7 +194,7 @@ app.delete('/users/:u_email/deleteUser', (req, res)=>{
 });
 
 //유저 정보 모두 조회(게시글 번호, 평점, ) ---- 아이디로 조회
-app.get('/users/u_email', (req, res)=>{
+app.get('/users/:u_email', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
@@ -362,21 +359,19 @@ app.post('/recruitment-search', (req, res)=>{
 // =================== flow =================== //
 
 //어떤 사람의 팔로잉 목록
-app.get('/users/:u_email/flowings', (req, res)=>{
+app.get('/users/:u_email/followings', (req, res)=>{
   const u_email = req.params.u_email;
-  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM tob_db.flow as f
-  JOIN tob_db.user AS u ON f.flowing = u.u_email
+  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM follow as f
+  JOIN user AS u ON f.following = u.u_email
     WHERE f.u_email="${u_email}";`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
     try{
       connection.query(select_query, function (error, results, fields) {
-        if(results){ 
-          const flowings = {
-            flowingList:results.slice()
-          };
-          res.send(flowings);
+        if(results){
+          console.log(results);
+          res.send(results);
          }
         if (error) throw error;
         connection.release();
@@ -387,21 +382,19 @@ app.get('/users/:u_email/flowings', (req, res)=>{
 });
 
 //어떤 사람의 팔로워 목록(그 사람을 팔로잉 한 사람들...)
-app.get('/users/:flowing/flowers', (req, res)=>{
-  const flowing = req.params.flowing;
-  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM flow as f
-  JOIN tob_db.user AS u ON f.u_email = u.u_email
-    WHERE f.flowing="${flowing}";`;
+app.get('/users/:following/followers', (req, res)=>{
+  const following = req.params.following;
+  const select_query = `SELECT u.u_email, u.u_name, u.u_star, u.u_img FROM follow as f
+  JOIN user AS u ON f.u_email = u.u_email
+    WHERE f.following="${following}";`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
     try{
       connection.query(select_query, function (error, results, fields) {
-        if(results){ 
-          const flowers = {
-            flowerList:results.slice()
-          };
-          res.send(flowers);
+        if(results){
+          console.log(results);
+          res.send(results);
          }
         if (error) throw error;
         connection.release();
@@ -411,9 +404,9 @@ app.get('/users/:flowing/flowers', (req, res)=>{
 });
 
 //팔로우하기(튜플 생성)
-app.post('/flow/new', (req, res)=>{
-  const { u_email, flowing } = req.body;
-  const insert_query = `INSERT INTO flow VALUES("${u_email}", "${flowing}");`;
+app.post('/follow/new', (req, res)=>{
+  const { u_email, following } = req.body;
+  const insert_query = `INSERT INTO follow VALUES("${u_email}", "${following}");`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
     try{
@@ -428,9 +421,9 @@ app.post('/flow/new', (req, res)=>{
 
 
 //언팔로우하기(튜플 제거)
-app.delete('/flow/delete', (req, res)=>{
-  const { u_email, flowing } = req.body;
-  const delete_query = `DELETE FROM flow WHERE u_email="${u_email}" AND flowing="${flowing}";`;
+app.delete('/follow/delete', (req, res)=>{
+  const { u_email, following } = req.body;
+  const delete_query = `DELETE FROM follow WHERE u_email="${u_email}" AND following="${following}";`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
@@ -446,10 +439,10 @@ app.delete('/flow/delete', (req, res)=>{
 });
 
 //어떤 사람이 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
-app.get('/flow/whether', (req, res)=>{
+app.get('/follow/whether', (req, res)=>{
   const u_email = req.query.u_email;
-  const flowing = req.query.flowing;
-  const select_query = `SELECT * FROM tob_db.flow WHERE u_email="${u_email}" AND flowing="${flowing}";`;
+  const following = req.query.following;
+  const select_query = `SELECT * FROM follow WHERE u_email="${u_email}" AND following="${following}";`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
