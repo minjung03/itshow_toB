@@ -176,7 +176,6 @@ class WriteRecruitment : AppCompatActivity() {
         }
 
         //특정 사용자가 게시글을 올리는 코드 -- 이미지도 해야함
-        val u_email = "s2003@e-mirim.hs.kr" //temp
 
         val retrofit = Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
@@ -189,7 +188,8 @@ class WriteRecruitment : AppCompatActivity() {
 
         if(intMinAmount.equals("")){ intMinAmount = "0" }
         Log.d(TAG, (intMinAmount.toInt().toString()))
-        val apiCallForData = apiService.createRecruitment(createRecruitmentDatas(u_email, textTitle,
+        val apiCallForData = apiService.createRecruitment(createRecruitmentDatas(
+            USER_EMAIL, textTitle,
                 textContent, intMinAmount.toInt(), dateString +" "+timeString,
                 textOrder, textLocation, textCategory, imgPath))
 

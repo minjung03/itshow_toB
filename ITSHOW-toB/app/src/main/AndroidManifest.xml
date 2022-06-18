@@ -24,14 +24,16 @@
             android:exported="false" />
         <activity android:name=".FollowList"></activity>
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".HelpContent" />
+        <activity android:name=".FrameMain" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpContent" />
-        <activity android:name=".FrameMain" />
         <activity android:name=".Review" />
         <activity android:name=".Search" />
         <activity android:name=".WriteRecruitment" />
