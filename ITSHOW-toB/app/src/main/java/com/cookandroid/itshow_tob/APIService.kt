@@ -103,7 +103,7 @@ interface FlowAPIService{
             @Path("following") following:String
     ):Call<JsonArray>
 
-    //어떤 사람이 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
+    //내가 이 사람을 팔로우하고있는지의 여부를 true, false로 리턴함.
     @GET("/follow/whether")
     fun followWether(
             @Query("u_email") u_email:String,
@@ -112,21 +112,22 @@ interface FlowAPIService{
 
     //팔로우하기
     @POST("/follow/new")
-    fun newFlow(
+    fun newFollow(
             @Body searchWord: FollowData
     ):Call<ResponseBody>
 
     //언팔로우하기
-    @POST("/follow/delete")
-    fun unFlow(
-            @Body searchWord: FollowData
+    @DELETE("/follow/delete")
+    fun unFollow(
+            @Query("u_email") u_email: String,
+            @Query("following") following: String
     ):Call<ResponseBody>
 
 }
 
 data class SearchWordData(val s_word:String)
 
-data class FollowData(val u_email: String, val flowing: String)
+data class FollowData(val u_email: String, val following: String)
 
 data class CreateSearchWord(val u_email:String, val s_word:String)
 

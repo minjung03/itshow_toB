@@ -1,7 +1,6 @@
 package com.cookandroid.itshow_tob
 
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -66,11 +65,8 @@ class Login : AppCompatActivity() {
             val emailVerified = user.isEmailVerified
 
             val uid = user.uid
-            // Toast.makeText(this,  email.toString(), Toast.LENGTH_LONG).show()
+            // Toast.makeText(this, email.toString(), Toast.LENGTH_LONG).show()
             Log.d(TAG, "정보 가져옴 $email")
-            USER_EMAIL = email.toString()
-            USER_NAME = name.toString()
-            USER_IMG = photoUrl.toString()
         }
 
 

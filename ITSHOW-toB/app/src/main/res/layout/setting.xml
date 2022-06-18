@@ -10,10 +10,10 @@
         android:layout_margin="30dp">
 
         <ImageView
+            android:id="@+id/img_SettingBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/arrow_blue"
-            android:id="@+id/img_SettingBack"/>
+            android:src="@drawable/arrow_blue" />
 
         <TextView
             android:layout_width="wrap_content"

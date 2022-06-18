@@ -1,5 +1,6 @@
 package com.cookandroid.itshow_tob
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,9 @@ import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import java.lang.Exception
+var preEmailWithFollow = ""
+var preFollowWithFollow = ""
 class FollowList : AppCompatActivity() {
     val apiService = retrofit.create(FlowAPIService::class.java)
 
@@ -34,6 +37,8 @@ class FollowList : AppCompatActivity() {
         val u_email = intent.getStringExtra("u_email")
 
         if(u_email!=null) {
+            preFollowWithFollow = follow.toString()
+            preEmailWithFollow = u_email
             var followDataList:ArrayList<FollowListData> = arrayListOf()
             var apiCallForData:Call<JsonArray> = apiService.followerListOfUser(u_email)
             val loadingDialog = LoadingDialog(this@FollowList) //로딩창 객체 생성
@@ -45,7 +50,6 @@ class FollowList : AppCompatActivity() {
                 text_followTitle.text = "팔로잉"
                 apiCallForData = apiService.flowingListOfUser(u_email)
             }
-
             apiCallForData.enqueue(object : Callback<JsonArray> {
                 override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
                     loadingDialog.dismiss()
@@ -54,7 +58,6 @@ class FollowList : AppCompatActivity() {
                     if (data != null) {
                         for (idx in 0 until data.size()){
                             val userData = Gson().fromJson(data.get(idx).toString(), UserInfoDatas::class.java)
-                            Log.d(TAG, "유저 데이터 불러오기 성공 : "+userData.u_name+", "+userData.u_img)
                             followDataList.add(FollowListData(userData.u_name, userData.u_img))
                         }
                         recycler_view.adapter = FollowAdapter(followDataList)
@@ -66,14 +69,16 @@ class FollowList : AppCompatActivity() {
                     Log.d(TAG, "실패 : "+t)
                 }
             })
-
         }//if end
 
         img_followBack.setOnClickListener{
             finish()
         }
 
-
-
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
 }

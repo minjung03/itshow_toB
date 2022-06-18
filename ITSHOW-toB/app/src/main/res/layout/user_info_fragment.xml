@@ -57,13 +57,14 @@
                 android:gravity="center">
 
                 <com.willy.ratingbar.BaseRatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/ratingbar_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srb_drawableEmpty="@drawable/star_empty"
                     app:srb_drawableFilled="@drawable/star_full"
                     app:srb_isIndicator="true"
                     app:srb_numStars="5"
-                    app:srb_rating="4.5"
+                    app:srb_rating="4.0"
                     app:srb_starHeight="20dp"
                     app:srb_starWidth="20dp"
                     app:srb_stepSize="0.5" />

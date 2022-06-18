@@ -53,31 +53,8 @@ app.get('/recruitment', (req, res)=>{
     connection.query(`SELECT * FROM recruitment where r_no = '${r_no}'`, function (error, results, fields) {
       // When done with the connection, release it.
       if(results){
-        console.log(results);
-        res.send(results)
-      }
-   
-      // Handle error after the release.
-      if (error) throw error;
-      connection.release();
-      // Don't use the connection here, it has been returned to the pool.
-    });
-  });
-});
-
-//게시글 가져오기
-app.get('/recruitment', (req, res)=>{
-  const r_no = req.query.r_no?req.query.r_no:null;//어떤 게시물 조회
-
-  pool.getConnection(function(err, connection) {
-    if (err) throw err; // not connected!
-   
-    // Use the connection
-    connection.query(`SELECT * FROM recruitment where r_no = '${r_no}'`, function (error, results, fields) {
-      // When done with the connection, release it.
-      if(results){
-        console.log(results);
-        res.send(results)
+        console.log(results[0]);
+        res.send(results[0]);
       }
    
       // Handle error after the release.
@@ -127,7 +104,7 @@ app.post('/recruitment/new', (req, res)=>{
     const { u_email, r_title, r_content, r_minPrice, r_endDate, r_order, r_location, r_category, r_imgPath } = req.body;
     const r_startDate = new Date();
 
-    const post  = {u_email: u_email, r_title:r_title, r_content:r_content, r_minPrice:r_minPrice, r_inprogress:0,
+    const post  = {u_email: u_email, r_title:r_title, r_content:r_content, r_minPrice:r_minPrice, r_inprogress:0, r_startDate:r_startDate,
       r_endDate:r_endDate, r_order:r_order, r_location:r_location, r_category:r_category, r_imgPath:r_imgPath?r_imgPath:""};
 
     connection.query('INSERT INTO recruitment SET ?', post, function (error, results, fields) {
@@ -247,7 +224,7 @@ app.post('/users/new', (req, res)=>{
 app.get('/users', (req, res)=>{
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
-    const u_name = req.query.u_name?req.query.u_name:null;//유저의 게시물들 조회
+    const u_name = req.query.u_name?req.query.u_name:null;
 
     connection.query(`SELECT * FROM user WHERE u_name="${u_name}"`, function (error, results, fields) {
       if(results){ res.send(results[0]) }
@@ -412,7 +389,8 @@ app.post('/follow/new', (req, res)=>{
     try{
       connection.query(insert_query, function (error, results, fields) {
         if(results){ res.send(results); }
-        if (error) throw error;
+        if (error && error.sqlState == "23000") { res.send(results); }
+        else if (error) throw error;
 
       });
     }catch(e){res.send(e);}
@@ -422,13 +400,14 @@ app.post('/follow/new', (req, res)=>{
 
 //언팔로우하기(튜플 제거)
 app.delete('/follow/delete', (req, res)=>{
-  const { u_email, following } = req.body;
+  const { u_email, following } = req.query;
   const delete_query = `DELETE FROM follow WHERE u_email="${u_email}" AND following="${following}";`;
   pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!
 
     try{
       connection.query(delete_query, function (error, results, fields) {
+        console.log("언팔로우:"+u_email+", "+following);
         if(results){ res.send(results); }
         if (error) throw error;
 
@@ -449,8 +428,8 @@ app.get('/follow/whether', (req, res)=>{
     try{
       connection.query(select_query, function (error, results, fields) {
         if(results){ 
-          if(results[0]) res.send(true); //팔로우중
-          else res.send(false); //팔로우중이아님
+          if(results[0]) res.send("true"); //팔로우중
+          else res.send("false"); //팔로우중이아님
          }
         if (error) throw error;
         connection.release();
