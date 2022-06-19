@@ -52,13 +52,18 @@
             android:padding="30dp"
             android:background="@drawable/button_round1_white"
             android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
+            <com.makeramen.roundedimageview.RoundedImageView
+                app:riv_corner_radius="20dip"
+                android:id="@+id/img_recruitment"
+                android:layout_gravity="center"
+                android:elevation="1dp"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:layout_marginBottom="10dp"
                 android:visibility="gone"
-                android:background="@drawable/button_round1_white"
-                android:src="@drawable/common_google_signin_btn_icon_dark"
+                android:adjustViewBounds="false"
+                android:background="@drawable/main_item_style"
+                android:src="@drawable/arrow_blue"
                 />
             <!-- 제목 -->
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

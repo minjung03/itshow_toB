@@ -2,14 +2,18 @@ package com.cookandroid.itshow_tob
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.makeramen.roundedimageview.RoundedImageView
 import org.intellij.lang.annotations.JdkConstants
 
 class MainCustomAdapter (
@@ -24,6 +28,7 @@ class MainCustomAdapter (
         val item_locationUser = itemView.findViewById<TextView>(R.id.item_locationUser)
         val item_heartUser = itemView.findViewById<TextView>(R.id.item_heartUser)
         val item_date = itemView.findViewById<TextView>(R.id.item_date)
+        val item_recruitment = itemView.findViewById<RoundedImageView>(R.id.img_recruitment)
 
         fun bind(maindata:MainData, context:Context){
             item_Title.text = maindata.title;
@@ -32,6 +37,13 @@ class MainCustomAdapter (
             item_locationUser.text = maindata.location
             item_heartUser.text = maindata.heart.toString()
             item_date.text = maindata.date
+
+            if(!maindata.imgPath.equals("")){
+                item_recruitment.visibility = View.VISIBLE
+                Glide.with(context).load("https://tob.emirim.kr/uploads/"+maindata.imgPath).into(item_recruitment)
+            }else{
+                item_recruitment.visibility = View.GONE
+            }
 
             var r_no = maindata.r_no
 

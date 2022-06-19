@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@drawable/main_item_style">
-
+    <com.makeramen.roundedimageview.RoundedImageView
+        app:riv_corner_radius="20dip"
+        android:id="@+id/img_recruitment"
+        android:layout_gravity="center"
+        android:elevation="1dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:adjustViewBounds="false"
+        android:background="@drawable/main_item_style"
+        android:src="@drawable/arrow_blue"
+        />
 
     <RelativeLayout
         android:layout_margin="25dp"

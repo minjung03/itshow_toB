@@ -18,6 +18,7 @@ import java.util.*
 import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -32,12 +33,13 @@ import androidx.core.content.FileProvider
 import com.android.custom_dialog.CustomDialog
 import com.android.custom_dialog.MultiChoiceModel
 import com.android.custom_dialog.OnSelectItemInterface
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
+import java.io.*
 import java.text.DecimalFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -54,9 +56,9 @@ class WriteRecruitment : AppCompatActivity() {
     private val PICK_FROM_CAMERA = 0
     private val PICK_FROM_ALBUM = 1
     private val CROP_FROM_IMAGE = 2
-    private val TAG = "DAHUIN_TAG"
     private lateinit var mImageCaptureUri:Uri
-    private var imgPath = ""
+    private var imgName = ""
+    var photo:Bitmap? = null
     val multiChoiceAdapterList = ArrayList<MultiChoiceModel>(arrayListOf(
             MultiChoiceModel("생활", R.color.blue),
             MultiChoiceModel("음식", R.color.blue),
@@ -98,7 +100,8 @@ class WriteRecruitment : AppCompatActivity() {
 //                })
                 .setNeutralButton("앨범선택", DialogInterface.OnClickListener{dialog, which ->
                     val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    intent.type = "image/*"
                     startActivityForResult(intent, PICK_FROM_ALBUM)
                 })
                 .setNegativeButton("취소", DialogInterface.OnClickListener{dialog, which ->
@@ -175,23 +178,21 @@ class WriteRecruitment : AppCompatActivity() {
             return
         }
 
-        //특정 사용자가 게시글을 올리는 코드 -- 이미지도 해야함
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
+        //특정 사용자가 게시글을 올리는 코드
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
-
         loadingDialog.show()
 
         if(intMinAmount.equals("")){ intMinAmount = "0" }
         Log.d(TAG, (intMinAmount.toInt().toString()))
+
+        if(photo != null){
+            Log.d(TAG, "photo가 있다. 서버에 업로드하기")
+            multipartImageUpload(photo!!)
+        }
         val apiCallForData = apiService.createRecruitment(createRecruitmentDatas(
             USER_EMAIL, textTitle,
                 textContent, intMinAmount.toInt(), dateString +" "+timeString,
-                textOrder, textLocation, textCategory, imgPath))
+                textOrder, textLocation, textCategory, imgName))
 
         apiCallForData.enqueue(object: Callback<createRecruitmentDatas>{
             override fun onFailure(call: Call<createRecruitmentDatas>, t: Throwable) {
@@ -214,6 +215,57 @@ class WriteRecruitment : AppCompatActivity() {
 
     }
 
+    fun multipartImageUpload(bitmap:Bitmap)
+    {
+
+        try {
+            Log.d(TAG, "일단 옵니다.")
+            val filesDir = getApplicationContext().getFilesDir()
+            imgName = System.currentTimeMillis().toString()
+            val file = File(filesDir, imgName + ".png")
+
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
+            val bitmapdata = bos.toByteArray()
+
+            val fos = FileOutputStream(file);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+
+            val reqFile = RequestBody.create(MediaType.parse("image/*"), file)
+            val body = MultipartBody.Part.createFormData("upload", file.getName(), reqFile)
+            val name = RequestBody.create(MediaType.parse("text/plain"), "upload");
+
+            Log.d(TAG, "피일 이름 : "+name)
+            Log.d(TAG, "피일 이름 : "+name)
+
+            val apiService = retrofit.create(RecruitmentAPIService::class.java)
+            val req = apiService.postImage(body, name)
+            Log.d(TAG, "req.eneque시작:"+req)
+            req?.enqueue(object : Callback<ResponseBody?> {
+                override fun onResponse(
+                    call: Call<ResponseBody?>,
+                    response: Response<ResponseBody?>
+                ) {
+                    if (response.code() == 200) {
+                        Log.d(TAG, "파일 업로드 성공")
+                    }
+                    Log.d(TAG, response.code().toString())
+                }
+
+                override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                    Log.d(TAG, "파일 업로드 실패 : "+t)
+                }
+
+            })
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
     //이미지 저장 --> 카메라 혹은 파일 내의 이미지를 가져와 저장
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -223,8 +275,9 @@ class WriteRecruitment : AppCompatActivity() {
         }
 
         if(requestCode == PICK_FROM_ALBUM){
+            Log.d(TAG, "data : "+data.toString())
             mImageCaptureUri = data!!.data!! //!!는 null 값이 안 들어온다는 보증을 해주는 연산자.
-            Log.d(TAG, mImageCaptureUri.path.toString())
+            Log.d(TAG, "mImageCaptureUri : "+mImageCaptureUri.path.toString())
         }
         if(requestCode == PICK_FROM_ALBUM || requestCode == PICK_FROM_CAMERA){
             //이미지를 가져온 후 리사이즈할 이미지 크기를 결정한다.
@@ -234,31 +287,33 @@ class WriteRecruitment : AppCompatActivity() {
 
             //CROP할 이미지를 200 * 200크기로 저장
             intent.putExtra("crop", true)
-            intent.putExtra("outputX", 200)
-            intent.putExtra("outputY", 200)
+            intent.putExtra("outputX", 360)
+            intent.putExtra("outputY", 360)
             intent.putExtra("aspectX", 1)
             intent.putExtra("aspectY", 1)
             intent.putExtra("scale", true)
             intent.putExtra("return-data", true)
             startActivityForResult(intent, CROP_FROM_IMAGE)
+            Log.d(TAG, "에러체크")
         }
-        else if(requestCode == CROP_FROM_IMAGE) {
+        if(requestCode == CROP_FROM_IMAGE) {
             //크롭이 된 이후의 이미지를 넘겨받음.
             //이미지뷰에 이미지를 보여주거나 부가적인 작업 이후에 임시 파일을 삭제한다.
+            Log.d(TAG, "에러체크1")
 
             if(resultCode != RESULT_OK) {
                 return
             }
+            Log.d(TAG, "에러체크2 : "+data)
+            Log.d(TAG, "에러체크2 ex : "+data?.extras)
 
             val extras: Bundle? = data!!.extras
-            val filePath = Environment.getExternalStorageDirectory().absolutePath + "/ToB/" + System.currentTimeMillis() +".jpg"
-            Log.d(TAG, filePath)
-            imgPath = filePath
+
             if(extras != null){
-                val photo = extras.getParcelable<Bitmap>("data")
-                binding.recycelerView.adapter = WriteRecruitmentAdapter(photo)
-
-
+                photo = extras.getParcelable<Bitmap>("data")
+                if (photo != null) {
+                    binding.recycelerView.adapter = WriteRecruitmentAdapter(photo)
+                }
             }
         } // if end
     }// fun end

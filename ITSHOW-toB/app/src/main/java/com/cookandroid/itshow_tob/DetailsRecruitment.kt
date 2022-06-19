@@ -1,18 +1,19 @@
 package com.cookandroid.itshow_tob
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.google.gson.*
+import com.makeramen.roundedimageview.RoundedImageView
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,29 +40,24 @@ class DetailsRecruitment : AppCompatActivity() {
         val textDate = findViewById<TextView>(R.id.text_date_details)
         val textLocation = findViewById<TextView>(R.id.text_loc_details)
         val textCategory = findViewById<TextView>(R.id.text_category_details)
+        val img_recruitment = findViewById<RoundedImageView>(R.id.img_recruitment)
 
         //no을 통해 게시글 정보를 불러오는 코드
         val r_no = intent.getSerializableExtra("r_no") as Int
         Log.d(TAG, "r_no : "+r_no.toString());
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
 
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
 
         //넘버가 r_no인 게시물을 가지고옴
         val apiCallForData = apiService.getRecruitmentInfo(r_no)
 
-        apiCallForData.enqueue(object :Callback<JsonArray>{
-            override fun onFailure(call: Call<JsonArray>, t: Throwable) {
-                Toast.makeText(this@DetailsRecruitment, "에러 발생 ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.d("dahuin", t.message.toString())
+        apiCallForData.enqueue(object :Callback<RecruitmentDatas>{
+            override fun onFailure(call: Call<RecruitmentDatas>, t: Throwable) {
+                Log.d(TAG, t.message.toString())
             }
 
             @RequiresApi(Build.VERSION_CODES.O)
-            override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
+            override fun onResponse(call: Call<RecruitmentDatas>, response: Response<RecruitmentDatas>) {
                 val data = response.body() // 역직렬화를 통해 생성된 객체를 반환받음. RecruitmentAPIJSONResponseFromGSON타입의 객체임.
 
                 if(data != null){
@@ -69,7 +65,7 @@ class DetailsRecruitment : AppCompatActivity() {
                     //Gson은 객체를 JSON 표현으로 변환하는 데 사용할 수 있는 라이브러리인듯하다.
                     //api가 처음부터 리스트의 형태로 되어있어서 리스트의 첫 번째 값을 가져온후 RecruitmentDatas에서 선언한 변수와 자동 매핑해준다.
                     val gson = Gson()
-                    val recruitmentData = gson.fromJson(data.get(0).toString(), RecruitmentDatas::class.java)
+                    val recruitmentData = data
 
                     val title = recruitmentData.r_title.toString()
                     val content = recruitmentData.r_content?.toString()
@@ -80,12 +76,12 @@ class DetailsRecruitment : AppCompatActivity() {
                     minPrice = format.format(recruitmentData.r_minPrice.toString().toLong()) + "원"
 
 
-                    val email = recruitmentData.u_email.toString()
-                    val endDate = recruitmentData.r_endDate.toString()
-                    val order = recruitmentData.r_order.toString()
-                    val location = recruitmentData.r_location.toString()
-                    val category = recruitmentData.r_category?.toString()
-                    val imgPath = recruitmentData.r_imgPath?.toString()
+                    val email = recruitmentData.u_email
+                    val endDate = recruitmentData.r_endDate
+                    val order = recruitmentData.r_order
+                    val location = recruitmentData.r_location
+                    val category = recruitmentData.r_category
+                    val imgPath = recruitmentData.r_imgPath
 
                     Log.d("dahuin", title)
                     Log.d("dahuin", content?:"")
@@ -103,6 +99,12 @@ class DetailsRecruitment : AppCompatActivity() {
                     textOrder.text = order
                     textLocation.text = location
                     textCategory.text = "카테고리 > "+category?:"없음"
+
+                    if(!imgPath.equals("")){
+                        img_recruitment.visibility = View.VISIBLE
+                        Glide.with(this@DetailsRecruitment).load("https://tob.emirim.kr/uploads/"+imgPath)
+                            .into(img_recruitment)
+                    }
 
                 }
             }

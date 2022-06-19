@@ -87,10 +87,6 @@ class Search : AppCompatActivity() {
                 //투명하게
                 loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-                val retrofit = Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-                        .build()
                 val apiService = retrofit.create(SearchAPIService::class.java)
                 loadingDialog.show()
 
@@ -123,6 +119,7 @@ class Search : AppCompatActivity() {
                                 val r_no = recruitmentData.r_no
                                 val title = recruitmentData.r_title.toString()
                                 val content = recruitmentData.r_content?.toString()
+                                val imgPath = recruitmentData.r_imgPath?.toString()
                                 var minPrice = ""
                                 if(recruitmentData.r_minPrice.toString().length == 0){ minPrice = "" }
                                 val format = DecimalFormat("###,###")
@@ -140,7 +137,7 @@ class Search : AppCompatActivity() {
 
                                 val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
                                 val location = recruitmentData.r_location
-                                mainList.add(MainData(r_no, title, minPrice, content, location, 0, date))
+                                mainList.add(MainData(r_no, title, minPrice, content, location, 0, date, imgPath))
                             }
                             recyclerSearchRecruitment.adapter = MainCustomAdapter(this@Search, mainList)
                             (recyclerSearchRecruitment.adapter as MainCustomAdapter).notifyItemChanged(2)

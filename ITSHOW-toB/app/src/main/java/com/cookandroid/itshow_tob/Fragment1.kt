@@ -30,6 +30,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+
+
 class Fragment1() : Fragment() {
 
     override fun onCreateView(
@@ -73,8 +75,9 @@ class Fragment1() : Fragment() {
                         val recruitmentData = gson.fromJson(data.get(i).toString(), RecruitmentDatas::class.java)
 
                         val r_no = recruitmentData.r_no
-                        val title = recruitmentData.r_title.toString()
-                        val content = recruitmentData.r_content?.toString()
+                        val title = recruitmentData.r_title
+                        val content = recruitmentData.r_content
+                        val imgPath = recruitmentData.r_imgPath
                         var minPrice = ""
                         if(recruitmentData.r_minPrice.toString().length == 0){ minPrice = "" }
                         val format = DecimalFormat("###,###")
@@ -93,7 +96,7 @@ class Fragment1() : Fragment() {
                         val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
                         val location = recruitmentData.r_location
 
-                        mainList.add(MainData(r_no, title, minPrice, content, location, 0, date))
+                        mainList.add(MainData(r_no, title, minPrice, content, location, 0, date, imgPath))
 
                     }
                     mAdapter = MainCustomAdapter(activity as Context, mainList)

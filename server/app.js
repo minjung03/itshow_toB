@@ -5,6 +5,7 @@ const app = express();
 app.use(express.json());
 app.set('port', process.env.PORT || 3003);
 
+
 http.createServer(app).listen(app.get('port'), () =>{
   console.log("익스프레스 서버 시작 : "+app.get('port'));
 });
@@ -436,4 +437,75 @@ app.get('/follow/whether', (req, res)=>{
       });
     }catch(e){ res.send(e); }
   });
+});
+
+const multer = require('multer');
+
+//파일 업로드
+var _storage = multer.diskStorage({
+
+	/*
+	destination: function (req, file, callback) {
+
+		//case: file type is image
+		if(file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+			console.log("image");
+			callback(null, "uploads/");
+		} else {
+			console.log("not image");
+		}
+	},
+	filename: function (req, file, callback) {
+		callback(null, register_number + "_" + file.originalname);
+	}
+	*/
+
+	destination: 'uploads/',
+	filename: function(req, file, cb) {
+		return crypto.pseudoRandomBytes(16, function(err, raw) {
+			if(err) {
+				return cb(err);
+			}
+			//return cb(null, ""+(raw.toString('hex')) + (path.extname(file.originalname)));
+			return cb(null, file.originalname);
+		});
+	}
+});
+
+//업로드
+app.post('/upload', 
+	multer({
+		storage: _storage
+	}).single('upload'), function (req, res) {
+
+	try {
+
+		let file = req.file;
+		//const files = req.files;
+		let originalName = '';
+		let fileName = '';
+		let mimeType = '';
+		let size = 0;
+
+		if(file) {
+			originalName = file.originalname;
+			filename = file.fileName;//file.fileName
+			mimeType = file.mimetype;
+			size = file.size;
+			console.log("execute"+fileName);
+		} else{ 
+			console.log("request is null");
+		}
+
+	} catch (err) {
+
+		console.dir(err.stack);
+	}
+
+	console.log(req.file);
+	console.log(req.body);
+	res.redirect("/uploads/" + req.file.originalname);//fileName
+
+	return res.status(200).end();
+
 });
