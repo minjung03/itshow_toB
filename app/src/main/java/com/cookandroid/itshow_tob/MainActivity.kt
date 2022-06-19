@@ -1,28 +1,42 @@
 package com.cookandroid.itshow_tob
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
-import android.widget.Button
+import android.util.Log
 import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main)
+        setContentView(R.layout.activity_main)
 
-        /*
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent login_intent = new Intent(MainActivity.this, WriteRecruitment.class);
-                startActivity(login_intent);
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
             }
-        }, 2000); // 2초 뒤 자동 화면 전환
-*/
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d(TAG, msg)
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+        })
+
+        Handler().postDelayed(Runnable() {
+            run() {
+                val intent = Intent(this@MainActivity, FrameMain::class.java)
+                startActivity(intent);
+            }
+        }, 1500); // 1.5초 뒤 자동 화면 전환
     }
 }

@@ -35,16 +35,17 @@
         android:id="@+id/line1"/>
 
 
-
+<!-- 알림은 일단 보류 -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
         android:layout_below="@+id/line1"
+        android:padding="30dp"
         android:id="@+id/layout_push_swtich">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:text="게시글 / 공지사항 앱 알림"
             android:layout_centerVertical="true"
             android:id="@+id/text1"
@@ -74,12 +75,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
         android:layout_below="@+id/line2"
         android:id="@+id/layout_name_edit">
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_name_edit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:gravity="left"
             android:text="닉네임 변경"
             android:textSize="14sp"
             android:textColor="#000000"/>
@@ -93,18 +96,18 @@
         android:id="@+id/line3"/>
 
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
         android:layout_below="@+id/line3"
-        android:id="@+id/layout_ID_PASS_edit">
-        <TextView
-            android:layout_width="wrap_content"
+        android:id="@+id/layout_Help">
+        <Button
+            android:id="@+id/btn_Help"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="아이디 / 비밀번호 변경"
+            android:padding="30dp"
+            android:gravity="left"
+            android:text="도움말"
             android:textSize="14sp"
             android:textColor="#000000"/>
     </RelativeLayout>
@@ -113,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#D5D5D5"
-        android:layout_below="@+id/layout_ID_PASS_edit"
+        android:layout_below="@+id/layout_Help"
         android:id="@+id/line4"/>
 
 
@@ -143,37 +146,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
         android:layout_below="@+id/line4"
-        android:id="@+id/layout_Help">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="도움말"
-            android:textColor="#000000"/>
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#D5D5D5"
-        android:layout_below="@+id/layout_Help"
-        android:id="@+id/line6"/>
-
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp"
-        android:layout_below="@+id/line6"
         android:id="@+id/layout_UserDelete">
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_UserDelete"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="회원 탈퇴"
-            android:textStyle="bold"
+            android:gravity="left"
+            android:padding="30dp"
+            android:text="계정 정보 모두 삭제"
             android:textColor="#FF2828"/>
     </RelativeLayout>
 
@@ -182,7 +163,8 @@
         android:layout_height="1dp"
         android:background="#D5D5D5"
         android:layout_below="@+id/layout_UserDelete"
-        android:id="@+id/line7"/>
+        android:id="@+id/line6"/>
+
 
 
 </RelativeLayout>

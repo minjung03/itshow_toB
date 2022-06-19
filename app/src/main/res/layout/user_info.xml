@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -14,6 +16,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/image_settings"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/settings_icon"
@@ -31,11 +34,6 @@
                     android:id="@+id/user_info_Image"
                     android:src="@drawable/user_nomal"
                     android:onClick="onCilck"/>
-                <ImageView
-                    android:layout_width="50px"
-                    android:layout_height="50px"
-                    android:src="@drawable/image_edit"
-                    android:layout_gravity="bottom|right"/>
             </FrameLayout>
 
             <TextView
@@ -44,6 +42,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/user_info_name"
                 android:text="김민정"
                 android:gravity="center"
                 android:textSize="17sp" />
@@ -55,31 +54,20 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/star_full"
-                    android:id="@+id/star_1"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/star_full"
-                    android:id="@+id/star_2"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/star_full"
-                    android:id="@+id/star_3"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/star_half"
-                    android:id="@+id/star_4"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/star_empty"
-                    android:id="@+id/star_5"/>
+
+                <com.willy.ratingbar.BaseRatingBar
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srb_starWidth="20dp"
+                    app:srb_starHeight="20dp"
+                    app:srb_numStars="5"
+                    app:srb_rating="4.5"
+                    app:srb_isIndicator="true"
+                    app:srb_stepSize="0.5"
+                    app:srb_drawableEmpty="@drawable/star_empty"
+                    app:srb_drawableFilled="@drawable/star_full"
+                    />
             </LinearLayout>
 
 
@@ -111,7 +99,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="0.1dp"
+                    android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B"/>
 
@@ -137,7 +125,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="0.1dp"
+                    android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B"/>
 
@@ -164,24 +152,22 @@
 
             </LinearLayout>
 
-            <view
-                android:layout_width="330dp"
-                android:layout_height="1px"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:background="#4B4B4B"/>
+<!--            <view-->
+<!--                android:layout_width="330dp"-->
+<!--                android:layout_height="1px"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="20dp"-->
+<!--                android:background="#4B4B4B"/>-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recyceler_view"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"-->
+<!--                />-->
 
         </LinearLayout>
     </ScrollView>
-
-
-
-
 </LinearLayout>
