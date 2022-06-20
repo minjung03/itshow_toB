@@ -32,6 +32,7 @@ import java.util.*
 
 class Fragment5() : Fragment() {
 
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -40,11 +41,74 @@ class Fragment5() : Fragment() {
 
         Log.d("TOB", "카테고리 문구 들어옴")
 
+        var mAdapter : MainCustomAdapter
+        val retrofit = Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+        //recyclerview
         val view = inflater.inflate(R.layout.main_recycler, container, false)
         val recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_view_main)
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL )
+        recyclerView_main.layoutManager = staggeredGridLayoutManager
 
-        //recyclerView_main에다가 생활 카테고리 글 리스트를 세팅해줌
-        getRecruitmentItemList(recyclerView_main, "문구", activity as Context)
+        val apiService = retrofit.create(RecruitmentAPIService::class.java)
+        var apiCallForData = apiService.getCategoryRecruitment("문구")
+
+
+        apiCallForData.enqueue(object : Callback<JsonArray> {
+            override fun onFailure(call: Call<JsonArray>, t: Throwable) {
+                Log.d("에러 발생", t.message.toString())
+            }
+
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
+                val data = response.body() // 역직렬화를 통해 생성된 객체를 반환받음. RecruitmentAPIJSONResponseFromGSON타입의 객체임.
+
+                if(data != null){
+
+                    val gson = Gson()
+                    var mainList = arrayListOf<MainData>();
+
+                    for (i in 0 until data.size()){
+
+                        val recruitmentData = gson.fromJson(data.get(i).toString(), RecruitmentDatas::class.java)
+
+                        val r_no = recruitmentData.r_no
+                        val title = recruitmentData.r_title.toString()
+                        val email = recruitmentData.u_email.toString()
+                        var content = recruitmentData.r_content?.toString()
+                        var minPrice = ""
+                        if(recruitmentData.r_minPrice.toString().length == 0){ minPrice = "" }
+                        val format = DecimalFormat("###,###")
+                        minPrice = format.format(recruitmentData.r_minPrice.toString().toLong()) + "원"
+
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+
+                        val endDate = dateFormat.parse(recruitmentData.r_endDate).time
+                        val today = Calendar.getInstance().apply {
+                            set(Calendar.HOUR_OF_DAY, 0)
+                            set(Calendar.MINUTE, 0)
+                            set(Calendar.SECOND, 0)
+                            set(Calendar.MILLISECOND, 0)
+                        }.time.time
+
+                        val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
+                        val location = recruitmentData.r_location
+
+                        if(content.length >= 40){
+                            content = content.substring(0,40)+"...";
+                        }
+
+                        mainList.add(MainData(r_no, email, title, minPrice, content, location,date))
+
+                    }
+                    mAdapter = MainCustomAdapter(activity as Context, mainList)
+                    recyclerView_main.adapter = mAdapter
+                }
+            }
+        })
         return view
     }
 

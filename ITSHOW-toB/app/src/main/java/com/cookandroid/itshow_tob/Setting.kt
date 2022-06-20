@@ -1,55 +1,52 @@
 package com.cookandroid.itshow_tob
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import okhttp3.ResponseBody
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.regex.Pattern
 
 class Setting : AppCompatActivity() {
     val TAG = "dahuin"
     var message : String = ""
+    var auth : FirebaseAuth? = null
 
+    private var mAuth: FirebaseAuth? = null
+
+    private val RC_SIGN_IN = 9001
 /*
     //회원의 정보를 모두 삭제하는 코드
     fun delete_userInfo(apiService: UserAPIService):String{
-
         //로딩창 객체 생성
         val loadingDialog = LoadingDialog(this)
         //투명하게
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         //정보 삭제 수행
         val u_email = "s2007@e-mirim.hs.kr" //temp. 항상 저장된 아이디를 가져와야함.
         var message = "계정 정보 삭제에 실패했습니다."
-
         //로그인이 돼있을경우
         if(!u_email.isBlank()) {
             //특정 사용자의 모든 정보를 삭제하는 코드
             val apiCallForData = apiService.deleteUser(u_email)
-
             apiCallForData.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.d(TAG, "실패 ${t.message}")
                     loadingDialog.dismiss()
                 }
-
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     Log.d(TAG, "성공 ${response.raw()}")
                     message = "모든 정보가 삭제되었습니다."
@@ -57,14 +54,11 @@ class Setting : AppCompatActivity() {
                     Log.d(TAG, "성공 $message")
                 }
             })
-
         }
         else {
             message = "로그인 되어있지 않습니다."
         }
-
         Log.d(TAG, "성공 $message")
-
         return message
     }
 */
@@ -163,19 +157,25 @@ class Setting : AppCompatActivity() {
 
     }
 
+    private var googleSignInClient: GoogleSignInClient? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.setting)
 
-         val img_SettingBack = findViewById<ImageView>(R.id.img_SettingBack)
-         val switch_appPush= findViewById<Switch>(R.id.switch_appPush)
-         val btn_name_edit = findViewById<Button>(R.id.btn_name_edit)
-         val btn_Help = findViewById<Button>(R.id.btn_Help)
-         val btn_UserDelete= findViewById<Button>(R.id.btn_UserDelete)
+        mAuth = FirebaseAuth.getInstance();
+
+        val img_SettingBack = findViewById<ImageView>(R.id.img_SettingBack)
+        val switch_appPush= findViewById<Switch>(R.id.switch_appPush)
+        val btn_name_edit = findViewById<Button>(R.id.btn_name_edit)
+        val btn_Help = findViewById<Button>(R.id.btn_Help)
+        val btn_UserDelete= findViewById<Button>(R.id.btn_UserDelete)
+        val btn_logout = findViewById<Button>(R.id.btn_logout)
 
         // 뒤로가기 버튼 (내 프로필 화면으로 이동)
         img_SettingBack.setOnClickListener(View.OnClickListener {
-                finish()
+            finish()
+
         })
 
         //알림은 일단 보류
@@ -187,6 +187,19 @@ class Setting : AppCompatActivity() {
             }
         }
 
+        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("611009617491-76ved3mmhklfcbbh1d73j11bfbjpu68q.apps.googleusercontent.com")
+                .requestEmail()
+                .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        btn_logout.setOnClickListener(View.OnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            googleSignInClient?.signOut()?.addOnCompleteListener {
+                this.finish()
+            }
+        })
+
         //정보창
         val infoView = layoutInflater.inflate(R.layout.dialog_information, null)
         val textContent_info = infoView.findViewById<TextView>(R.id.textContent)
@@ -195,6 +208,11 @@ class Setting : AppCompatActivity() {
         btnOk_info.setOnClickListener{infoDialog.dismiss()}
 
         //apiService 생성
+        val retrofit = Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
         val apiService = retrofit.create(UserAPIService::class.java)
 
         //닉네임 변경
@@ -260,7 +278,7 @@ class Setting : AppCompatActivity() {
         }
 
 
-
         btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
     }
+
 }

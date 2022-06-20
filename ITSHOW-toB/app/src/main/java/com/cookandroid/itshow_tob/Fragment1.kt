@@ -1,6 +1,7 @@
 package com.cookandroid.itshow_tob
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -30,8 +31,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-
-
 class Fragment1() : Fragment() {
 
     override fun onCreateView(
@@ -41,6 +40,8 @@ class Fragment1() : Fragment() {
     {
         Log.d("TOB", "카테고리 전체 들어옴")
 
+        var count = ""
+        var togle = ""
         var mAdapter : MainCustomAdapter
         val retrofit = Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
@@ -55,6 +56,7 @@ class Fragment1() : Fragment() {
 
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
         var apiCallForData = apiService.getRecruitmentList()
+        val apiService2 = retrofit.create(Post::class.java)
 
         apiCallForData.enqueue(object : Callback<JsonArray> {
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
@@ -75,9 +77,9 @@ class Fragment1() : Fragment() {
                         val recruitmentData = gson.fromJson(data.get(i).toString(), RecruitmentDatas::class.java)
 
                         val r_no = recruitmentData.r_no
-                        val title = recruitmentData.r_title
-                        val content = recruitmentData.r_content
-                        val imgPath = recruitmentData.r_imgPath
+                        val title = recruitmentData.r_title.toString()
+                        val email = recruitmentData.u_email.toString()
+                        var content = recruitmentData.r_content?.toString()
                         var minPrice = ""
                         if(recruitmentData.r_minPrice.toString().length == 0){ minPrice = "" }
                         val format = DecimalFormat("###,###")
@@ -93,11 +95,14 @@ class Fragment1() : Fragment() {
                             set(Calendar.MILLISECOND, 0)
                         }.time.time
 
-                        val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
+                        val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)+1).toString()+"일"
                         val location = recruitmentData.r_location
 
-                        mainList.add(MainData(r_no, title, minPrice, content, location, 0, date, imgPath))
+                        if(content.length >= 40){
+                            content = content.substring(0,40)+"...";
+                        }
 
+                        mainList.add(MainData(r_no, email, title, minPrice, content, location, date))
                     }
                     mAdapter = MainCustomAdapter(activity as Context, mainList)
                     recyclerView_main.adapter = mAdapter

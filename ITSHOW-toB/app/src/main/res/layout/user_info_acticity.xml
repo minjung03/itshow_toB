@@ -14,13 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <ImageView
-                android:id="@+id/img_UserInfogBack"
+                android:id="@+id/image_settings"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:layout_margin="30dp"
-                android:src="@drawable/arrow_blue" />
+                android:src="@drawable/settings_icon" />
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,8 +56,8 @@
                 android:layout_marginRight="30dp"
                 android:gravity="center">
 
-                <com.willy.ratingbar.BaseRatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/ratingbar_user"
+                <com.willy.ratingbar.BaseRatingBar
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srb_drawableEmpty="@drawable/star_empty"
@@ -68,12 +70,11 @@
                     app:srb_stepSize="0.5" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:gravity="center">
 
@@ -85,8 +86,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:src="@drawable/info_review" />
 
                     <TextView
@@ -113,8 +114,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:src="@drawable/follower" />
 
                     <TextView
@@ -141,8 +142,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:src="@drawable/follow" />
 
                     <TextView
@@ -155,31 +156,41 @@
                 </LinearLayout>
             </LinearLayout>
             <Button
-                android:id="@+id/btn_follow"
                 android:layout_width="150dp"
                 android:layout_height="30dp"
-                android:text="팔로우"
-                android:layout_margin="20dp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/button_circle1_light_blue"
+                android:text="언팔로우"
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:background="@drawable/button_round1_white_gray"
                 android:layout_gravity="center_horizontal"
                 />
-            <!--            <view-->
-            <!--                android:layout_width="330dp"-->
-            <!--                android:layout_height="1px"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_margin="20dp"-->
-            <!--                android:background="#4B4B4B"/>-->
 
-            <!--            <androidx.recyclerview.widget.RecyclerView-->
-            <!--                android:id="@+id/recyceler_view"-->
-            <!--                android:layout_marginLeft="30dp"-->
-            <!--                android:layout_marginRight="30dp"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"-->
-            <!--                />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:text="나의 게시글"
+                />
 
+            <View
+                android:layout_width="330dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="#4B4B4B"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyceler_user_recruitment"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

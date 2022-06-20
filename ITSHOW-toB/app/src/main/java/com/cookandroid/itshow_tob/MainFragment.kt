@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -33,7 +32,7 @@ class MainFragment : Fragment() {
         }
 
         val vp = view.findViewById<ViewPager>(R.id.main_viewPager)
-        val adapter = PagerAdapter(parentFragmentManager)
+        val adapter = PagerAdapter(childFragmentManager)
         adapter.addFragment(Fragment1(), "전체")
         adapter.addFragment(Fragment2(), "생활")
         adapter.addFragment(Fragment3(), "음식")
@@ -41,15 +40,6 @@ class MainFragment : Fragment() {
         adapter.addFragment(Fragment5(), "문구")
         adapter.addFragment(Fragment6(), "잡화")
         vp.adapter = adapter
-        Log.d(TAG, "오죠?")
-        vp.setCurrentItem(0)
-        vp.setCurrentItem(1)
-        vp.setCurrentItem(2)
-        vp.setCurrentItem(3)
-        vp.setCurrentItem(4)
-        vp.setCurrentItem(5)
-        vp.setCurrentItem(6)
-        vp.setCurrentItem(0)
 
         val tab = view.findViewById<TabLayout>(R.id.tabs)
         tab.setupWithViewPager(vp)
@@ -65,10 +55,5 @@ class MainFragment : Fragment() {
         for (i in 0..5) tab.getTabAt(i)!!.setIcon(images[i])
 
         return view
-    }
-
-    override fun onPause() {
-        super.onPause()
-
     }
 }

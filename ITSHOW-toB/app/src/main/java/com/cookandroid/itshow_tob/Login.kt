@@ -1,6 +1,6 @@
 package com.cookandroid.itshow_tob
 
-
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -65,11 +65,10 @@ class Login : AppCompatActivity() {
             val emailVerified = user.isEmailVerified
 
             val uid = user.uid
-            // Toast.makeText(this, email.toString(), Toast.LENGTH_LONG).show()
+            // Toast.makeText(this,  email.toString(), Toast.LENGTH_LONG).show()
             Log.d(TAG, "정보 가져옴 $email")
+
         }
-
-
     } // onCreate
 
     fun googleLogin() {
@@ -105,71 +104,66 @@ class Login : AppCompatActivity() {
 /*
                        var email_chk : List<String>
                        val user = auth!!.currentUser
-
                       user?.let {
                            email_chk = user.email.toString().split('@');
-
                            if (email_chk[1] != "e-mirim.hs.kr") {
                                Toast.makeText(this, "e-mirim.hs.kr 계정으로 로그인 해주세요", Toast.LENGTH_SHORT).show()
                                revokeAccess()
                                startActivity(Intent (this, Login::class.java))
-
                            }else {
 */
-                            if(task.isSuccessful) {
+                    if(task.isSuccessful) {
 
-                                // 로그인 성공 시
-                                val loadingDialog = LoadingDialog(this)
-                                //투명하게
-                                loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        // 로그인 성공 시
+                        val loadingDialog = LoadingDialog(this)
+                        //투명하게
+                        loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-                                val retrofit = Retrofit.Builder()
-                                        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                                        .addConverterFactory(GsonConverterFactory.create())
-                                        .build()
+                        val retrofit = Retrofit.Builder()
+                                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build()
 
-                                val apiService = retrofit.create(UserAPIService::class.java)
-                                loadingDialog.show()
+                        val apiService = retrofit.create(UserAPIService::class.java)
+                        loadingDialog.show()
 
-                                var name:String = "";
-                                var email:String = "";
-                                var img:String = "";
+                        var name:String = "";
+                        var email:String = "";
+                        var img:String = "";
 
-                                var email_chk : List<String>
-                                val user = auth!!.currentUser
+                        var email_chk : List<String>
+                        val user = auth!!.currentUser
 
-                                user?.let {
-                                    name = user.displayName.toString()
-                                    email = user.email.toString()
-                                    img = user.photoUrl.toString()
-                                }
-
-                                val apiCallForData = apiService.addUser(email, name, img)
-                                Log.d(TAG, "유저"+email)
-                                Log.d(TAG, "유저"+name)
-                                Log.d(TAG, "유저"+img)
-
-                                apiCallForData.enqueue(object: Callback<JsonArray>{
-                                    override fun onFailure(call: Call<JsonArray>, t: Throwable) {
-                                        Log.d(TAG, "실패 ${t.message}")
-                                        loadingDialog.dismiss()
-                                    }
-
-                                    override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                                        Log.d(TAG, "성공 ${response.raw()}")
-                                        loadingDialog.dismiss()
-                                    }
-                                })
-                                // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
-                                startActivity(Intent (this, FrameMain::class.java))
-
-                            } else {
-                                Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()
-                            }
+                        user?.let {
+                            name = user.displayName.toString()
+                            email = user.email.toString()
+                            img = user.photoUrl.toString()
                         }
-                    //}
 
-                //}
+                        val apiCallForData = apiService.addUser(email, name, img)
+                        Log.d(TAG, "유저"+email)
+                        Log.d(TAG, "유저"+name)
+                        Log.d(TAG, "유저"+img)
+
+                        apiCallForData.enqueue(object: Callback<JsonArray>{
+                            override fun onFailure(call: Call<JsonArray>, t: Throwable) {
+                                Log.d(TAG, "실패 ${t.message}")
+                                loadingDialog.dismiss()
+                            }
+
+                            override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
+                                Log.d(TAG, "성공 ${response.raw()}")
+                                loadingDialog.dismiss()
+                            }
+                        })
+                        // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
+                        startActivity(Intent (this, FrameMain::class.java))
+
+                    } else {
+                        Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+        //}
+        //}
     } //firebaseAuthWithGoogle
 }
-

@@ -2,12 +2,9 @@ package com.cookandroid.itshow_tob
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
 import android.widget.ImageButton
-import android.widget.TableLayout
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 
 class FrameMain : AppCompatActivity() {
 
@@ -18,11 +15,13 @@ class FrameMain : AppCompatActivity() {
 
         //프래그먼트들
         val fragmentSearch = Search()
-        val fragmentUserInfo= UserInfoFragment()
+        val fragmentMain= MainFragment()
+        val fragmentUserInfo= UserInfo()
+        val fragmentHearList = HeartList()
 
         //프래그먼트를 적용
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.frameLayout, MainFragment())
+        transaction.replace(R.id.frameLayout, fragmentMain)
         transaction.commit()
 
         val btn_home = findViewById<ImageButton>(R.id.btn_home)
@@ -33,15 +32,13 @@ class FrameMain : AppCompatActivity() {
 
         btn_home.setOnClickListener{
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frameLayout, MainFragment())
+            transaction.replace(R.id.frameLayout, fragmentMain)
             transaction.commit()
-
-//            val intent = Intent(this, FrameMain::class.java)
-//            startActivity(intent)
-
         }
         btn_dibs.setOnClickListener{
-
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.frameLayout, fragmentHearList)
+            transaction.commit()
         }
         btn_cheat_list.setOnClickListener{
 
