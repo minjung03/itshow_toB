@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' //loading
     implementation 'com.github.MomenZaq:custom_dialog:1.0'
     implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'

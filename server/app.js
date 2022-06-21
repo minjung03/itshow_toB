@@ -281,7 +281,97 @@ app.get('/follow/whether', (req, res) => {
 
 });
 
-//파일 업로드 test
+
+// ============= 찜 ============== //
+
+// 내가 찜한 글인지 체크
+app.get('/postlike-user', (req, res)=>{
+
+  const r_no = req.query.r_no?req.query.r_no:null;
+  const u_email = req.query.u_email?req.query.u_email:null;
+
+    console.log(r_no+ " "+u_email);
+      db.query(`select COUNT(*) as "" from post_like where r_no = ${r_no} and u_email = '${u_email}';`, function (error, results, fields) {
+        if (error) throw error;
+        if(results){ 
+          console.log(results)
+          res.send(results) }
+      });
+});
+
+// 게시글의 찜 초기 세팅
+app.get('/postlike', (req, res)=>{
+  const r_no = req.query.r_no?req.query.r_no:null;
+    console.log(r_no);
+
+      db.query(`select COUNT(*) as "" from post_like where r_no = ${r_no}`, function (error, results, fields) {
+        if (error) throw error;
+        if(results){ 
+          console.log(results)
+          res.send(results) }
+      });
+});
+
+// 찜 상태 갱신
+app.post("/postlikestate", (req, res)=>{
+
+  const {r_no, u_email} = req.body
+
+      db.query(`SELECT * FROM post_like WHERE u_email="${u_email}" AND r_no=${r_no}`, function (error, results, fields) {
+        if (error) throw error;
+        if(results){ 
+          if(results[0]){ 
+            db.query(`delete from post_like where r_no=${r_no} and u_email='${u_email}'`, function (error, results, fields) {
+              if (error) throw error;
+              if(results){ res.send("success") }
+            });
+
+          }else{
+            db.query(`INSERT into post_like values (${r_no}, '${u_email}')`, function (error, results, fields) {
+              if (error) throw error;
+              if(results){ res.send("success") }
+            });
+          }
+        }
+      });
+});
+
+
+// 유저의 찜 목록 가져오기
+app.get('/post-list', (req, res)=>{
+
+  const u_email = req.query.u_email?req.query.u_email:null;
+  const togle = req.query.togle?req.query.togle:null;
+	const select_query = `
+	SELECT p1.r_no, p1.u_email, cnt, r.* 
+		FROM (post_like as p1 JOIN 
+			(SELECT count(r_no) as cnt, r_no FROM post_like GROUP BY r_no) as p2
+			JOIN recruitment r
+			ON p1.r_no = p2.r_no AND p1.r_no = r.r_no)
+		WHERE p1.u_email="${u_email}"
+		ORDER BY cnt DESC;`;
+
+    if(togle == 0){ // 인기
+        db.query(select_query, function (error, results) {
+						if (error) throw error;
+          if(results){
+            console.log("togle "+togle);
+            res.send(results)
+          }
+        });
+      } else {// 최근
+        db.query(`select * from recruitment, post_like where recruitment.r_no = post_like.r_no and post_like.u_email = '${u_email}' order by r_startDate desc`, function (error, results) {
+					if (error) throw error;
+          if(results){
+            console.log("togle "+togle);
+            res.send(results)
+          }
+        });
+      }
+});
+
+
+// ========= 이미지 업로드 ========= //
 const multer = require('multer');
 const crypto = require('crypto');
 const fs = require('fs');

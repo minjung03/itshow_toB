@@ -4,12 +4,13 @@ import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ceylonlabs.imageviewpopup.ImagePopup
 import com.cookandroid.itshow_tob.databinding.FragmentChatBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -57,6 +58,14 @@ class ChatActivity: AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rv_list.setLayoutManager(linearLayoutManager)
+
+        //지도 보기
+        val text_view_map = findViewById<TextView>(R.id.text_view_map)
+        text_view_map.setOnClickListener{
+            val imagePopup = ImagePopup(this)
+            imagePopup.initiatePopup(getDrawable(R.drawable.view_map))
+            imagePopup.viewPopup()
+        }
 
         // 사용자가 들어가 있는 방 번호 얻기
         val user = auth!!.currentUser
