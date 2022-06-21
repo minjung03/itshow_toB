@@ -191,10 +191,6 @@ class Search : AppCompatActivity() {
             btn_popularitySearch.setTextColor(Color.parseColor("#000000"))
 
             //특정 사용자의 최근 검색어를 가져옴
-            val retrofit = Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
             val apiService = retrofit.create(SearchAPIService::class.java)
             loadingDialog.show()
             val apiCallForData = apiService.searchRecent(u_email)

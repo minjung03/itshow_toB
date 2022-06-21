@@ -67,9 +67,11 @@ class Login : AppCompatActivity() {
             val uid = user.uid
             // Toast.makeText(this, email.toString(), Toast.LENGTH_LONG).show()
             Log.d(TAG, "정보 가져옴 $email")
+
+            USER_NAME = name?:""
+            USER_EMAIL = email?:""
+            USER_IMG = photoUrl.toString()
         }
-
-
     } // onCreate
 
     fun googleLogin() {
@@ -122,11 +124,6 @@ class Login : AppCompatActivity() {
                                 val loadingDialog = LoadingDialog(this)
                                 //투명하게
                                 loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-                                val retrofit = Retrofit.Builder()
-                                        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                                        .addConverterFactory(GsonConverterFactory.create())
-                                        .build()
 
                                 val apiService = retrofit.create(UserAPIService::class.java)
                                 loadingDialog.show()

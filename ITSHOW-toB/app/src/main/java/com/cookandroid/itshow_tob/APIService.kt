@@ -11,8 +11,8 @@ import retrofit2.http.*
 
 
 val retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-//        .baseUrl("https://tob.emirim.kr")
+//        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+        .baseUrl("https://tob.emirim.kr")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -37,7 +37,7 @@ interface RecruitmentAPIService {
     ):Call<createRecruitmentDatas>
 
     //카테고리별 게시글 가져오기
-    @POST("/recruitment-category")
+    @GET("/recruitment-category")
     fun getCategoryRecruitment(
             @Query("category") category:String
     ):Call<JsonArray>

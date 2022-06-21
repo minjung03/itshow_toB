@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
         }
 
         val vp = view.findViewById<ViewPager>(R.id.main_viewPager)
-        val adapter = PagerAdapter(parentFragmentManager)
+        val adapter = PagerAdapter(childFragmentManager)
         adapter.addFragment(Fragment1(), "전체")
         adapter.addFragment(Fragment2(), "생활")
         adapter.addFragment(Fragment3(), "음식")
