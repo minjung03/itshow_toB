@@ -16,18 +16,27 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 val TAG = "ToB";
-var USER_EMAIL = "s2001@e-mirim.hs.kr"
-var USER_NAME = "김다흰"
-var USER_STAR = 0.0
+var auth: FirebaseAuth? = FirebaseAuth.getInstance()
+var USER_EMAIL = auth?.currentUser?.email.toString()
+var USER_NAME = auth?.currentUser?.displayName.toString()
 var USER_IMG = ""
 
+val retrofit = Retrofit.Builder()
+        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
 //Fragment1~6에서 사용하는 코드
-fun getRecruitmentItemList(recyclerView_main: RecyclerView, category:String, activity: Context){
-    var mAdapter : MainCustomAdapter
+fun getRecruitmentItemList(recyclerView_main: RecyclerView, category:String, activity: Context) {
+    var mAdapter: MainCustomAdapter
 
     //recyclerview
-    val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL )
+    val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
     recyclerView_main.layoutManager = staggeredGridLayoutManager
 
     val apiService = retrofit.create(RecruitmentAPIService::class.java)
@@ -42,22 +51,25 @@ fun getRecruitmentItemList(recyclerView_main: RecyclerView, category:String, act
         override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
             val data = response.body() // 역직렬화를 통해 생성된 객체를 반환받음. RecruitmentAPIJSONResponseFromGSON타입의 객체임.
 
-            if(data != null){
+            if (data != null) {
 
                 val gson = Gson()
                 var mainList = arrayListOf<MainData>();
 
-                for (i in 0 until data.size()){
+                for (i in 0 until data.size()) {
 
                     val recruitmentData = gson.fromJson(data.get(i).toString(), RecruitmentDatas::class.java)
 
                     val r_no = recruitmentData.r_no
                     val title = recruitmentData.r_title.toString()
-                    val content = recruitmentData.r_content?.toString()
+                    var content = recruitmentData.r_content?.toString()
                     val imgPath = recruitmentData.r_imgPath?.toString()
+                    val email = recruitmentData.u_email.toString()
 
                     var minPrice = ""
-                    if(recruitmentData.r_minPrice.toString().length == 0){ minPrice = "" }
+                    if (recruitmentData.r_minPrice.toString().length == 0) {
+                        minPrice = ""
+                    }
                     val format = DecimalFormat("###,###")
                     minPrice = format.format(recruitmentData.r_minPrice.toString().toLong()) + "원"
 
@@ -71,10 +83,14 @@ fun getRecruitmentItemList(recyclerView_main: RecyclerView, category:String, act
                         set(Calendar.MILLISECOND, 0)
                     }.time.time
 
-                    val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
+                    val date = "~" + ((endDate - today) / (24 * 60 * 60 * 1000)).toString() + "일"
                     val location = recruitmentData.r_location
 
-                    mainList.add(MainData(r_no, title, minPrice, content, location, 0, date,imgPath))
+                    if(content.length >= 30){
+                        content = content.substring(0,30)+"...";
+                    }
+
+                    mainList.add(MainData(r_no, email, title, minPrice, content, location, date, imgPath))
 
                 }
                 mAdapter = MainCustomAdapter(activity, mainList)

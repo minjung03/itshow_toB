@@ -47,6 +47,7 @@
                 android:textSize="17sp" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -68,16 +69,30 @@
                     app:srb_stepSize="0.5" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp">
+                <Button
+                    android:id="@+id/btn_follow"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:text="팔로우"
+                    android:layout_margin="20dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/button_circle1_light_blue" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
                 android:gravity="center">
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/layout_review_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,6 +114,7 @@
                 </LinearLayout>
 
                 <View
+                    android:visibility="gone"
                     android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B" />
@@ -107,8 +123,6 @@
                     android:id="@+id/layout_follower_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -127,6 +141,8 @@
                 </LinearLayout>
 
                 <View
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:background="#4B4B4B" />
@@ -136,7 +152,6 @@
                     android:id="@+id/layout_following_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -154,32 +169,32 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
-            <Button
-                android:id="@+id/btn_follow"
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:text="팔로우"
-                android:layout_margin="20dp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/button_circle1_light_blue"
-                android:layout_gravity="center_horizontal"
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="40dp"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:text="작성한 게시글"/>
+
+            <View
+                android:layout_width="330dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="#4B4B4B"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyceler_auther_recruitment"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 />
-            <!--            <view-->
-            <!--                android:layout_width="330dp"-->
-            <!--                android:layout_height="1px"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_margin="20dp"-->
-            <!--                android:background="#4B4B4B"/>-->
-
-            <!--            <androidx.recyclerview.widget.RecyclerView-->
-            <!--                android:id="@+id/recyceler_view"-->
-            <!--                android:layout_marginLeft="30dp"-->
-            <!--                android:layout_marginRight="30dp"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"-->
-            <!--                />-->
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

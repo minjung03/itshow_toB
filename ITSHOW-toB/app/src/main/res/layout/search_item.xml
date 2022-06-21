@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_horizontal"
-    android:background="#00000000"
-    >
+    android:background="#00000000">
 
     <Button
         android:id="@+id/item_button"
@@ -15,9 +14,12 @@
         android:layout_height="30dp"
         android:background="@drawable/button_round1_white"
         android:gravity="center"
-        android:layout_marginLeft="10dp"
+        android:layout_margin="3dp"
         android:text="text"
-        android:textSize="12dp"
-        style="@style/roundBtnBasic1"/>
+        style="@style/roundBtnBasic1"
+        android:textSize="12dp"/>
+
+    <!--
+        style="@style/roundBtnBasic1" -->
 
 </LinearLayout>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cookandroid.itshow_tob">
     <!-- 안드로이드 앱이 인터넷이 접속할 수 있도록 허용 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 저장소 파일 접근 권한 추가(글작성시에 이미지 파일을 불러옵니다 :) ) -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -19,29 +21,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".UserInfoActicity"
-            android:exported="false" />
-        <activity android:name=".FollowList"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpContent" />
-        <activity android:name=".FrameMain" >
-
-        </activity>
-        <activity android:name=".Review" />
+        <activity android:name=".HelpContent"/>
+        <activity android:name=".Review"/>
+        <activity android:name=".ChatActivity"/>
         <activity android:name=".Search" />
-        <activity android:name=".WriteRecruitment" />
+        <activity android:name=".WriteRecruitment"/>
         <activity android:name=".Login" />
+        <activity android:name=".FrameMain"/>
         <activity android:name=".Join" />
-        <activity android:name=".Setting" />
-        <activity android:name=".Chatroom" />
-        <activity android:name=".DetailsRecruitment" /> <!-- 사진 저장 관련 -->
+        <activity android:name=".UserInfoActicity"/>
+        <activity android:name=".FollowList"/>
+        <activity android:name=".Setting"/>
+        <activity android:name=".DetailsRecruitment"/> <!-- 사진 저장 관련 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.cookandroid.itshow_tob"
@@ -51,6 +49,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+<!--        <serviceMyFirebaseMessagingService
+            android:name="."
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </serviceMyFirebaseMessagingService>-->
     </application>
 
 </manifest>
+

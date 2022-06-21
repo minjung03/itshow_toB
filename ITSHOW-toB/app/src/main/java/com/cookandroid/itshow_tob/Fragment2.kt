@@ -42,7 +42,7 @@ class Fragment2() : Fragment() {
         Log.d("TOB", "카테고리 생활 들어옴")
         val view = inflater.inflate(R.layout.main_recycler, container, false)
         val recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_view_main)
-        
+
         //recyclerView_main에다가 카테고리 글 리스트를 세팅해줌
         getRecruitmentItemList(recyclerView_main, "생활", activity as Context)
 

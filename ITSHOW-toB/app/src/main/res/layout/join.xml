@@ -6,77 +6,80 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp">
 
         <ImageView
+            android:id="@+id/img_JoinBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/arrow_blue"
-            android:id="@+id/img_JoinBack"/>
+            android:src="@drawable/arrow_blue" />
 
         <RelativeLayout
-            android:layout_marginTop="70dp"
             android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="70dp">
 
             <TextView
-                android:padding="45dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="35sp"
-                android:textColor="#2163E8"
-                android:textStyle="bold"
-                android:gravity="center"
                 android:id="@+id/Join_Title"
-                android:text="Join"/>
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:padding="13dp"
-                android:hint="이름"
-                android:textColorHint="#A3A3A3"
-                android:textSize="13sp"
+                android:gravity="center"
+                android:padding="45dp"
+                android:text="Join"
+                android:textColor="#2163E8"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <EditText
                 android:id="@+id/Name_Join_Edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/Join_Title"
-                android:background="@drawable/login_edit_style"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
-                android:id="@+id/Id_Join_Edit"
+                android:background="@drawable/login_edit_style"
+                android:hint="이름"
                 android:padding="13dp"
-                android:hint="아이디"
                 android:textColorHint="#A3A3A3"
-                android:textSize="13sp"
-                android:layout_below="@+id/Name_Join_Edit"
-                android:background="@drawable/login_edit_style"/>
+                android:textSize="13sp" />
 
             <EditText
+                android:id="@+id/Id_Join_Edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="45dp"
-                android:id="@+id/Pass_Join_Edit"
+                android:layout_below="@+id/Name_Join_Edit"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/login_edit_style"
+                android:hint="아이디"
                 android:padding="13dp"
-                android:hint="비밀번호"
                 android:textColorHint="#A3A3A3"
-                android:textSize="13sp"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/Pass_Join_Edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/Id_Join_Edit"
-                android:background="@drawable/login_edit_style"/>
+                android:layout_marginBottom="45dp"
+                android:background="@drawable/login_edit_style"
+                android:hint="비밀번호"
+                android:padding="13dp"
+                android:textColorHint="#A3A3A3"
+                android:textSize="13sp" />
 
             <Button
+                android:id="@+id/btn_Join"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="회원 가입"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:id="@+id/btn_Join"
                 android:layout_below="@+id/Pass_Join_Edit"
-                android:background="@drawable/login_button_style"/>
+                android:background="@drawable/login_button_style"
+                android:text="회원 가입"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

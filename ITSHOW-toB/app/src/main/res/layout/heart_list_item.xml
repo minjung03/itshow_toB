@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/user_item_style"
+    android:layout_marginBottom="5dp">
+
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_Title"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="[급구] 크리넥스 휴지 120롤 나눠사실 분!!" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_Title"
+            android:gravity="center"
+            android:id="@+id/layout_minPrice"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_titlePrice"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_below="@+id/item_Title"
+                android:textSize="7sp"
+                android:padding="4dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/main_item_minprice_style"
+                android:text="최소 가격"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_minPrice"
+                android:gravity="bottom"
+                android:textSize="16sp"
+                android:text="15,000원"
+                android:layout_toRightOf="@+id/item_titlePrice"
+                android:layout_below="@+id/item_Title"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="크리넥스 30롤 4개 4만원에 판매하는거 나눠사실 분 채팅주세요 :) 사이트는 아래 첨부"
+            android:layout_below="@+id/layout_minPrice"
+            android:layout_marginTop="5dp"
+            android:id="@+id/item_textDetail"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/item_textDetail">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/map_icon"
+                android:layout_marginRight="3dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_locationUser"
+                android:text="미림 3동"
+                android:textSize="13sp"
+                android:layout_marginRight="4dp"/>
+
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/heart"
+                android:layout_marginRight="3dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_heartUser"
+                android:text="100"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="~18일"
+                android:textSize="15sp"
+                android:gravity="right"
+                android:id="@+id/item_date"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

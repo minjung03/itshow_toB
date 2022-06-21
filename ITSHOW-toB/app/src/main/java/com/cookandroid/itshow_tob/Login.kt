@@ -1,6 +1,6 @@
 package com.cookandroid.itshow_tob
 
-
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -65,12 +65,9 @@ class Login : AppCompatActivity() {
             val emailVerified = user.isEmailVerified
 
             val uid = user.uid
-            // Toast.makeText(this, email.toString(), Toast.LENGTH_LONG).show()
+            // Toast.makeText(this,  email.toString(), Toast.LENGTH_LONG).show()
             Log.d(TAG, "정보 가져옴 $email")
 
-            USER_NAME = name?:""
-            USER_EMAIL = email?:""
-            USER_IMG = photoUrl.toString()
         }
     } // onCreate
 
@@ -92,47 +89,53 @@ class Login : AppCompatActivity() {
         } //if
     } // onActivityResult
 
-    // 유저 로그아웃
-    private fun signOut() {
-        FirebaseAuth.getInstance().signOut()
-    }
     private fun revokeAccess() {
         auth?.getCurrentUser()?.delete()
     }
+
+    private fun signOut() {
+        FirebaseAuth.getInstance().signOut()
+        googleSignInClient?.signOut()?.addOnCompleteListener {
+            this.finish()
+        }
+    }
+
     fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
         var credential = GoogleAuthProvider.getCredential(account?.idToken, null)
         auth?.signInWithCredential(credential)
                 ?.addOnCompleteListener {
                     task ->
-/*
-                       var email_chk : List<String>
-                       val user = auth!!.currentUser
+                    if(task.isSuccessful) {
 
-                      user?.let {
-                           email_chk = user.email.toString().split('@');
+                        var email_chk : List<String>
+                        val user = auth!!.currentUser
+                        user?.let {
+                            email_chk = user.email.toString().split('@');
+                            if (email_chk[1] != "e-mirim.hs.kr") {
+                                Toast.makeText(this, "e-mirim.hs.kr 계정으로 로그인 해주세요", Toast.LENGTH_SHORT).show()
+                                signOut()
+                                startActivity(Intent(this, Login::class.java))
 
-                           if (email_chk[1] != "e-mirim.hs.kr") {
-                               Toast.makeText(this, "e-mirim.hs.kr 계정으로 로그인 해주세요", Toast.LENGTH_SHORT).show()
-                               revokeAccess()
-                               startActivity(Intent (this, Login::class.java))
-
-                           }else {
-*/
-                            if(task.isSuccessful) {
+                            } else {
 
                                 // 로그인 성공 시
                                 val loadingDialog = LoadingDialog(this)
                                 //투명하게
                                 loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+                                val retrofit = Retrofit.Builder()
+                                        .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
+                                        .addConverterFactory(GsonConverterFactory.create())
+                                        .build()
+
                                 val apiService = retrofit.create(UserAPIService::class.java)
                                 loadingDialog.show()
 
-                                var name:String = "";
-                                var email:String = "";
-                                var img:String = "";
+                                var name: String = "";
+                                var email: String = "";
+                                var img: String = "";
 
-                                var email_chk : List<String>
+                                var email_chk: List<String>
                                 val user = auth!!.currentUser
 
                                 user?.let {
@@ -142,11 +145,11 @@ class Login : AppCompatActivity() {
                                 }
 
                                 val apiCallForData = apiService.addUser(email, name, img)
-                                Log.d(TAG, "유저"+email)
-                                Log.d(TAG, "유저"+name)
-                                Log.d(TAG, "유저"+img)
+                                Log.d(TAG, "유저" + email)
+                                Log.d(TAG, "유저" + name)
+                                Log.d(TAG, "유저" + img)
 
-                                apiCallForData.enqueue(object: Callback<JsonArray>{
+                                apiCallForData.enqueue(object : Callback<JsonArray> {
                                     override fun onFailure(call: Call<JsonArray>, t: Throwable) {
                                         Log.d(TAG, "실패 ${t.message}")
                                         loadingDialog.dismiss()
@@ -158,15 +161,15 @@ class Login : AppCompatActivity() {
                                     }
                                 })
                                 // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
-                                startActivity(Intent (this, FrameMain::class.java))
-
-                            } else {
-                                Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, FrameMain::class.java))
                             }
                         }
-                    //}
 
-                //}
+                    } else {
+                        Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+        //}
+        //}
     } //firebaseAuthWithGoogle
 }
-
