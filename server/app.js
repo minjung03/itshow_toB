@@ -17,14 +17,11 @@ app.get('/', (req, res) => {
 	res.end('안녕 노드?dddddd333\n');
 });
 
+// 정적 파일 불러오기
+app.use(express.static(__dirname + "/web"));
 
-app.get('/test', (req, res) => {
-	console.log('옴');
-	db.query('select * from `user`', (error, results) => {
-		if (error) throw error;
-		console.log('results:', results);
-		res.send(results);
-	});
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/web/index.html");
 });
 
 // ========= 게시글 관련 ========= //
