@@ -1,5 +1,6 @@
 package com.cookandroid.itshow_tob
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -7,15 +8,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.itshow_tob.databinding.SearchBinding
+import androidx.core.app.ComponentActivity.ExtraData
 import android.os.Build.VERSION_CODES.O
+import com.cookandroid.itshow_tob.Search
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Build
+import android.os.PersistableBundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.cookandroid.itshow_tob.databinding.WriteRecruitmentBinding
 import com.google.android.flexbox.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -28,6 +38,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -49,8 +61,11 @@ class Search : AppCompatActivity() {
         val btn_search= findViewById<Button>(R.id.btn_search)
         val btn_recentlySearch = findViewById<Button>(R.id.btn_recentlySearch)
         val btn_popularitySearch = findViewById<Button>(R.id.btn_popularitySearch)
+        val img_SearchBack = findViewById<ImageView>(R.id.img_SearchBack)
 
-        val u_email = "s2003@e-mirim.hs.kr" //temp
+        img_SearchBack.setOnClickListener(View.OnClickListener{
+            finish()
+        })
 
         //정보창
         val infoView = layoutInflater.inflate(R.layout.dialog_information, null)
@@ -93,9 +108,10 @@ class Search : AppCompatActivity() {
                 val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL )
                 recyclerSearchRecruitment.layoutManager = staggeredGridLayoutManager
 
-
                 // 게시글 검색
                 val apiCallSearchData = apiService.recruitmentSearch(edit_search.text.toString())
+                Log.d("ToB sdsd", edit_search.text.toString())
+
                 apiCallSearchData.enqueue(object : Callback<JsonArray> {
                     override fun onFailure(call: Call<JsonArray>, t: Throwable) {
                         Toast.makeText(this@Search, "에러 발생 ${t.message}", Toast.LENGTH_SHORT).show()
@@ -110,6 +126,8 @@ class Search : AppCompatActivity() {
                             //api가 처음부터 리스트의 형태로 되어있어서 리스트의 첫 번째 값을 가져온후 RecruitmentDatas에서 선언한 변수와 자동 매핑해준다.
                             val gson = Gson()
 
+                            Log.d("ToB sdsd", "들어옴")
+
                             var mainList = arrayListOf<MainData>();
 
                             for (i in 0 until data.size()){
@@ -118,6 +136,7 @@ class Search : AppCompatActivity() {
 
                                 val r_no = recruitmentData.r_no
                                 val title = recruitmentData.r_title.toString()
+                                val email = recruitmentData.u_email.toString()
                                 val content = recruitmentData.r_content?.toString()
                                 val imgPath = recruitmentData.r_imgPath?.toString()
                                 var minPrice = ""
@@ -137,16 +156,15 @@ class Search : AppCompatActivity() {
 
                                 val date = "~"+((endDate - today) / (24 * 60 * 60 * 1000)).toString()+"일"
                                 val location = recruitmentData.r_location
-                                mainList.add(MainData(r_no, title, minPrice, content, location, 0, date, imgPath))
+                                mainList.add(MainData(r_no, email, title, minPrice, content, location, date, imgPath))
                             }
                             recyclerSearchRecruitment.adapter = MainCustomAdapter(this@Search, mainList)
-                            (recyclerSearchRecruitment.adapter as MainCustomAdapter).notifyItemChanged(2)
                         }
                     }
                 })
 
                 // 검색어 저장
-                val apiCallForData = apiService.newSearchWord(CreateSearchWord(u_email, (edit_search.text.toString()).trim()))
+                val apiCallForData = apiService.newSearchWord(CreateSearchWord(USER_EMAIL, (edit_search.text.toString()).trim()))
                 // 검색어 저장
                 apiCallForData.enqueue(object : Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -185,15 +203,14 @@ class Search : AppCompatActivity() {
             loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             //버튼 색 바꾸기
-            btn_recentlySearch.setBackgroundResource(R.drawable.button_round1_gray)
+            btn_recentlySearch.setBackgroundResource(R.drawable.button_round1_blue)
             btn_recentlySearch.setTextColor(Color.parseColor("#FFFFFF"))
             btn_popularitySearch.setBackgroundResource((R.drawable.button_round1_white))
             btn_popularitySearch.setTextColor(Color.parseColor("#000000"))
 
-            //특정 사용자의 최근 검색어를 가져옴
             val apiService = retrofit.create(SearchAPIService::class.java)
             loadingDialog.show()
-            val apiCallForData = apiService.searchRecent(u_email)
+            val apiCallForData = apiService.searchRecent(USER_EMAIL)
 
             apiCallForData.enqueue(object : Callback<JsonArray> {
                 override fun onFailure(call: Call<JsonArray>, t: Throwable) {
@@ -213,11 +230,10 @@ class Search : AppCompatActivity() {
                         val searchWordList:ArrayList<SearchWord> = arrayListOf()
                         Log.d("ToB", data.toString())
                         var len = data.size()
-                        if(len > 5) len = 5
+                        if(len > 8) len = 8
                         for(idx in 0 until len){//최대 5개
                             searchWordList.add(SearchWord(gson.fromJson(data.get(idx).toString(), SearchWordData::class.java).s_word))
                         }
-
                         binding.recycelerView.adapter = SearchAdapter(searchWordList)
                     }
                     loadingDialog.dismiss()
@@ -231,13 +247,12 @@ class Search : AppCompatActivity() {
             val loadingDialog = LoadingDialog(this)
             //투명하게
             loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            btn_popularitySearch.setBackgroundResource(R.drawable.button_round1_gray)
+            btn_popularitySearch.setBackgroundResource(R.drawable.button_round1_blue)
             btn_popularitySearch.setTextColor(Color.parseColor("#FFFFFF"))
             btn_recentlySearch.setBackgroundResource((R.drawable.button_round1_white))
             btn_recentlySearch.setTextColor(Color.parseColor("#000000"))
             //버튼에 따른 키워드
 
-            //인기검색어
             val apiService = retrofit.create(SearchAPIService::class.java)
             loadingDialog.show()
             val apiCallForData = apiService.searchPopular()
@@ -247,7 +262,6 @@ class Search : AppCompatActivity() {
                     Toast.makeText(this@Search, "에러 발생 ${t.message}", Toast.LENGTH_SHORT).show()
                     Log.d("ToB", t.message.toString())
                     loadingDialog.dismiss()
-
                 }
 
                 @RequiresApi(Build.VERSION_CODES.O)
@@ -262,11 +276,10 @@ class Search : AppCompatActivity() {
                         val searchWordList:ArrayList<SearchWord> = arrayListOf()
                         Log.d("ToB", data.toString())
                         var len = data.size()
-                        if(len > 5) len = 5
+                        if(len > 8) len = 8
                         for(idx in 0 until len){//최대 5개
                             searchWordList.add(SearchWord(gson.fromJson(data.get(idx).toString(), SearchWordData::class.java).s_word))
                         }
-
                         binding.recycelerView.adapter = SearchAdapter(searchWordList)
                     }
                     loadingDialog.dismiss()

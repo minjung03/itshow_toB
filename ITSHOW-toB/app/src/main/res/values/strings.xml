@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ToB</string>
-
+    <string name="msg_token_fmt" translatable="false">토큰 : %s</string>
     <!-- 카테고리 list -->
     <string-array name="LAN">
         <item>"음식"</item>

@@ -50,7 +50,7 @@ class UserInfoActicity : AppCompatActivity() {
 
             apiCallForData_userInfo.enqueue(object : Callback<UserInfoDatas>{
                 override fun onResponse(
-                    call: retrofit2.Call<UserInfoDatas>, response: Response<UserInfoDatas>
+                        call: retrofit2.Call<UserInfoDatas>, response: Response<UserInfoDatas>
                 ) {
                     loadingDialog.dismiss()
                     val data = response.body()
@@ -68,7 +68,7 @@ class UserInfoActicity : AppCompatActivity() {
 
                         apiCallForData_followWether.enqueue(object : Callback<ResponseBody>{
                             override fun onResponse(
-                                call: retrofit2.Call<ResponseBody>, response: Response<ResponseBody>
+                                    call: retrofit2.Call<ResponseBody>, response: Response<ResponseBody>
                             ) {
                                 loadingDialog.dismiss()
 
@@ -129,8 +129,8 @@ class UserInfoActicity : AppCompatActivity() {
 
             apiCallForData.enqueue(object : Callback<ResponseBody>{
                 override fun onResponse(
-                    call: retrofit2.Call<ResponseBody>,
-                    response: Response<ResponseBody>
+                        call: retrofit2.Call<ResponseBody>,
+                        response: Response<ResponseBody>
                 ) {
                     loadingDialog.dismiss()
                 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/main_item_style">
-
+    android:layout_height="130dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/user_item_style">
 
     <RelativeLayout
-        android:layout_margin="25dp"
+        android:layout_margin="18dp"
         android:id="@+id/Title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView
@@ -27,20 +27,25 @@
             android:layout_below="@+id/item_Title"
             android:gravity="center"
             android:id="@+id/layout_minPrice"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
 
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/item_titlePrice"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:layout_below="@+id/item_Title"
-                android:textSize="7sp"
-                android:padding="4dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/main_item_minprice_style"
-                android:text="최소 가격"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:scaleType="centerInside"
+                    android:layout_height="16dp"
+                    android:id="@+id/image_minPrice"
+                    android:src="@drawable/main_item_minprice_style" />
+                <TextView
+                    android:textSize="7sp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="최소 가격"/>
+                </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,9 +62,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="크리넥스 30롤 4개 4만원에 판매하는거 나눠사실 분 채팅주세요 :) 사이트는 아래 첨부"
+            android:text="크리넥스 30롤 4개 4만원에 판매하는거 같이 사요"
             android:layout_below="@+id/layout_minPrice"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/item_textDetail"
             android:textSize="12sp"/>
 
@@ -68,10 +73,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@+id/item_textDetail">
 
             <ImageView
+                android:id="@+id/image_location"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:src="@drawable/map_icon"
@@ -85,8 +91,8 @@
                 android:textSize="11sp"
                 android:layout_marginRight="5dp"/>
 
-
             <ImageView
+                android:id="@+id/image_heart"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:src="@drawable/heart"
@@ -103,13 +109,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="~18일"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:gravity="right"
                 android:id="@+id/item_date"/>
-
         </LinearLayout>
-
-
     </RelativeLayout>
-
 </LinearLayout>

@@ -2,94 +2,104 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        >
+        android:background="#ffffff"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
         <!--검색어창-->
         <!--검색어창 END-->
         <!--키워드 그룹-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/search_lower_round"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/suncheonr"
-                android:letterSpacing="0.05"
-                android:lineSpacingExtra="10sp"
-                android:shadowColor="#4D000000"
-                android:shadowDx="-7.0"
-                android:shadowDy="7.0"
-                android:shadowRadius="20.0"
-                android:text="검색어를
-            입력하세요"
-                android:textColor="#FFFFFF"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="240dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/search_lower_round"
+                android:gravity="bottom"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/edit_search"
-                    android:layout_width="310dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="25dp"
-                    android:background="@drawable/button_round1_white"
-                    android:fontFamily="@font/suncheonb"
-                    android:padding="10dp"
-                    android:singleLine="true"
-                    android:text=""
-                    android:textSize="13dp" />
-
-                <Button
-                    android:id="@+id/btn_search"
+                <ImageView
+                    android:id="@+id/img_SearchBack"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/search_white" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="left"
+                    android:background="@drawable/arrow_white"
+                    android:layout_marginLeft="30dp"
+                    />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:visibility="invisible"
-                android:background="@drawable/search_list_style"
-                android:id="@+id/layout_search_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-                <!-- button_인기검색어_카테고리별_내주변 인기글 -->
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/suncheonr"
+                    android:letterSpacing="0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:shadowColor="#4D000000"
+                    android:shadowDx="-7.0"
+                    android:shadowDy="7.0"
+                    android:shadowRadius="20.0"
+                    android:text="검색어를
+                입력하세요"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <EditText
+                        android:id="@+id/edit_search"
+                        android:layout_width="310dp"
+                        android:layout_height="40dp"
+                        android:hint="키워드를 입력하세요"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="25dp"
+                        android:background="@drawable/button_round1_white"
+                        android:fontFamily="@font/suncheonb"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textSize="13dp" />
+
                     <Button
+                        android:id="@+id/btn_search"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/search_white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/layout_search_button"
+                android:layout_marginTop="260dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_margin="7dp"
+                        android:layout_marginBottom="10dp"
                         android:id="@+id/btn_recentlySearch"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
@@ -97,42 +107,50 @@
                         android:background="@drawable/button_round1_white"
                         android:gravity="center"
                         android:text="최근 검색어"
-                        android:elevation="6dp"
-                        android:textStyle="bold"
-                        style="@style/roundBtnBasic1"/>
+                        android:textSize="12sp"
+                        android:elevation="3dp"
+                        android:textStyle="bold"/>
 
                     <Button
+                        android:layout_marginLeft="7dp"
                         android:id="@+id/btn_popularitySearch"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:background="@drawable/button_round1_gray"
+                        android:background="@drawable/button_round1_blue"
                         android:gravity="center"
+                        android:textSize="12sp"
                         android:text="인기검색어"
                         android:textColor="#FFFFFF"
-                        android:elevation="6dp"
-                        android:textStyle="bold"
-                        style="@style/roundBtnBasic1"/>
-
+                        android:elevation="3dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
-                <!-- button_인기검색어_카테고리별_내주변 인기글 END-->
 
-                <!-- 버튼에 따른 키워드 -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyceler_view"
+                <LinearLayout
+                    android:padding="10dp"
+                    android:background="@drawable/search_list_style"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    />
-                <!-- 버튼에 따른 키워드 END-->
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyceler_view"
+                        android:layout_width="match_parent"
+                        android:overScrollMode="never"
+                        android:layout_height="match_parent"
+                        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"/>
+                </LinearLayout>
 
             </LinearLayout>
-            <!--키워드 그룹 END-->
 
             <LinearLayout
+                android:layout_marginTop="260dp"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/layout_search_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -140,15 +158,18 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyceler_view_search"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginLeft="25dp"
+                    android:overScrollMode="never"
+                    android:layout_marginRight="25dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     />
             </LinearLayout>
 
-        </FrameLayout>
+    </RelativeLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </layout>
