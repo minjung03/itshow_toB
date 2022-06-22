@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:background="#00000000">
+
+    <Button
+        android:id="@+id/item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/button_round1_white"
+        android:gravity="center"
+        android:layout_margin="3dp"
+        android:text="text"
+        style="@style/roundBtnBasic1"
+        android:textSize="12dp"/>
+
+    <!--
+        style="@style/roundBtnBasic1" -->
+
+</LinearLayout>

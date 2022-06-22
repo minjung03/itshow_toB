@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.MomenZaq:custom_dialog:1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/520c997a8a9153b406557f1e61b010f9/jetified-custom_dialog-1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/520c997a8a9153b406557f1e61b010f9/jetified-custom_dialog-1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/520c997a8a9153b406557f1e61b010f9/jetified-custom_dialog-1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.MomenZaq/custom_dialog/1.0/6d7cb18b858636ffde7937a8843286fa7d59a4e/custom_dialog-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            tools:context=".WriteRecruitment">
+
+            <!-- 모집글 작성 -->
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/img_writeBack"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/arrow_blue"
+                        android:layout_marginRight="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#B5000000"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/suncheonb"
+                        android:textSize="18sp"
+                        android:text="글 작성"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="top"
+                    android:layout_gravity="center"
+                    android:elevation="5dp"
+                    android:layout_margin="5dp"
+                    android:padding="30dp"
+                    android:background="@drawable/button_round1_white"
+                    android:orientation="vertical">
+                    <!-- 제목 -->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_checkbox"
+                            />
+                        <TextView
+                            android:layout_width="12dp"
+                            android:layout_height="18dp"
+                            android:textColor="#E00A50"
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            android:text="*"
+                            />
+
+                        <EditText
+                            android:id="@+id/edit_title"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:hint="제목"
+                            android:layout_gravity="center"
+                            android:textColorHint="#86000000"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_imgUpload"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#90000000"
+                            android:background="@drawable/ic_add_file"
+                            />
+                    </LinearLayout>
+                    <!-- 사진 업로드 공간 -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyceler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        />
+                    <!-- 사진 업로드 공간 END-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+
+                    <!-- 제목 END -->
+
+                    <!--최소 모집 가격-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:background="@drawable/ic_krw"
+                            />
+                        <EditText
+                            android:id="@+id/edit_minAmount"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:inputType="number"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:hint="최소 모집 가격"
+                            android:layout_gravity="center"
+                            android:textColorHint="#86000000"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+                    <!--최소 모집 가격 END-->
+
+                    <!--카테고리-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_label"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:text="카테고리"
+                            android:textColor="#86000000"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:background="@drawable/button_round1_white_gray">
+
+                            <TextView
+                                android:id="@+id/text_category"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:fontFamily="@font/suncheonb"
+                                android:textColor="#535353"
+                                android:textSize="12sp"
+                                android:text="선택"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#2457BD"
+                                android:layout_gravity="center"
+                                android:textColor="#535353"
+                                android:fontFamily="@font/suncheonb"
+                                android:textSize="10sp"
+                                android:text=">"
+                                />
+                            <Button
+                                android:id="@+id/btn_category"
+                                android:layout_width="0dp"
+                                android:layout_height="33dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:fontFamily="@font/suncheonb"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:text="음식"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+                    <!--카테고리 END-->
+
+                    <!-- 모집기간 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_calendar"
+                            />
+                        <TextView
+                            android:layout_width="12dp"
+                            android:layout_height="18dp"
+                            android:textColor="#E00A50"
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            android:text="*"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:text="마감일"
+                            android:textColor="#86000000"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#FFFFFF"
+                            android:fontFamily="@font/suncheonb"
+                            android:gravity="left"
+                            android:hint="클릭하여 날짜 선택"
+                            android:inputType="date"
+                            android:padding="10dp"
+                            android:textColorHint="#86000000"
+                            android:textSize="14sp" />
+
+                       <!-- <TextView
+                            android:id="@+id/text_time"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:inputType="date"
+                            android:hint="00:00"
+                            android:gravity="center"
+                            android:textColorHint="#86000000"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />-->
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+
+                    <!-- 모집기간 END -->
+
+                    <!--주문처-->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_share"
+                            />
+                        <TextView
+                            android:layout_width="12dp"
+                            android:layout_height="18dp"
+                            android:textColor="#E00A50"
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            android:text="*"
+                            />
+                        <EditText
+                            android:id="@+id/edit_order"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:hint="주문처 (이름 or 사이트 주소)"
+                            android:maxLength="100"
+                            android:layout_gravity="center"
+                            android:textColorHint="#86000000"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+                    <!--주문처 END-->
+                    <!-- 위치 -->
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:backgroundTint="#2457BD"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_marker"
+                            />
+                        <TextView
+                            android:layout_width="12dp"
+                            android:layout_height="18dp"
+                            android:textColor="#E00A50"
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            android:text="*"
+                            />
+                        <EditText
+                            android:id="@+id/edit_location"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/suncheonb"
+                            android:hint="위치 (5글자 이내)"
+                            android:maxLength="100"
+                            android:layout_gravity="center"
+                            android:textColorHint="#86000000"
+                            android:padding="10dp"
+                            android:background="#FFFFFF"
+                            />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D5D5D5"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="10dp"
+                        />
+
+                    <!-- 위치 END -->
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/suncheonb"
+                        android:text="상세내용"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:textColor="#86000000"
+                        android:padding="10dp"
+                        android:background="#FFFFFF"
+                        />
+
+                    <EditText
+                        android:id="@+id/edit_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@drawable/write_recruitment_style"
+                        android:fontFamily="@font/suncheonb"
+                        android:gravity="top"
+                        android:maxLength="500"
+                        android:inputType="textMultiLine"
+                        android:hint="거래 시 필요한 상세 정보를 적어주세요 :)"
+                        android:padding="20dp"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+                <!-- 모집글 작성 END -->
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="60dp"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="340dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/suncheonb"
+                        android:textSize="20sp"
+                        android:text="글 등록"
+                        android:background="@drawable/button_round1_blue"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,566 @@
+[
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_search.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\search.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_round1_white_gray.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_round1_white_gray.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_review_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\review_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_push_switch_on.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\push_switch_on.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_search_list_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\search_list_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_heart_list.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\heart_list.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_shopping.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_shopping.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bin_heart.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\bin_heart.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_edit_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\login_edit_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_write_recruitment_image_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\write_recruitment_image_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_calendar.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_calendar.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_autologin_checkbox.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\autologin_checkbox.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatroom_chat.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chatroom_chat.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_chatlist.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\item_chatlist.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_comments.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_comments.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_star_full.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\star_full.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_chatting_img.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\chatting_img.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chat.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_write_recruitment_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\write_recruitment_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_user_item_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\user_item_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_clothing.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_clothing.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_star_empty.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\star_empty.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_daily_supplies.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_daily_supplies.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_button_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\login_button_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_follow.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\follow.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_arrow_black.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\arrow_black.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_search_above_round.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\search_above_round.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_settings_icon.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\settings_icon.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_check.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_check.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_heart_list_line.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\heart_list_line.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_serch.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_serch.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_round1_white.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_round1_white.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_arrow_white.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\arrow_white.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_map_icon_black.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\map_icon_black.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_round1_gray.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_round1_gray.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_recruitment_delete_icon.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\recruitment_delete_icon.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_above_round_white.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\above_round_white.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_add_file.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_add_file.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_write_recruitment.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\write_recruitment.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_blue_person.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\blue_person.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_test_add.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\test_add.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_share.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_share.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_img_edit.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\img_edit.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_heart_list_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\heart_list_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_chatroom.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\chatroom.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_main.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_test.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\test.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_paths.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_sundries.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_sundries.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_img_home.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\img_home.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatroom_topfigure.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chatroom_topfigure.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ratingstars.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ratingstars.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shadow_right_bottom.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\shadow_right_bottom.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_info_review.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\info_review.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dialog_back_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\dialog_back_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_user_info_frgment.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\user_info_frgment.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chat_style_my.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chat_style_my.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_user.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_user.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_search_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\search_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_map_icon.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\map_icon.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shadow_test.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\shadow_test.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_checkbox.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_checkbox.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_heart.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_heart.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_follow_list_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\follow_list_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_push_switch_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\push_switch_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_list.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\chat_list.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_item_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_item_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_item_minprice_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_item_minprice_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_cosmetics.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_cosmetics.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatroom_edit_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chatroom_edit_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_round1_blue.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_round1_blue.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatroom_bottomfigure.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chatroom_bottomfigure.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_loading.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\loading.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_ic_edit.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\white_ic_edit.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\font_suncheonb.ttf.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\font\\suncheonb.ttf"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_star_half.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\star_half.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chat_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chat_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_recruitment_delete.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\recruitment_delete.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_main_recycler.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\main_recycler.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_recruitment_chat.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\recruitment_chat.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chat_map_icon.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chat_map_icon.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_help_content.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\help_content.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_follower.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\follower.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_main_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\main_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_edit_recruitment.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\edit_recruitment.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_marker.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_marker.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_follow_recycler.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\follow_recycler.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_home.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_home.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_item_minprice_style2.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_item_minprice_style2.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_heart.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\heart.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_setting.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\setting.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_edit_nickname.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\dialog_edit_nickname.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_search_white.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\search_white.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_login.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_userinfo_item.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\userinfo_item.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_arrow_blue.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\arrow_blue.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_chatroom_draw.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\chatroom_draw.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_information.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\dialog_information.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_search_lower_round.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\search_lower_round.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_new_chat_icon.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\new_chat_icon.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_item_img_style.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_item_img_style.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_main.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\frame_main.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_join.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\join.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_heart_black.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\heart_black.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_switch_thumb.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\switch_thumb.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_circle1_light_red.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_circle1_light_red.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_layout.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\chat_layout.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_delivery.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\main_delivery.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_user_info_acticity.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\user_info_acticity.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_confirm.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\dialog_confirm.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_edit.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_edit.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_image_edit.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\image_edit.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_label.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_label.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_push_switch_off.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\push_switch_off.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_review.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\review.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_autologin_check.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\autologin_check.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_circle1_light_blue.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\button_circle1_light_blue.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_krw.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable\\ic_krw.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_user_nomal.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\drawable-v24\\user_nomal.png"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\font_suncheonr.ttf.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\font\\suncheonr.ttf"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\layout_details_recruitment.xml.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\layout\\details_recruitment.xml"
+    },
+    {
+        "merged": "D:\\itshow_toB\\ITSHOW_toB\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\itshow_toB\\ITSHOW_toB\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    }
+]
