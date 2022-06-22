@@ -3,6 +3,7 @@ package com.cookandroid.itshow_tob
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,7 +15,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+<<<<<<< Updated upstream
 import com.google.gson.*
+=======
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
+import com.google.gson.*
+import com.makeramen.roundedimageview.RoundedImageView
+import okhttp3.ResponseBody
+import org.w3c.dom.Text
+>>>>>>> Stashed changes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,11 +53,17 @@ class DetailsRecruitment : AppCompatActivity() {
         val img_heart = findViewById<ImageView>(R.id.img_heart)
         val text_heartNum = findViewById<TextView>(R.id.text_heartNum)
         val btn_chat = findViewById<TextView>(R.id.btn_chat)
+<<<<<<< Updated upstream
+=======
+        val delete = findViewById<TextView>(R.id.recruitment_delete)
+        val delete_icon = findViewById<ImageView>(R.id.icon_recruitment_delete)
+        val img_recruitment = findViewById<RoundedImageView>(R.id.img_recruitment)
+
+>>>>>>> Stashed changes
 
         //no을 통해 게시글 정보를 불러오는 코드
         val r_no = intent.getSerializableExtra("r_no") as Int
-        Log.d(TAG, "r_no : "+r_no.toString());
-
+        Log.d(TAG, "ChatFragment r_no : "+r_no.toString());
 
         textUserName.setOnClickListener(View.OnClickListener {
             var intent = Intent(this, UserInfoActicity::class.java)
@@ -56,6 +73,23 @@ class DetailsRecruitment : AppCompatActivity() {
             startActivity(intent)
         })
 
+        val img_DetailsBack = findViewById<ImageView>(R.id.img_DetailsBack)
+        img_DetailsBack.setOnClickListener {
+            finish()
+        }
+
+<<<<<<< Updated upstream
+
+        textUserName.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, UserInfoActicity::class.java)
+            intent.putExtra("u_name", textUserName.text)
+            intent.putExtra("preEmail", "")
+            intent.putExtra("preFollow", "")
+            startActivity(intent)
+        })
+
+=======
+>>>>>>> Stashed changes
         btn_chat.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             intent.putExtra("r_no", r_no.toString())
@@ -100,13 +134,21 @@ class DetailsRecruitment : AppCompatActivity() {
                     val category = recruitmentData.r_category?.toString()
                     val imgPath = recruitmentData.r_imgPath?.toString()
                     val name = recruitmentData.u_name?.toString()
+<<<<<<< Updated upstream
+=======
+
+                    if(USER_NAME != name){
+                        delete.visibility = View.INVISIBLE
+                        delete_icon.visibility = View.INVISIBLE
+                    }
+>>>>>>> Stashed changes
 
                     Log.d("dahuin", title)
                     Log.d("dahuin", content?:"")
                     Log.d("dahuin", minPrice)
 
                     //endDate를 format
-                    val sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a 까지")
+                    val sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd 까지")
                     val date = LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME).format(sdf)
 
                     if(imgPath != ""){
@@ -120,6 +162,12 @@ class DetailsRecruitment : AppCompatActivity() {
                     textOrder.text = order
                     textLocation.text = location
                     textCategory.text = "카테고리 > "+category?:"없음"
+
+                    if(!imgPath.equals("")){
+                        img_recruitment.visibility = View.VISIBLE
+                        Glide.with(this@DetailsRecruitment).load("https://tob.emirim.kr/uploads/"+imgPath)
+                                .into(img_recruitment)
+                    }
 
                     val apiCallForData2 = apiService2.post_like(r_no)
                     apiCallForData2.enqueue(object :Callback<JsonArray>{
@@ -178,12 +226,15 @@ class DetailsRecruitment : AppCompatActivity() {
                 }
             }
         })
+<<<<<<< Updated upstream
         //no을 통해 게시글 정보를 불러오는 코드 END
 
         val img_DetailsBack = findViewById<ImageView>(R.id.img_DetailsBack)
         img_DetailsBack.setOnClickListener {
             finish()
         }
+=======
+>>>>>>> Stashed changes
 
         img_heart.setOnClickListener(View.OnClickListener{
             when(togle){
@@ -226,5 +277,42 @@ class DetailsRecruitment : AppCompatActivity() {
                 }
             }
         })
+
+
+        // 삭제 여부 다이얼로그
+        val  editDeleteRecruitment = layoutInflater.inflate(R.layout.dialog_confirm, null)
+        // val textTitle = editDeleteUserView.findViewById<TextView>(R.id.textTitle)
+        val textContents = editDeleteRecruitment.findViewById<TextView>(R.id.textContent)
+        val btnOk = editDeleteRecruitment.findViewById<Button>(R.id.btnOk)
+        val btnNo = editDeleteRecruitment.findViewById<Button>(R.id.btnNo)
+        val deleteUserDialog = AlertDialog.Builder(this).setView(editDeleteRecruitment).create()
+
+        textContent.text = "모집글을 삭제하시겠습니까?"
+        delete.setOnClickListener(View.OnClickListener {
+            deleteUserDialog.show()
+            deleteUserDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        })
+
+        btnOk.setOnClickListener {
+            deleteUserDialog.dismiss()
+
+            val apiCallForData4 = apiService.deleteRecruitment(r_no.toString())
+            apiCallForData4.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    Log.d("data 삭제 잘됨", "삭제됨")
+                    Toast.makeText(this@DetailsRecruitment, "게시글이 삭제되었습니다", Toast.LENGTH_SHORT).show()
+                    var intent = Intent(this@DetailsRecruitment, FrameMain::class.java)
+                    finish()
+                    startActivity(intent)
+                }
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.d("data 삭제 안됨", "삭제 안됨")
+                }
+            })
+        }
+
+        btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
+
+
     }
 }

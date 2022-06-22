@@ -3,12 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+<<<<<<< Updated upstream
     android:orientation="horizontal"
     >
+=======
+    android:layout_margin="5dp"
+    android:orientation="horizontal">
+
+>>>>>>> Stashed changes
     <LinearLayout
         android:id="@+id/linear_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< Updated upstream
         android:orientation="vertical"
         android:layout_marginTop="4dp">
 
@@ -29,5 +36,43 @@
             android:text="마지막 메세지"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="10dp"/>
+=======
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp">
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/chat_textview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="방이름"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/chat_item_textview_lastmessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마지막 메세지"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/icon_new_chat"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/new_chat_icon"></ImageView>
+
+>>>>>>> Stashed changes
     </LinearLayout>
 </LinearLayout>

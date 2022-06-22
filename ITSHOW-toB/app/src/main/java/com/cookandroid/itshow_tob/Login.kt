@@ -107,7 +107,11 @@ class Login : AppCompatActivity() {
                     task ->
                     if(task.isSuccessful) {
 
+<<<<<<< Updated upstream
                         var email_chk : List<String>
+=======
+                  /*      var email_chk : List<String>
+>>>>>>> Stashed changes
                         val user = auth!!.currentUser
                         user?.let {
                             email_chk = user.email.toString().split('@');
@@ -116,18 +120,25 @@ class Login : AppCompatActivity() {
                                 signOut()
                                 startActivity(Intent(this, Login::class.java))
 
+<<<<<<< Updated upstream
                             } else {
+=======
+                            } else {*/
+>>>>>>> Stashed changes
 
                                 // 로그인 성공 시
                                 val loadingDialog = LoadingDialog(this)
                                 //투명하게
                                 loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+<<<<<<< Updated upstream
                                 val retrofit = Retrofit.Builder()
                                         .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                                         .addConverterFactory(GsonConverterFactory.create())
                                         .build()
 
+=======
+>>>>>>> Stashed changes
                                 val apiService = retrofit.create(UserAPIService::class.java)
                                 loadingDialog.show()
 
@@ -160,10 +171,17 @@ class Login : AppCompatActivity() {
                                         loadingDialog.dismiss()
                                     }
                                 })
+<<<<<<< Updated upstream
                                 // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(this, FrameMain::class.java))
                             }
                         }
+=======
+                                Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, FrameMain::class.java))
+                           // }
+                        // }
+>>>>>>> Stashed changes
 
                     } else {
                         Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()

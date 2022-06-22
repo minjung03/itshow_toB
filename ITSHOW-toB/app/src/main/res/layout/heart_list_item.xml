@@ -4,7 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/user_item_style"
+<<<<<<< Updated upstream
     android:layout_marginBottom="5dp">
+=======
+    android:elevation="4dp"
+    android:layout_margin="5dp">
+>>>>>>> Stashed changes
 
     <RelativeLayout
         android:layout_margin="20dp"

@@ -1,10 +1,20 @@
 package com.cookandroid.itshow_tob
 
 import com.google.gson.JsonArray
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+
+val retrofit = Retrofit.Builder()
+        .baseUrl("https://tob.emirim.kr") //로컬호스트로 접속하기 위해!
+//        .baseUrl("http://10.0.2.2:3003")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
 //게시글 정보를 요청하기 위한 인터페이스
 interface RecruitmentAPIService {
@@ -33,10 +43,23 @@ interface RecruitmentAPIService {
     ):Call<ResponseBody>
 
     //카테고리별 게시글 가져오기
-    @POST("/recruitment-category")
+    @GET("/recruitment-category")
     fun getCategoryRecruitment(
             @Query("category") category:String
     ):Call<JsonArray>
+
+    // 게시글 삭제
+    @DELETE("/recruitment/delete")
+    fun deleteRecruitment(
+            @Query("r_no") u_email: String
+    ):Call<ResponseBody>
+
+    @Multipart
+    @POST("/upload")
+    fun postImage(
+            @Part image: MultipartBody.Part?,
+            @Part("upload") name: RequestBody?
+    ): Call<ResponseBody?>?
 }
 
 //유저 관련 api요청

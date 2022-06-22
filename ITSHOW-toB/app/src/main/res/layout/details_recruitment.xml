@@ -278,11 +278,27 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal">
+
                     <ImageView
+                        android:layout_marginRight="3dp"
+                        android:layout_width="15dp"
+                        android:id="@+id/icon_recruitment_delete"
+                        android:layout_height="15dp"
+                        android:background="@drawable/recruitment_delete_icon"/>
+                    <TextView
+                        android:layout_marginRight="95dp"
+                        android:id="@+id/recruitment_delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삭제"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_marginRight="3dp"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:background="@drawable/blue_person"/>

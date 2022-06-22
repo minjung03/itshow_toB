@@ -35,13 +35,19 @@ import com.android.custom_dialog.OnSelectItemInterface
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+<<<<<<< Updated upstream
+=======
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+>>>>>>> Stashed changes
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
+import java.io.*
 import java.text.DecimalFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -57,9 +63,13 @@ class WriteRecruitment : AppCompatActivity() {
     private val PICK_FROM_CAMERA = 0
     private val PICK_FROM_ALBUM = 1
     private val CROP_FROM_IMAGE = 2
-    private val TAG = "DAHUIN_TAG"
     private lateinit var mImageCaptureUri:Uri
+<<<<<<< Updated upstream
     private var imgPath = ""
+=======
+    private var imgName = ""
+    var photo:Bitmap? = null
+>>>>>>> Stashed changes
     val db = Firebase.firestore
     val multiChoiceAdapterList = ArrayList<MultiChoiceModel>(arrayListOf(
             MultiChoiceModel("생활", R.color.blue),
@@ -74,35 +84,10 @@ class WriteRecruitment : AppCompatActivity() {
     private fun selectImg(){
         AlertDialog.Builder(this)
                 .setTitle("업로드할 이미지 선택")
-//                .setPositiveButton("사진촬영", DialogInterface.OnClickListener{dialog, which ->
-//
-//                    //DB에 사진 저장하고 불러올 수 있도록 해야함
-//                    val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                    // 에러 --> 사진 저장하는부분인듯함.
-//                    val url = "tmp_" + System.currentTimeMillis().toString() + ".jpg"
-//                    //mImageCaptureUri = Uri.fromFile(File(Environment.getExternalStorageDirectory(), url)) // <--에서 아래와 같이 바꿈.(Android 7.0이상의 경우 앱 외부에 file://URI 의 노출을 금지하기 때문에)
-//
-//                    //이부분에서 안됨,,,
-//                    val imagePath = File(this.filesDir, "images")
-//                    val newFile = File(imagePath, url)
-//                    mImageCaptureUri = FileProvider.getUriForFile(this, "com.cookandroid.itshow_tob", newFile)
-//                    Log.d(TAG, mImageCaptureUri.toString())
-//                    takePictureIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri)
-//                    takePictureIntent.putExtra("return-data", true)
-//                    takePictureIntent.resolveActivity(packageManager)?.also {
-//                        //임시로 사용할 파일의 경로를 생성
-//                        startActivityForResult(takePictureIntent, PICK_FROM_CAMERA)
-//                    }
-//
-////                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-////                        val url = "tmp_"+(System.currentTimeMillis()).toString() + ".jpg"
-////                        val mImageCaptureUri = Uri.fromFile(File(Environment.getExternalStorageDirectory(), url))
-////                        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri)
-////                        startActivityForResult(intent, PICK_FROM_CAMERA)
-//                })
                 .setNeutralButton("앨범선택", DialogInterface.OnClickListener{dialog, which ->
                     val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    intent.type = "image/*"
                     startActivityForResult(intent, PICK_FROM_ALBUM)
                 })
                 .setNegativeButton("취소", DialogInterface.OnClickListener{dialog, which ->
@@ -182,20 +167,32 @@ class WriteRecruitment : AppCompatActivity() {
             dateString = date.toString()
         }
 
+<<<<<<< Updated upstream
         val retrofit = Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
+=======
+>>>>>>> Stashed changes
         val apiService = retrofit.create(RecruitmentAPIService::class.java)
 
         loadingDialog.show()
 
         if(intMinAmount.equals("")){ intMinAmount = "0" }
         Log.d(TAG, (intMinAmount.toInt().toString()))
+<<<<<<< Updated upstream
+=======
+
+        if(photo != null){
+            Log.d(TAG, "photo가 있다. 서버에 업로드하기")
+            multipartImageUpload(photo!!)
+        }
+
+>>>>>>> Stashed changes
         val apiCallForData = apiService.createRecruitment(createRecruitmentDatas(USER_EMAIL, textTitle,
                 textContent, intMinAmount.toInt(), dateString,
-                textOrder, textLocation, textCategory, imgPath))
+                textOrder, textLocation, textCategory, imgName+".png"))
 
         apiCallForData.enqueue(object: Callback<ResponseBody>{
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -209,17 +206,28 @@ class WriteRecruitment : AppCompatActivity() {
                 loadingDialog.dismiss()
                 Toast.makeText(this@WriteRecruitment, "게시글이 등록되었습니다!", Toast.LENGTH_LONG).show()
 
+<<<<<<< Updated upstream
 
                 Log.w("ChatFragment", response.body()?.string().toString())
 
                 var data = hashMapOf(
                         "nickname" to USER_NAME,
                         "room" to response.body()?.string().toString(),
+=======
+                var room = response.body()?.string().toString()
+                var data = hashMapOf(
+                        "nickname" to USER_NAME,
+                        "room" to room,
+>>>>>>> Stashed changes
                         "contents" to "go",
                         "time" to Timestamp.now()
                         //채팅 번호
                 )
+<<<<<<< Updated upstream
 
+=======
+                Log.w("ChatFragment", room)
+>>>>>>> Stashed changes
 
                 // Firestore에 기록
                 db.collection("Chat").add(data)
@@ -238,6 +246,59 @@ class WriteRecruitment : AppCompatActivity() {
         })
         //게시글 올리는 코드 END
 
+<<<<<<< Updated upstream
+=======
+    }
+
+    fun multipartImageUpload(bitmap:Bitmap)
+    {
+        try {
+            Log.d(TAG, "일단 옵니다.")
+            val filesDir = getApplicationContext().getFilesDir()
+            imgName = System.currentTimeMillis().toString()
+            val file = File(filesDir, imgName + ".png")
+
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
+            val bitmapdata = bos.toByteArray()
+
+            val fos = FileOutputStream(file)
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+
+            val reqFile = RequestBody.create(MediaType.parse("image/*"), file)
+            val body = MultipartBody.Part.createFormData("upload", file.getName(), reqFile)
+            val name = RequestBody.create(MediaType.parse("text/plain"), "upload");
+
+            Log.d(TAG, "피일 이름 : "+name)
+            Log.d(TAG, "피일 이름 : "+name)
+
+            val apiService = retrofit.create(RecruitmentAPIService::class.java)
+            val req = apiService.postImage(body, name)
+            Log.d(TAG, "req.eneque시작:"+req)
+            req?.enqueue(object : Callback<ResponseBody?> {
+                override fun onResponse(
+                        call: Call<ResponseBody?>,
+                        response: Response<ResponseBody?>
+                ) {
+                    if (response.code() == 200) {
+                        Log.d(TAG, "파일 업로드 성공")
+                    }
+                    Log.d(TAG, response.code().toString())
+                }
+
+                override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                    Log.d(TAG, "파일 업로드 실패 : "+t)
+                }
+
+            })
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+>>>>>>> Stashed changes
     }
 
     //이미지 저장 --> 카메라 혹은 파일 내의 이미지를 가져와 저장
@@ -249,8 +310,9 @@ class WriteRecruitment : AppCompatActivity() {
         }
 
         if(requestCode == PICK_FROM_ALBUM){
+            Log.d(TAG, "data : "+data.toString())
             mImageCaptureUri = data!!.data!! //!!는 null 값이 안 들어온다는 보증을 해주는 연산자.
-            Log.d(TAG, mImageCaptureUri.path.toString())
+            Log.d(TAG, "mImageCaptureUri : "+mImageCaptureUri.path.toString())
         }
         if(requestCode == PICK_FROM_ALBUM || requestCode == PICK_FROM_CAMERA){
             //이미지를 가져온 후 리사이즈할 이미지 크기를 결정한다.
@@ -260,31 +322,33 @@ class WriteRecruitment : AppCompatActivity() {
 
             //CROP할 이미지를 200 * 200크기로 저장
             intent.putExtra("crop", true)
-            intent.putExtra("outputX", 200)
-            intent.putExtra("outputY", 200)
+            intent.putExtra("outputX", 360)
+            intent.putExtra("outputY", 360)
             intent.putExtra("aspectX", 1)
             intent.putExtra("aspectY", 1)
             intent.putExtra("scale", true)
             intent.putExtra("return-data", true)
             startActivityForResult(intent, CROP_FROM_IMAGE)
+            Log.d(TAG, "에러체크")
         }
-        else if(requestCode == CROP_FROM_IMAGE) {
+        if(requestCode == CROP_FROM_IMAGE) {
             //크롭이 된 이후의 이미지를 넘겨받음.
             //이미지뷰에 이미지를 보여주거나 부가적인 작업 이후에 임시 파일을 삭제한다.
+            Log.d(TAG, "에러체크1")
 
             if(resultCode != RESULT_OK) {
                 return
             }
+            Log.d(TAG, "에러체크2 : "+data)
+            Log.d(TAG, "에러체크2 ex : "+data?.extras)
 
             val extras: Bundle? = data!!.extras
-            val filePath = Environment.getExternalStorageDirectory().absolutePath + "/ToB/" + System.currentTimeMillis() +".jpg"
-            Log.d(TAG, filePath)
-            imgPath = filePath
+
             if(extras != null){
-                val photo = extras.getParcelable<Bitmap>("data")
-                binding.recycelerView.adapter = WriteRecruitmentAdapter(photo)
-
-
+                photo = extras.getParcelable<Bitmap>("data")
+                if (photo != null) {
+                    binding.recycelerView.adapter = WriteRecruitmentAdapter(photo)
+                }
             }
         } // if end
     }// fun end

@@ -29,10 +29,13 @@ import java.util.*
 
 class HeartList : Fragment(){
 
+<<<<<<< Updated upstream
     val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+=======
+>>>>>>> Stashed changes
     lateinit var recyceler_heart_list: RecyclerView
 
     override fun onCreateView(
@@ -52,11 +55,14 @@ class HeartList : Fragment(){
         val heart_list_popular = view.findViewById<Button>(R.id.heart_list_popular)
         val heart_list_recent = view.findViewById<Button>(R.id.heart_list_recent)
 
+<<<<<<< Updated upstream
         val img_HeartBack = view.findViewById<ImageView>(R.id.img_HeartBack)
         img_HeartBack.setOnClickListener(View.OnClickListener {
             //프래그먼트 종료
         })
 
+=======
+>>>>>>> Stashed changes
         HeartListSetting(view, togle)
 
         heart_list_popular.setOnClickListener(View.OnClickListener {

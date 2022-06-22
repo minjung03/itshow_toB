@@ -110,9 +110,16 @@ class ChatListFragment : Fragment() {
                                                             )
                                                     )
 
+<<<<<<< Updated upstream
                                                     cAdapter = ChatListAdapter(activity as Context, chatlistData)
                                                     chatfragment_recyclerview.adapter = cAdapter
 
+=======
+                                                    if(chatlistData!=null) {
+                                                        cAdapter = ChatListAdapter(activity as Context, chatlistData)
+                                                        chatfragment_recyclerview.adapter = cAdapter
+                                                    }
+>>>>>>> Stashed changes
                                                     for (item in chatlistData) {
                                                         Log.d("mytag", item.toString())
                                                     }

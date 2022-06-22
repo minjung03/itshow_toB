@@ -6,21 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    android:background="#2457BD">
+    android:background="#ffffff">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="10dp"
         android:id="@+id/Img_Logo"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
+        android:textColor="#2457BD"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:text="Together Buy!"
+        android:text="together Buy!"
         android:layout_gravity="center_horizontal"
         />
 </LinearLayout>

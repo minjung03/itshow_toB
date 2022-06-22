@@ -163,8 +163,8 @@ class Setting : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance();
 
         val img_SettingBack = findViewById<ImageView>(R.id.img_SettingBack)
-        val switch_appPush= findViewById<Switch>(R.id.switch_appPush)
-        val btn_name_edit = findViewById<Button>(R.id.btn_name_edit)
+        /*val switch_appPush= findViewById<Switch>(R.id.switch_appPush)
+        val btn_name_edit = findViewById<Button>(R.id.btn_name_edit)*/
         val btn_Help = findViewById<Button>(R.id.btn_Help)
         val btn_UserDelete= findViewById<Button>(R.id.btn_UserDelete)
         val btn_logout = findViewById<Button>(R.id.btn_logout)
@@ -175,7 +175,7 @@ class Setting : AppCompatActivity() {
 
         })
 
-        //알림은 일단 보류
+  /*      //알림은 일단 보류
         switch_appPush.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (isChecked) {
                 // 앱 알림 동의
@@ -183,7 +183,7 @@ class Setting : AppCompatActivity() {
                 // 앱 알림 비동의
             }
         }
-
+*/
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("611009617491-76ved3mmhklfcbbh1d73j11bfbjpu68q.apps.googleusercontent.com")
                 .requestEmail()
@@ -207,15 +207,9 @@ class Setting : AppCompatActivity() {
         val infoDialog = AlertDialog.Builder(this).setView(infoView).create()
         btnOk_info.setOnClickListener{infoDialog.dismiss()}
 
-        //apiService 생성
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
         val apiService = retrofit.create(UserAPIService::class.java)
 
-        //닉네임 변경
+  /*      //닉네임 변경
         val editNameView = layoutInflater.inflate(R.layout.dialog_edit_nickname, null)
         val editTextNickname = editNameView.findViewById<EditText>(R.id.editNickname)
         val textCurNicname = editNameView.findViewById<TextView>(R.id.textCurNicname)
@@ -223,7 +217,7 @@ class Setting : AppCompatActivity() {
         val editNameDialog = AlertDialog.Builder(this).setView(editNameView).create()
 
         btn_name_edit.setOnClickListener{
-            textCurNicname.text = "김다흰babu" //현재 닉네임
+            textCurNicname.text = "김다흰" //현재 닉네임
             editTextNickname.setText("")
             editNameDialog.show()
         }
@@ -231,7 +225,7 @@ class Setting : AppCompatActivity() {
             //닉네임 변경 버튼을 눌렀을때
             rename_user(apiService, infoDialog, textContent_info, editNameDialog, editNameView)
         }
-
+*/
         //도움말
         btn_Help.setOnClickListener{
             val intent = Intent(applicationContext, HelpContent::class.java)
@@ -240,15 +234,16 @@ class Setting : AppCompatActivity() {
 
         //계정 정보 모두 삭제
         val  editDeleteUserView = layoutInflater.inflate(R.layout.dialog_confirm, null)
-        val textTitle = editDeleteUserView.findViewById<TextView>(R.id.textTitle)
+        // val textTitle = editDeleteUserView.findViewById<TextView>(R.id.textTitle)
         val textContent = editDeleteUserView.findViewById<TextView>(R.id.textContent)
         val btnOk = editDeleteUserView.findViewById<Button>(R.id.btnOk)
         val btnNo = editDeleteUserView.findViewById<Button>(R.id.btnNo)
         val deleteUserDialog = AlertDialog.Builder(this).setView(editDeleteUserView).create()
-        textTitle.text = "계정 정보 모두 삭제"
-        textContent.text = "계정 정보를 삭제하면 게시글, 팔로우, 등 회원님과 관련된 모든 정보가 삭제됩니다. 정말 삭제하시겠습니까?"
+        // textTitle.text = "계정 정보 모두 삭제"
+        textContent.text = "회원님과 관련된 모든 정보가 삭제됩니다\n정말 삭제하시겠습니까?"
         btn_UserDelete.setOnClickListener{
             deleteUserDialog.show()
+            deleteUserDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
         btnOk.setOnClickListener {
             deleteUserDialog.dismiss()

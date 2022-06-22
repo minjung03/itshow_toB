@@ -10,6 +10,7 @@
         android:orientation="vertical"
         android:background="#FFFFFF">
 
+<<<<<<< Updated upstream
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -42,10 +43,33 @@
                     android:text="찜 목록"/>
             </LinearLayout>
         </LinearLayout>
+=======
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/search_lower_round"
+            android:id="@+id/frame">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나의 찜 목록"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="20dp"
+                android:textSize="25sp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center|left|bottom"
+                android:textStyle="bold"
+                />
+        </FrameLayout>
+>>>>>>> Stashed changes
 
         <LinearLayout
             android:layout_gravity="center"
             android:layout_width="350dp"
+<<<<<<< Updated upstream
+=======
+            android:layout_marginTop="10dp"
+>>>>>>> Stashed changes
             android:layout_marginBottom="3dp"
             android:layout_height="wrap_content">
 

@@ -1,9 +1,14 @@
 package com.cookandroid.itshow_tob
 
+<<<<<<< Updated upstream
+=======
+import android.annotation.SuppressLint
+>>>>>>> Stashed changes
 import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+<<<<<<< Updated upstream
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -12,6 +17,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ceylonlabs.imageviewpopup.ImagePopup
 import com.cookandroid.itshow_tob.databinding.FragmentChatBinding
+=======
+import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cookandroid.itshow_tob.databinding.ActivityChatBinding
+>>>>>>> Stashed changes
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -36,18 +51,30 @@ class ChatActivity: AppCompatActivity() {
     var rooms: String = ""
     var myname: String = ""
     var chatData = arrayListOf<ChatData>()
+<<<<<<< Updated upstream
     private var _binding: FragmentChatBinding? = null
+=======
+    private var _binding: ActivityChatBinding? = null
+>>>>>>> Stashed changes
     private val binding get() = _binding!!
     private lateinit var currentUser: String            // 현재 닉네임
     private lateinit var registration: ListenerRegistration    // 문서 수신
     private lateinit var chadapter: ChatAdapter   // 리사이클러 뷰 어댑터
     var auth: FirebaseAuth? = FirebaseAuth.getInstance()
 
+<<<<<<< Updated upstream
+=======
+    @SuppressLint("WrongViewCast")
+>>>>>>> Stashed changes
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+<<<<<<< Updated upstream
         _binding = FragmentChatBinding.inflate(layoutInflater)
+=======
+        _binding = ActivityChatBinding.inflate(layoutInflater)
+>>>>>>> Stashed changes
         setContentView(binding.root)
 
         val intent = getIntent()
@@ -59,6 +86,7 @@ class ChatActivity: AppCompatActivity() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rv_list.setLayoutManager(linearLayoutManager)
 
+<<<<<<< Updated upstream
         //지도 보기
         val text_view_map = findViewById<TextView>(R.id.text_view_map)
         text_view_map.setOnClickListener{
@@ -67,6 +95,15 @@ class ChatActivity: AppCompatActivity() {
             imagePopup.viewPopup()
         }
 
+=======
+        //뒤로가기
+        val btn_chatRoomBack = findViewById<Button>(R.id.btn_chatRoomBack)
+        btn_chatRoomBack.setOnClickListener{
+            finish()
+        }
+        
+        
+>>>>>>> Stashed changes
         // 사용자가 들어가 있는 방 번호 얻기
         val user = auth!!.currentUser
         user?.let {

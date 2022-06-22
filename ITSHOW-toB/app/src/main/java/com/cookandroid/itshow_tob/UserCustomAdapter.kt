@@ -27,11 +27,6 @@ class UserCustomAdapter (
     private val context: Context, private val dataList: ArrayList<UserInfoData>
 ): RecyclerView.Adapter<UserCustomAdapter.ViewHolder>() {
 
-    val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
     inner class ViewHolder(itemView: View):
         RecyclerView.ViewHolder(itemView){
         val item_Title = itemView.findViewById<TextView>(R.id.item_Title)

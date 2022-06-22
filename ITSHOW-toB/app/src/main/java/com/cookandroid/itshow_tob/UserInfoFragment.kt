@@ -90,10 +90,13 @@ class UserInfoFragment : Fragment() {
         }
 
         var uAdapter : UserCustomAdapter
+<<<<<<< Updated upstream
         val retrofit = Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+=======
+>>>>>>> Stashed changes
 
         //recyclerview
         val recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_me_recruitment)

@@ -26,11 +26,14 @@ var USER_EMAIL = auth?.currentUser?.email.toString()
 var USER_NAME = auth?.currentUser?.displayName.toString()
 var USER_IMG = ""
 
+<<<<<<< Updated upstream
 val retrofit = Retrofit.Builder()
         .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+=======
+>>>>>>> Stashed changes
 //Fragment1~6에서 사용하는 코드
 fun getRecruitmentItemList(recyclerView_main: RecyclerView, category:String, activity: Context) {
     var mAdapter: MainCustomAdapter

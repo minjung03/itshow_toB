@@ -23,7 +23,15 @@ class ChatListAdapter (
 
         fun bind(chatlistData:ChatListData, context:Context){
 
+<<<<<<< Updated upstream
             chat_textview_title.text = chatlistData.users;
+=======
+            var users = chatlistData.users;
+            if(users.length >= 25){
+                users = chatlistData.users.substring(0,25)+"...";
+            }
+            chat_textview_title.text = users;
+>>>>>>> Stashed changes
             chat_item_textview_lastmessage.text = chatlistData.comments
             var r_no = chatlistData.r_no
 

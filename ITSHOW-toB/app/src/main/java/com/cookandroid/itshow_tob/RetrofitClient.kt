@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 //BaseURL을 사용하여 실제 통신을 진행할 Retrofit Instance를 생성
 object RetrofitClient {
     private val BASE_URL = "localhost:3003"
-
     val instance : WriteRecruitment by lazy{
         val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -15,5 +14,4 @@ object RetrofitClient {
                 .build()
         retrofit.create(WriteRecruitment::class.java)
     }
-
 }

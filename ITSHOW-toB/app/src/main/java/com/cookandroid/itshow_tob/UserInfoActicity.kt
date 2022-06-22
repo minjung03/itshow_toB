@@ -39,6 +39,13 @@ class UserInfoActicity : AppCompatActivity() {
         val layout_follower_info = findViewById<LinearLayout>(R.id.layout_follower_info)
         val layout_following_info = findViewById<LinearLayout>(R.id.layout_following_info)
 
+<<<<<<< Updated upstream
+=======
+        if(USER_NAME.equals(u_name)){
+            btn_follow.visibility = View.GONE
+        }
+
+>>>>>>> Stashed changes
         val loadingDialog = LoadingDialog(this)//로딩창 객체 생성
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))//투명하게
 

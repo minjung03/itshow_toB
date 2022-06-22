@@ -24,11 +24,14 @@ class HeartListAdapter (
         private val context: Context, private val dataList: ArrayList<MainData>
 ): RecyclerView.Adapter<HeartListAdapter.ItemViewHolder>() {
 
+<<<<<<< Updated upstream
     val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+=======
+>>>>>>> Stashed changes
     inner class ItemViewHolder(itemView: View):
             RecyclerView.ViewHolder(itemView){
         val item_Title = itemView.findViewById<TextView>(R.id.item_Title)

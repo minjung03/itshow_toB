@@ -43,10 +43,6 @@ class Fragment1() : Fragment() {
         var count = ""
         var togle = ""
         var mAdapter : MainCustomAdapter
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
 
         //recyclerview
         val view = inflater.inflate(R.layout.main_recycler, container, false)

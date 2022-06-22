@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#ffffff">
 
-    <RelativeLayout
+<!--    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="30dp"
@@ -103,14 +103,64 @@
                 android:textColor="#5A5A5A"
                 android:textSize="11sp" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btn_googleSignIn"
-            android:layout_width="wrap_content"
+    <TextView
+        android:layout_marginTop="260dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@drawable/main_item_minprice_style"
+        android:text="미림인을 위한 공동구매 커뮤니티 앱입니다\n\ne-mirim.hs.kr 계정으로 로그인 해주세요!"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp">
+
+        <RelativeLayout
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="470dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp">
+
+            <TextView
+                android:id="@+id/Login_Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="45dp"
+                android:text="Login"
+                android:textColor="#2163E8"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginTop="220dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="소셜 로그인"
+                android:textColor="#777777"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_googleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
