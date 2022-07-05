@@ -16,12 +16,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isVisible
-import com.bumptech.glide.Glide
 import com.google.gson.*
-import com.makeramen.roundedimageview.RoundedImageView
 import okhttp3.ResponseBody
-import org.w3c.dom.Text
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,12 +45,10 @@ class DetailsRecruitment : AppCompatActivity() {
         val text_img = findViewById<ImageView>(R.id.img_recruitment)
         val img_heart = findViewById<ImageView>(R.id.img_heart)
         val text_heartNum = findViewById<TextView>(R.id.text_heartNum)
+        val delete_img = findViewById<ImageView>(R.id.delete_img)
+        val delete_recruitment = findViewById<TextView>(R.id.delete_recruitment)
         val btn_chat = findViewById<TextView>(R.id.btn_chat)
-        val delete = findViewById<TextView>(R.id.recruitment_delete)
-        val delete_icon = findViewById<ImageView>(R.id.icon_recruitment_delete)
-        val img_recruitment = findViewById<RoundedImageView>(R.id.img_recruitment)
-
-
+        val user_icon = findViewById<ImageView>(R.id.user_icon)
         //no을 통해 게시글 정보를 불러오는 코드
         val r_no = intent.getSerializableExtra("r_no") as Int
         Log.d(TAG, "ChatFragment r_no : "+r_no.toString());
@@ -65,11 +60,6 @@ class DetailsRecruitment : AppCompatActivity() {
             intent.putExtra("preFollow", "")
             startActivity(intent)
         })
-
-        val img_DetailsBack = findViewById<ImageView>(R.id.img_DetailsBack)
-        img_DetailsBack.setOnClickListener {
-            finish()
-        }
 
         btn_chat.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
@@ -116,22 +106,26 @@ class DetailsRecruitment : AppCompatActivity() {
                     val imgPath = recruitmentData.r_imgPath?.toString()
                     val name = recruitmentData.u_name?.toString()
 
-                    if(USER_NAME != name){
-                        delete.visibility = View.INVISIBLE
-                        delete_icon.visibility = View.INVISIBLE
-                    }
-
-                    Log.d("dahuin", title)
-                    Log.d("dahuin", content?:"")
-                    Log.d("dahuin", minPrice)
-
                     //endDate를 format
                     val sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd 까지")
                     val date = LocalDateTime.parse(endDate, DateTimeFormatter.ISO_DATE_TIME).format(sdf)
 
+                    Log.d("dahuin", email+" "+ USER_EMAIL)
+
                     if(imgPath != ""){
                         text_img.visibility = View.GONE
                     }
+                    if(email != USER_EMAIL){
+                        delete_img.visibility = View.INVISIBLE
+                        delete_recruitment.visibility = View.INVISIBLE
+                    }
+                    else {
+                        delete_img.visibility = View.VISIBLE
+                        delete_recruitment.visibility = View.VISIBLE
+                        user_icon.visibility = View.INVISIBLE
+                        textUserName.visibility = View.INVISIBLE
+                    }
+
                     textTitle.text = title
                     textContent.text = content?:""
                     textMinAmount.text = minPrice
@@ -140,12 +134,6 @@ class DetailsRecruitment : AppCompatActivity() {
                     textOrder.text = order
                     textLocation.text = location
                     textCategory.text = "카테고리 > "+category?:"없음"
-
-                    if(!imgPath.equals("")){
-                        img_recruitment.visibility = View.VISIBLE
-                        Glide.with(this@DetailsRecruitment).load("https://tob.emirim.kr/uploads/"+imgPath)
-                                .into(img_recruitment)
-                    }
 
                     val apiCallForData2 = apiService2.post_like(r_no)
                     apiCallForData2.enqueue(object :Callback<JsonArray>{
@@ -204,6 +192,56 @@ class DetailsRecruitment : AppCompatActivity() {
                 }
             }
         })
+        //no을 통해 게시글 정보를 불러오는 코드 END
+
+        val img_DetailsBack = findViewById<ImageView>(R.id.img_DetailsBack)
+        img_DetailsBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        //계정 정보 모두 삭제
+        val  editDeleteView= layoutInflater.inflate(R.layout.dialog_confirm, null)
+        val contents = editDeleteView.findViewById<TextView>(R.id.textContent)
+        val btnOk = editDeleteView.findViewById<Button>(R.id.btnOk)
+        val btnNo = editDeleteView.findViewById<Button>(R.id.btnNo)
+        val deleteRecruitmentDialog = AlertDialog.Builder(this).setView(editDeleteView).create()
+
+        val dialog = layoutInflater.inflate(R.layout.dialog_information, null)
+        val contents2 = dialog.findViewById<TextView>(R.id.textContent)
+        val btnOk2 = dialog.findViewById<Button>(R.id.btnOk)
+        val deleteStateDialog = AlertDialog.Builder(this).setView(dialog).create()
+
+        contents.text = "게시물을 삭제하시겠습니까?"
+        delete_recruitment.setOnClickListener(View.OnClickListener {
+            deleteRecruitmentDialog.show()
+            deleteRecruitmentDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        })
+        btnOk.setOnClickListener {
+            deleteRecruitmentDialog.dismiss()
+            //특정 사용자의 모든 정보를 삭제하는 코드
+            val apiCallForData = apiService.deleteRecruitment(r_no)
+            apiCallForData.enqueue(object : Callback<JsonArray> {
+                override fun onFailure(call: Call<JsonArray>, t: Throwable) {
+                    contents2.text = "게시물이 삭제되었습니다"
+                    deleteStateDialog.show()
+                    deleteStateDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    deleteRecruitmentDialog.dismiss()
+                }
+                override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
+                    contents2.text = "삭제 실패"
+                    deleteStateDialog.show()
+                    deleteStateDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    Log.d(TAG, "성공 ${response.raw()}")
+                }
+            })
+        }
+        btnNo.setOnClickListener{ deleteRecruitmentDialog.dismiss() }
+        btnOk2.setOnClickListener{
+            deleteStateDialog.dismiss()
+            val intent = Intent(this@DetailsRecruitment, FrameMain::class.java)
+            finish()
+            startActivity(intent)
+        }
 
         img_heart.setOnClickListener(View.OnClickListener{
             when(togle){
@@ -246,42 +284,12 @@ class DetailsRecruitment : AppCompatActivity() {
                 }
             }
         })
+    }
 
-
-        // 삭제 여부 다이얼로그
-        val  editDeleteRecruitment = layoutInflater.inflate(R.layout.dialog_confirm, null)
-        // val textTitle = editDeleteUserView.findViewById<TextView>(R.id.textTitle)
-        val textContents = editDeleteRecruitment.findViewById<TextView>(R.id.textContent)
-        val btnOk = editDeleteRecruitment.findViewById<Button>(R.id.btnOk)
-        val btnNo = editDeleteRecruitment.findViewById<Button>(R.id.btnNo)
-        val deleteUserDialog = AlertDialog.Builder(this).setView(editDeleteRecruitment).create()
-
-        textContent.text = "모집글을 삭제하시겠습니까?"
-        delete.setOnClickListener(View.OnClickListener {
-            deleteUserDialog.show()
-            deleteUserDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
-        })
-
-        btnOk.setOnClickListener {
-            deleteUserDialog.dismiss()
-
-            val apiCallForData4 = apiService.deleteRecruitment(r_no.toString())
-            apiCallForData4.enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    Log.d("data 삭제 잘됨", "삭제됨")
-                    Toast.makeText(this@DetailsRecruitment, "게시글이 삭제되었습니다", Toast.LENGTH_SHORT).show()
-                    var intent = Intent(this@DetailsRecruitment, FrameMain::class.java)
-                    finish()
-                    startActivity(intent)
-                }
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Log.d("data 삭제 안됨", "삭제 안됨")
-                }
-            })
-        }
-
-        btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
-
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@DetailsRecruitment, FrameMain::class.java)
+        startActivity(intent)
+        finish()
     }
 }

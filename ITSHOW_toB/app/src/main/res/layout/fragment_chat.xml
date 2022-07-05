@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/search_lower_round"
+        android:id="@+id/frame"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/img_reviewBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/arrow_white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="채팅방"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="11dp"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center|left|bottom"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지도 보기"
+            android:layout_marginLeft="115dp"
+            android:layout_marginBottom="11dp"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center|left|bottom"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거래 완료"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="11dp"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center|left|bottom"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+    -->
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/search_lower_round"
+        android:id="@+id/frame"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/chat_back"
+            android:layout_gravity="center_vertical"
+            android:layout_width="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/arrow_white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="채팅방"
+            android:layout_marginLeft="75dp"
+            android:layout_marginBottom="23dp"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center|left|bottom"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/img_view_map"
+            android:gravity="center_vertical"
+            android:layout_width="25dp"
+            android:layout_marginLeft="350dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/chat_map_icon"
+            />
+
+
+        <ImageView
+            android:id="@+id/img_exit"
+            android:gravity="center_vertical"
+            android:layout_width="25dp"
+            android:layout_marginLeft="310dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/exit"
+            />
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거래 완료"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="11dp"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center|left|bottom"
+            android:textStyle="bold"
+            />-->
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_marginTop="73dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="52dp"
+        android:background="#FFFFFF"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/chatroom_bottomfigure"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.935"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-10dp">
+
+            <TextView
+                android:id="@+id/chat_complet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="거래 완료"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                tools:ignore="MissingConstraints" />
+        </FrameLayout>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chatroom_edit_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/et_chatting"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:backgroundTint="@color/chat2"
+            android:textCursorDrawable="@color/chat1"
+            android:hint="채팅 매너를 지켜주세요"
+            android:inputType="textMultiLine"
+            android:maxLength="128"
+            android:scrollHorizontally="false"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_send"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_round1_blue"
+            android:textStyle="bold"
+            android:text="입력"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

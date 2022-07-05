@@ -24,7 +24,6 @@ class SearchAdapter(val searchWordList: ArrayList<SearchWord>):RecyclerView.Adap
                 Log.d("ToB", "클릭")
                 val curPos : Int = adapterPosition //누른 뷰의 순서값
                 val searchWord : SearchWord = searchWordList.get(curPos)
-                Toast.makeText(parent.context, "키워드 : ${searchWord.word}", Toast.LENGTH_SHORT).show()
                 auto_search.text = searchWord.word
             }
         }

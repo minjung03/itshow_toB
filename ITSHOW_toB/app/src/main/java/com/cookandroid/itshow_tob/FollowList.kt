@@ -72,13 +72,20 @@ class FollowList : AppCompatActivity() {
         }//if end
 
         img_followBack.setOnClickListener{
-            finish()
+            onBackPressed()
         }
 
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
+        if(preEmailWithFollow.equals(USER_EMAIL)) {
+            val intent = Intent(this@FollowList, FrameMain::class.java)
+            startActivity(intent)
+            finish()
+        }else{
+            finish()
+        }
     }
 
 }

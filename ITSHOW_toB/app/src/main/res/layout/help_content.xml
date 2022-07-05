@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:lineHeight="18sp"
-                android:text=" $$$$$$$$ 👈 여기 이 이메일로 문의사항을 보내주시면 감사하겠습니다!"
+                android:text=" s2003@e-mirim.hs.kr 👈 여기 이 이메일로 문의사항을 보내주시면 감사하겠습니다!"
                 android:layout_centerVertical="true"
                 android:textSize="14sp"
                 android:textColor="#000000"/>
@@ -97,104 +97,13 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:lineHeight="18sp"
-            android:text=" 아직은 그 기능이 준비돼있지 않습니다. 곧 기능을 추가할 예정입니다! 현재는 게시글을 다시 올려주시는 방법으로 해결해야할 것 같습니다. 양해부탁드립니다."
+            android:text=" 아직은 그 기능이 준비되어있지 않습니다. 곧 기능을 추가할 예정입니다! 현재는 게시글을 삭제하고 다시 올려주시는 방법으로 해결해야할 것 같습니다. 양해부탁드립니다."
             android:layout_centerVertical="true"
             android:textSize="14sp"
             android:textColor="#000000"/>
     </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D5D5D5"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="모집기간을 늘리고 싶습니다!"
-                android:layout_centerVertical="true"
-                android:textSize="16sp"
-                android:fontFamily="@font/suncheonb"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:lineHeight="18sp"
-                android:text=" 아직은 그 기능이 준비돼있지 않습니다. 곧 기능을 추가할 예정입니다! 현재는 게시글을 다시 올려주시는 방법으로 해결해야할 것 같습니다. 양해부탁드립니다."
-                android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D5D5D5"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="모집기간을 늘리고 싶습니다!"
-                android:layout_centerVertical="true"
-                android:textSize="16sp"
-                android:fontFamily="@font/suncheonb"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:lineHeight="18sp"
-                android:text=" 아직은 그 기능이 준비돼있지 않습니다. 곧 기능을 추가할 예정입니다! 현재는 게시글을 다시 올려주시는 방법으로 해결해야할 것 같습니다. 양해부탁드립니다."
-                android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D5D5D5"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="모집기간을 늘리고 싶습니다!"
-                android:layout_centerVertical="true"
-                android:textSize="16sp"
-                android:fontFamily="@font/suncheonb"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:lineHeight="18sp"
-                android:text=" 아직은 그 기능이 준비돼있지 않습니다. 곧 기능을 추가할 예정입니다! 현재는 게시글을 다시 올려주시는 방법으로 해결해야할 것 같습니다. 양해부탁드립니다."
-                android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

@@ -23,19 +23,19 @@ class MainActivity : AppCompatActivity() {
                 return@OnCompleteListener
             }
 
-            // Get new FCM registration token
+            // Get new FCM registration token-
             val token = task.result
 
             // Log and toast
             val msg = getString(R.string.msg_token_fmt, token)
-            Log.d(TAG, "msg "+msg)
-            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "token111 "+msg)
         })
 
         Handler().postDelayed(Runnable() {
             run() {
                 val intent = Intent(this@MainActivity, Login::class.java)
-                startActivity(intent);
+                startActivity(intent)
+                finish()
             }
         }, 1500); // 1.5초 뒤 자동 화면 전환
     }

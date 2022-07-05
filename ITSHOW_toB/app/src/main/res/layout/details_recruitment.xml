@@ -266,53 +266,61 @@
                 <TextView
                     android:id="@+id/text_value_details"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:gravity="top"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="300dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="top"
                     android:text="쿠팡 마켓에서 생필품 같이 사실 분 구해요!"
                     android:textSize="13sp" />
 
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="right"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal">
-
+                    <LinearLayout
+                        android:gravity="right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_marginRight="3dp"
+                        android:id="@+id/delete_img"
                         android:layout_width="15dp"
-                        android:id="@+id/icon_recruitment_delete"
                         android:layout_height="15dp"
-                        android:background="@drawable/recruitment_delete_icon"/>
+                        android:background="@drawable/delete_icon"/>
                     <TextView
-                        android:layout_marginRight="95dp"
-                        android:id="@+id/recruitment_delete"
+                        android:id="@+id/delete_recruitment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="삭제"
                         android:textSize="15sp" />
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:gravity="right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_marginRight="3dp"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:background="@drawable/blue_person"/>
-                    <TextView
-                        android:id="@+id/text_userName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="신림 사는 미림이"
-                        android:textSize="15sp" />
-                </LinearLayout>
+                            android:id="@+id/user_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/blue_person"/>
+                        <TextView
+                            android:id="@+id/text_userName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="신림 사는 미림이"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </FrameLayout>
+
             </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_gravity="center"
                     android:layout_width="340dp"
                     android:layout_marginBottom="60dp"

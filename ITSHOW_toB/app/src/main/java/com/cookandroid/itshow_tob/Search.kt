@@ -1,6 +1,7 @@
 package com.cookandroid.itshow_tob
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -64,7 +65,7 @@ class Search : AppCompatActivity() {
         val img_SearchBack = findViewById<ImageView>(R.id.img_SearchBack)
 
         img_SearchBack.setOnClickListener(View.OnClickListener{
-            finish()
+            onBackPressed()
         })
 
         //정보창
@@ -267,15 +268,13 @@ class Search : AppCompatActivity() {
                 @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
                     val data = response.body() // 역직렬화를 통해 생성된 객체를 반환받음. RecruitmentAPIJSONResponseFromGSON타입의 객체임.
-                    if(data != null){
+                    if(data.toString() != "[]"){
                         //Gson은 객체를 JSON 표현으로 변환하는 데 사용할 수 있는 라이브러리인듯하다.
                         //api가 처음부터 리스트의 형태로 되어있어서 리스트의 첫 번째 값을 가져온후 RecruitmentDatas에서 선언한 변수와 자동 매핑해준다.
                         val gson = Gson()
-
-                        val searchRecentData = gson.fromJson(data.get(0).toString(), SearchWordData::class.java)
                         val searchWordList:ArrayList<SearchWord> = arrayListOf()
                         Log.d("ToB", data.toString())
-                        var len = data.size()
+                        var len = data!!.size()
                         if(len > 8) len = 8
                         for(idx in 0 until len){//최대 5개
                             searchWordList.add(SearchWord(gson.fromJson(data.get(idx).toString(), SearchWordData::class.java).s_word))
@@ -294,6 +293,18 @@ class Search : AppCompatActivity() {
         binding.recycelerView.layoutManager = flexBoxLayoutManager
         //binding.recycelerView.setHasFixedSize(true)
         btn_recentlySearch.callOnClick()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@Search, FrameMain::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 
 }

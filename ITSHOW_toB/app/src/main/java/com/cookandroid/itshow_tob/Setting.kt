@@ -27,7 +27,10 @@ class Setting : AppCompatActivity() {
     var auth : FirebaseAuth? = null
 
     private var mAuth: FirebaseAuth? = null
-
+    var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("611009617491-76ved3mmhklfcbbh1d73j11bfbjpu68q.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
     private val RC_SIGN_IN = 9001
 
     //회원의 정보를 모두 삭제하는 코드
@@ -161,6 +164,7 @@ class Setting : AppCompatActivity() {
         setContentView(R.layout.setting)
 
         mAuth = FirebaseAuth.getInstance();
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val img_SettingBack = findViewById<ImageView>(R.id.img_SettingBack)
         /*val switch_appPush= findViewById<Switch>(R.id.switch_appPush)
@@ -171,8 +175,7 @@ class Setting : AppCompatActivity() {
 
         // 뒤로가기 버튼 (내 프로필 화면으로 이동)
         img_SettingBack.setOnClickListener(View.OnClickListener {
-            finish()
-
+            onBackPressed()
         })
 
   /*      //알림은 일단 보류
@@ -184,11 +187,7 @@ class Setting : AppCompatActivity() {
             }
         }
 */
-        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("611009617491-76ved3mmhklfcbbh1d73j11bfbjpu68q.apps.googleusercontent.com")
-                .requestEmail()
-                .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
 
         btn_logout.setOnClickListener(View.OnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -257,12 +256,19 @@ class Setting : AppCompatActivity() {
                     textContent_info.text = "삭제 실패" //정보창에 띄울 메시지를 가져온다.
                     infoDialog.show()
                 }
-
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     textContent_info.text = "모든 정보가 삭제되었습니다." //정보창에 띄울 메시지를 가져온다.
                     infoDialog.show()
                     Log.d(TAG, "안녕"+response.body()?.string())
                     Log.d(TAG, "성공 ${response.raw()}")
+
+                    FirebaseAuth.getInstance().signOut()
+                    googleSignInClient?.signOut()?.addOnCompleteListener {
+                        finishAffinity()
+                        val intent = Intent(this@Setting, MainActivity::class.java)
+                        startActivity(intent)
+                        System.exit(0)
+                    }
                 }
             })
             textContent_info.text = "삭제 실패" //정보창에 띄울 메시지를 가져온다.
@@ -272,5 +278,10 @@ class Setting : AppCompatActivity() {
 
         btnNo.setOnClickListener{ deleteUserDialog.dismiss() }
     }
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@Setting, FrameMain::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

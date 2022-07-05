@@ -1,18 +1,24 @@
 package com.cookandroid.itshow_tob
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cookandroid.itshow_tob.databinding.ActivityChatBinding
+import com.cookandroid.itshow_tob.databinding.FragmentChatBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -37,19 +43,18 @@ class ChatActivity: AppCompatActivity() {
     var rooms: String = ""
     var myname: String = ""
     var chatData = arrayListOf<ChatData>()
-    private var _binding: ActivityChatBinding? = null
+    private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
     private lateinit var currentUser: String            // 현재 닉네임
     private lateinit var registration: ListenerRegistration    // 문서 수신
     private lateinit var chadapter: ChatAdapter   // 리사이클러 뷰 어댑터
     var auth: FirebaseAuth? = FirebaseAuth.getInstance()
 
-    @SuppressLint("WrongViewCast")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        _binding = ActivityChatBinding.inflate(layoutInflater)
+        _binding = FragmentChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = getIntent()
@@ -61,13 +66,12 @@ class ChatActivity: AppCompatActivity() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rv_list.setLayoutManager(linearLayoutManager)
 
-        //뒤로가기
-        val btn_chatRoomBack = findViewById<Button>(R.id.btn_chatRoomBack)
-        btn_chatRoomBack.setOnClickListener{
+
+        var chat_back = findViewById<ImageView>(R.id.chat_back)
+        chat_back.setOnClickListener(View.OnClickListener {
             finish()
-        }
-        
-        
+        })
+
         // 사용자가 들어가 있는 방 번호 얻기
         val user = auth!!.currentUser
         user?.let {
@@ -106,7 +110,6 @@ class ChatActivity: AppCompatActivity() {
         }
         // 입력 버튼
         binding.btnSend.setOnClickListener {
-
             var dateFormat = SimpleDateFormat("yy-MM-dd HH:mm")
             val datetime: LocalDateTime = LocalDateTime.now()
             val format = DateTimeFormatter.ofPattern("yy-MM-dd HH:ss")
@@ -179,167 +182,76 @@ class ChatActivity: AppCompatActivity() {
                 }
             }
 
-    }
+        //나가기 버튼
+        binding.imgExit.setOnClickListener {
+            db.collection("Chat").whereEqualTo("nickname", myname).whereEqualTo("room", r_no)
+                    .get()
+                    .addOnSuccessListener { result ->
 
-
-
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        if(registration!=null) {
-//            registration.remove()
-//        }
-//        _binding = null
-//    }
-
-}
-
-
-
-
-
-/*
-class ChatFragment: Fragment() {
-    private var _binding: FragmentChatBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var currentUser: String            // 현재 닉네임
-    private val db = FirebaseFirestore.getInstance()    // Firestore 인스턴스
-    private lateinit var registration: ListenerRegistration    // 문서 수신
-    private val chatList = arrayListOf<ChatData>()    // 리사이클러 뷰 목록
-    private lateinit var adapter: ChatAdapter   // 리사이클러 뷰 어댑터
-    var auth : FirebaseAuth? = FirebaseAuth.getInstance()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // LoginFragment 에서 입력한 닉네임을 가져옴
-
-
-        val user = auth!!.currentUser
-        user?.let{
-            val displayName  = user.displayName
-
-            currentUser = displayName.toString();
-
-            //Toast.makeText(this,  name.toString(), Toast.LENGTH_LONG).show()
-            //Log.d(ContentValues.TAG, "handleSignInResult:personEmail $photoUrl")
+                        for (document in result) {
+                            document.reference.update("nickname", "알 수 없음")
+                        }
+                        onBackPressed()
+                    }
         }
 
-      */
-/*  arguments?.let {
-            currentUser = it.getString("nickname").toString()
-        }*//*
 
-    }
+        //계정 정보 모두 삭제
+        val  viewMap = layoutInflater.inflate(R.layout.dialog_map, null)
+        val btnOk = viewMap.findViewById<Button>(R.id.btnOk)
+        val viewMapDialog = AlertDialog.Builder(this).setView(viewMap).create()
+        binding.imgViewMap.setOnClickListener{
+            viewMapDialog.show();
+            viewMapDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        }
+        btnOk.setOnClickListener{
+            viewMapDialog.dismiss()
+        }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
-        val view = binding.root
-        Toast.makeText(context, "현재 닉네임은 ${currentUser}입니다.", Toast.LENGTH_SHORT).show()
+        /*
+        //거래완료 버튼
+        binding.chatComplet.setOnClickListener {
 
+            val  deleteCheatView = layoutInflater.inflate(R.layout.dialog_confirm, null)
+            val textContent = deleteCheatView.findViewById<TextView>(R.id.textContent)
+            val btnOk = deleteCheatView.findViewById<Button>(R.id.btnOk)
+            val btnNo = deleteCheatView.findViewById<Button>(R.id.btnNo)
 
+            textContent.text = "지금까지의 채팅 내용이\n전부 삭제됩니다\n정말 거래완료를 하시겠습니까?"
+            val deleteCheatDialog = AlertDialog.Builder(this).setView(deleteCheatView).create()
+            deleteCheatDialog.show()
+            deleteCheatDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+            btnOk.setOnClickListener{
+                db.collection("Chat").whereEqualTo("room", r_no)
+                        .get()
+                        .addOnSuccessListener { result ->
 
-
-        // 리사이클러 뷰 설정
-        binding.rvList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter = ChatAdapter(currentUser, chatList)
-        Log.d("TAG : ", "이름은$currentUser ");
-        binding.rvList.adapter = adapter
-
-            // 입력 버튼
-            binding.btnSend.setOnClickListener {
-                var dateFormat = SimpleDateFormat("yy-MM-dd HH:mm")
-                val datetime : LocalDateTime = LocalDateTime.now()
-                val format = DateTimeFormatter.ofPattern("yy-MM-dd HH:ss")
-                */
-/*val currentMillis = System.currentTimeMillis()
-                val currentDateTime =
-                    Instant.ofEpochMilli(currentMillis).atZone(ZoneId.systemDefault()).toLocalDateTime()*//*
-
-                // 채팅창이 공백일 경우 버튼 비활성화
-                if(binding.etChatting.text.toString() == ""){
-                    Toast.makeText(context, "메세지를 입력해주세요", Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    // 입력 데이터
-                    val data = hashMapOf(
-                        "nickname" to currentUser,
-                        "contents" to binding.etChatting.text.toString(),
-                        */
-/*"time" to datetime.format(format),*//*
-
-                        "time" to Timestamp.now(),
-                        "room" to "2"
-                        //채팅 번호
-                    )
-                    // Firestore에 기록
-                    db.collection("Chat").add(data)
-                        .addOnSuccessListener {
-                            binding.etChatting.text.clear()
-                            Log.w("ChatFragment", "Document added: $it")
+                            for (document in result) {
+                                document.reference.delete()
+                            }
+                            onBackPressed()
                         }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(context, "전송하는데 실패했습니다", Toast.LENGTH_SHORT).show()
-                            Log.w("ChatFragment", "Error occurs: $e")
-
-                        }
-                }
             }
 
-            return view
+            btnNo.setOnClickListener{
+                deleteCheatDialog.dismiss()
+            }
+
+
+        }
+         */
+        binding.chatBack.setOnClickListener {
+            onBackPressed()
         }
 
 
-
-
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val enterTime = Date(System.currentTimeMillis())
-
-        registration = db.collection("Chat")
-                .orderBy("time", Query.Direction.DESCENDING)
-                .limit(1)
-                .addSnapshotListener { snapshots, e ->
-                    // 오류 발생 시
-                    if (e != null) {
-                        Log.w("ChatFragment", "Listen failed: $e")
-                        return@addSnapshotListener
-                    }
-
-                    // 원하지 않는 문서 무시
-                    if (snapshots!!.metadata.isFromCache) return@addSnapshotListener
-
-                    // 문서 수신
-                    for (doc in snapshots.documentChanges) {
-                        val timestamp = doc.document["time"] as Timestamp
-
-                        // 문서가 추가될 경우 리사이클러 뷰에 추가
-                        if (doc.type == DocumentChange.Type.ADDED && timestamp.toDate() > enterTime) {
-                            val nickname = doc.document["nickname"].toString()
-                            val contents = doc.document["contents"].toString()
-
-                            // 타임스탬프를 한국 시간, 문자열로 바꿈
-                            val sf = SimpleDateFormat("MM/dd HH:mm", Locale.KOREA)
-                            sf.timeZone = TimeZone.getTimeZone("Asia/Seoul")
-                            val time = sf.format(timestamp.toDate())
-                            val room = 1
-
-                            val item = ChatData(nickname, contents, time, room)
-                            chatList.add(item)
-                        }
-                        adapter.notifyDataSetChanged()
-                    }
-                }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        registration.remove()
-        _binding = null
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@ChatActivity, FrameMain::class.java)
+        startActivity(intent)
+        finish()
     }
-
 }
-*/

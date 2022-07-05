@@ -20,6 +20,7 @@ class ChatAdapter(val currentUser1: String, val itemList: ArrayList<ChatData>): 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
+
 //        db.collection("Chat")
 //            .whereEqualTo("room", "1")
 //            .get()
@@ -31,6 +32,9 @@ class ChatAdapter(val currentUser1: String, val itemList: ArrayList<ChatData>): 
 //            .addOnFailureListener { exception ->
 //                Log.w(TAG, "----------Error getting documents.", exception)
 //            }
+
+
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.chat_layout, parent, false)
         return ViewHolder(view)
 
@@ -41,11 +45,9 @@ class ChatAdapter(val currentUser1: String, val itemList: ArrayList<ChatData>): 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // 현재 닉네임과 글쓴이의 닉네임이 같을 경우 배경을 노란색으로 변경
+
         if (currentUser1 == itemList[position].nickname) {
 
-     /*     val lllp=holder.card.getLayoutParams() as ConstraintLayout.LayoutParams
-            lllp.layoutgra gravity=Gravity.RIGHT*/
             holder.laychat.gravity = Gravity.RIGHT
             holder.laywidget.setBackgroundResource(R.drawable.chat_style_my)
         }

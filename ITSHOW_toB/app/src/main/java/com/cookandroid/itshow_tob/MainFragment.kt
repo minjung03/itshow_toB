@@ -26,6 +26,7 @@ class MainFragment : Fragment() {
 
         val main_serch = view.findViewById<ImageView>(R.id.main_serch)
 
+        Log.d(TAG, "와요와요")
         main_serch.setOnClickListener{
             val intent = Intent(activity, Search::class.java)
             activity?.startActivity(intent)

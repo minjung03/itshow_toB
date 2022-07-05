@@ -90,7 +90,6 @@ class UserInfoFragment : Fragment() {
         }
 
         var uAdapter : UserCustomAdapter
-
         //recyclerview
         val recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_me_recruitment)
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL)

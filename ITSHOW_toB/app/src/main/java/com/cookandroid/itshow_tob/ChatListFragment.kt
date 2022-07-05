@@ -55,7 +55,7 @@ class ChatListFragment : Fragment() {
         val view = inflater.inflate(R.layout.chat_list, container, false)
         val chatfragment_recyclerview = view.findViewById<RecyclerView>(R.id.chatfragment_recyclerview)
         chatfragment_recyclerview.layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+ //       recyclerView.layoutManager = LinearLayoutManager(requireContext())
 //        recyclerView.adapter = RecyclerViewAdapter()
 
         var chatlistData = arrayListOf<ChatListData>()
@@ -71,73 +71,72 @@ class ChatListFragment : Fragment() {
                     .whereEqualTo("nickname", name)
                     .get()
                     .addOnSuccessListener { result ->
-                        for (document in result) {
-                            var st = document.data.getValue("room")
-                            room_num.add(st.toString())
-                            // Log.d("mytag", st.toString())
-                        }
-                        // val set = room_num.toSet()
-                        // var room_numr = set.toList()
-                        for (rno in room_num) {
-                            // 사용자 얻기
-                            db.collection("Chat")
-                                    .whereEqualTo("room", rno)
-                                    .get()
-                                    .addOnSuccessListener { result ->
-                                        r_user.clear()
-                                        for (document in result) {
-                                            Log.d("tag : ", "---room : ${rno}")
-                                            var nickname = document.data.getValue("nickname")
-                                            // Log.d("mytag", nickname.toString())
-                                            r_user.add(nickname.toString())
-                                        }
-                                        var usersString =
-                                                r_user.stream().collect(Collectors.joining(","));
 
-                                        Log.d("mytag", "------nickname${usersString}")
-                                        db.collection("Chat")
-                                                .whereEqualTo("room", rno)
-                                                .orderBy("time", Query.Direction.DESCENDING).limit(1)
-                                                .get()
-                                                .addOnSuccessListener { result ->
-                                                    var contents =
-                                                            result.first().data.getValue("contents").toString()
-                                                    chatlistData.add(
-                                                            ChatListData(
-                                                                    usersString,
-                                                                    contents,
-                                                                    rno
-                                                            )
-                                                    )
+                        if(result != null) {
+                            for (document in result) {
+                                var st = document.data.getValue("room")
+                                room_num.add(st.toString())
+                                // Log.d("mytag", st.toString())
+                            }
+                            // val set = room_num.toSet()
+                            // var room_numr = set.toList()
+                            for (rno in room_num) {
+                                // 사용자 얻기
+                                db.collection("Chat")
+                                        .whereEqualTo("room", rno)
+                                        .get()
+                                        .addOnSuccessListener { result ->
+                                            r_user.clear()
+                                            for (document in result) {
+                                                Log.d("tag : ", "---room : ${rno}")
+                                                var nickname = document.data.getValue("nickname")
+                                                // Log.d("mytag", nickname.toString())
+                                                r_user.add(nickname.toString())
+                                            }
 
-                                                    if(chatlistData!=null) {
+                                            db.collection("Chat")
+                                                    .whereEqualTo("room", rno)
+                                                    .orderBy("time", Query.Direction.DESCENDING).limit(1)
+                                                    .get()
+                                                    .addOnSuccessListener { result ->
+                                                        var contents =
+                                                                result.first().data.getValue("contents").toString()
+                                                        chatlistData.add(
+                                                                ChatListData(
+                                                                        contents,
+                                                                        rno
+                                                                )
+                                                        )
+
+
                                                         cAdapter = ChatListAdapter(activity as Context, chatlistData)
                                                         chatfragment_recyclerview.adapter = cAdapter
-                                                    }
-                                                    for (item in chatlistData) {
-                                                        Log.d("mytag", item.toString())
-                                                    }
-                                                }
 
-                                                .addOnFailureListener { exception ->
-                                                    Log.w(
-                                                            ContentValues.TAG,
-                                                            "----------Error getting documents.",
-                                                            exception
-                                                    )
-                                                }
 
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        Log.w(ContentValues.TAG, "----------Error getting documents.", exception)
-                                    }
+                                                        for (item in chatlistData) {
+                                                            Log.d("mytag", item.toString())
+                                                        }
+                                                    }
+
+                                                    .addOnFailureListener { exception ->
+                                                        Log.w(
+                                                                ContentValues.TAG,
+                                                                "----------Error getting documents.",
+                                                                exception
+                                                        )
+                                                    }
+
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            Log.w(ContentValues.TAG, "----------Error getting documents.", exception)
+                                        }
+                            }
                         }
                     }
                     .addOnFailureListener { exception ->
                         Log.w(ContentValues.TAG, "----------Error getting documents.", exception)
                     }
             // 얻은 방번호 리스트를 이용해 for문 돌리기
-
         }
         return view
     }

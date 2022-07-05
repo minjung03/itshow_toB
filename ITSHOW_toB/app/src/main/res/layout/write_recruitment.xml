@@ -110,6 +110,7 @@
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:backgroundTint="#90000000"
+                            android:visibility="gone"
                             android:background="@drawable/ic_add_file"
                             />
                     </LinearLayout>
@@ -407,7 +408,7 @@
                             android:textSize="14sp"
                             android:fontFamily="@font/suncheonb"
                             android:hint="위치 (5글자 이내)"
-                            android:maxLength="100"
+                            android:maxLength="5"
                             android:layout_gravity="center"
                             android:textColorHint="#86000000"
                             android:padding="10dp"
@@ -448,7 +449,7 @@
                         android:inputType="textMultiLine"
                         android:hint="거래 시 필요한 상세 정보를 적어주세요 :)"
                         android:padding="20dp"
-                        android:textSize="13sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
                 <!-- 모집글 작성 END -->

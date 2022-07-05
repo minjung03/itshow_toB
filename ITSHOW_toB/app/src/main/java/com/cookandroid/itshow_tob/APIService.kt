@@ -1,8 +1,7 @@
 package com.cookandroid.itshow_tob
 
 import com.google.gson.JsonArray
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -11,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 val retrofit = Retrofit.Builder()
-        .baseUrl("https://tob.emirim.kr") //로컬호스트로 접속하기 위해!
-//        .baseUrl("http://10.0.2.2:3003")
+         .baseUrl("https://tob.emirim.kr") //로컬호스트로 접속하기 위해!
+         // .baseUrl("http://10.0.2.2:3003") //로컬호스트로 접속하기 위해!
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -48,19 +47,13 @@ interface RecruitmentAPIService {
             @Query("category") category:String
     ):Call<JsonArray>
 
-    // 게시글 삭제
+    // 게시물 삭제
     @DELETE("/recruitment/delete")
     fun deleteRecruitment(
-            @Query("r_no") u_email: String
-    ):Call<ResponseBody>
-
-    @Multipart
-    @POST("/upload")
-    fun postImage(
-            @Part image: MultipartBody.Part?,
-            @Part("upload") name: RequestBody?
-    ): Call<ResponseBody?>?
+            @Query("r_no") r_no:Int
+    ):Call<JsonArray>
 }
+
 
 //유저 관련 api요청
 interface UserAPIService {
@@ -72,7 +65,7 @@ interface UserAPIService {
             @Query("u_img") u_img:String,
     ):Call<JsonArray>
 
-    //유저이름으로 유저 정보 조회
+    //유저이름으로 유저 정보 조회 ?? 이메일?
     @GET("/users")
     fun getUserInfoWithName(
             @Query("u_name") u_name:String
@@ -172,7 +165,6 @@ interface FlowAPIService{
             @Query("u_email") u_email: String,
             @Query("following") following: String
     ):Call<ResponseBody>
-
 }
 
 data class SearchWordData(val s_word:String)

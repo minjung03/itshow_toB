@@ -114,6 +114,5 @@
                 android:gravity="right"
                 android:id="@+id/item_date"/>
         </LinearLayout>
-
     </RelativeLayout>
 </LinearLayout>

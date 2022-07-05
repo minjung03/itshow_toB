@@ -3,16 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
+        android:layout_margin="10dp"
         android:id="@+id/linear_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="4dp">
+        android:gravity="center_vertical">
         <LinearLayout
             android:layout_margin="5dp"
             android:layout_gravity="center_vertical"
@@ -47,4 +46,12 @@
             android:src="@drawable/new_chat_icon"></ImageView>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"
+        android:background="#D5D5D5"
+        android:layout_below="@+id/layout_UserDelete"
+        android:id="@+id/line6"/>
 </LinearLayout>

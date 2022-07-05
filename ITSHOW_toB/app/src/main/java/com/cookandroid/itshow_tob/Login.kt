@@ -107,7 +107,7 @@ class Login : AppCompatActivity() {
                     task ->
                     if(task.isSuccessful) {
 
-                  /*      var email_chk : List<String>
+                        var email_chk : List<String>
                         val user = auth!!.currentUser
                         user?.let {
                             email_chk = user.email.toString().split('@');
@@ -116,7 +116,7 @@ class Login : AppCompatActivity() {
                                 signOut()
                                 startActivity(Intent(this, Login::class.java))
 
-                            } else {*/
+                            } else {
 
                                 // 로그인 성공 시
                                 val loadingDialog = LoadingDialog(this)
@@ -155,10 +155,11 @@ class Login : AppCompatActivity() {
                                         loadingDialog.dismiss()
                                     }
                                 })
-                                Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
+                                // Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(this, FrameMain::class.java))
-                           // }
-                        // }
+                                finish()
+                           }
+                         }
 
                     } else {
                         Toast.makeText(this,  task.exception?.message, Toast.LENGTH_LONG).show()

@@ -33,6 +33,7 @@ import java.util.*
 
 class Fragment1() : Fragment() {
 
+    lateinit var recyclerView_main:RecyclerView
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -43,10 +44,9 @@ class Fragment1() : Fragment() {
         var count = ""
         var togle = ""
         var mAdapter : MainCustomAdapter
-
         //recyclerview
         val view = inflater.inflate(R.layout.main_recycler, container, false)
-        val recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_view_main)
+        recyclerView_main = view.findViewById<RecyclerView>(R.id.recyceler_view_main)
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL )
         recyclerView_main.layoutManager = staggeredGridLayoutManager
 
@@ -107,5 +107,4 @@ class Fragment1() : Fragment() {
         })
         return view
     }
-
 }

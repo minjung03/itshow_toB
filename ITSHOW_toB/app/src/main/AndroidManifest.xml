@@ -28,18 +28,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpContent"/>
-        <activity android:name=".Review"/>
-        <activity android:name=".ChatActivity"/>
-        <activity android:name=".Search" />
-        <activity android:name=".WriteRecruitment"/>
-        <activity android:name=".Login" />
+        <activity android:name=".HelpContent"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".Review"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".ChatActivity"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".Search"
+            android:configChanges="orientation|screenSize"/>
+
+        <activity android:name=".WriteRecruitment"
+            android:configChanges="orientation|screenSize"/>
+
+        <activity android:name=".Login"
+            android:configChanges="orientation|screenSize"/>
+
         <activity android:name=".FrameMain"/>
         <activity android:name=".Join" />
         <activity android:name=".UserInfoActicity"/>
         <activity android:name=".FollowList"/>
-        <activity android:name=".Setting"/>
-        <activity android:name=".DetailsRecruitment"/> <!-- 사진 저장 관련 -->
+        <activity android:name=".Setting"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".DetailsRecruitment"
+            android:configChanges="orientation|screenSize"/> <!-- 사진 저장 관련 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.cookandroid.itshow_tob"
@@ -49,15 +60,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-<!--        <serviceMyFirebaseMessagingService
-            android:name="."
+        <service
+            android:name=".MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true"
             android:stopWithTask="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </serviceMyFirebaseMessagingService>-->
+        </service>
     </application>
 
 </manifest>
